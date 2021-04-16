@@ -1,9 +1,10 @@
 import React from 'react'
+import { AppRouter } from './routers/AppRouter'
 
 export const PlaceApp = () => {
     return ( 
         <>
-        <h1>HOla mundio</h1>
+        <AppRouter/>
         </>
     )
 }
