@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router';
-import { PlaceScreen } from '../components/place/PlaceScreen';
+import PlaceScreen from '../components/place/PlaceScreen';
 import { SearchIdScreen } from '../components/search/SearchIdScreen';
 import { SearchScreen } from '../components/search/SearchScreen';
 import { UserScreen } from '../components/user/UserScreen';
