@@ -10,17 +10,20 @@ import {
 //Componentes
 import { LoginScreen } from '../components/login/LoginScreen';
 import { DashBoarRoutes } from './DashBoarRoutes';
+import Layout from '../components/layout/Layout';
 
 export const AppRouter = () => {
     return (
         <Router>
-            <Switch>
+            <Layout>
+                <Switch>
 
-                <Route exact path="/login" component={LoginScreen}/>
+                    <Route exact path="/login" component={LoginScreen}/>
 
-                <Route path="/" component={DashBoarRoutes}/>
+                    <Route path="/" component={DashBoarRoutes}/>
 
-            </Switch>
+                </Switch>
+            </Layout>
         </Router>
     )
 }
