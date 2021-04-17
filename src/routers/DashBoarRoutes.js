@@ -15,7 +15,7 @@ export const DashBoarRoutes = () => {
                 <Route exact path="/home" component={PlaceScreen}/>
                 <Route exact path="/search/:placeId" component={SearchIdScreen}/>
 
-                //Si no encuentra ninguna de las rutas, lo mandamos a nuestra pantalla Principal
+                {/* //Si no encuentra ninguna de las rutas, lo mandamos a nuestra pantalla Principal */}
                 <Redirect to="/home"/>
             </Switch>
         </div>
