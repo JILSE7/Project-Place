@@ -1,3 +1,4 @@
+
 @import 'user/_UserScreen';
 @import 'user/_ProfileCover';
 @import 'user/_ProfileMenu';
@@ -26,3 +27,9 @@ html {
     text-size-adjust: 100%;
     line-height: 1.4;
 }
+
+
+@import './_place-styles.scss';
+@import './_login-styles.scss';
+@import './components/Search/_SearchId';
+

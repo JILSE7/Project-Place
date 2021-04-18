@@ -1,0 +1,50 @@
+.hero{
+  display: none;
+}
+
+.calltoaction {
+  background-color: #61dafb;
+  border-radius: 16px;
+  // height: 300px;
+  // padding: 30px;
+}
+
+@media (min-width: 768px){
+  .hero{
+    background-image: url(../assets/hero-Fullwidth.png);
+    background-position: 130% 44%;
+    background-size: 100%;
+    background-position: top;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50vh;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    padding: 30px;
+  }
+
+  .hero > section {
+    grid-column: 2/span 1;
+  }
+  
+  .hero > h1 {
+    grid-row: 2/span 1;
+    color: white;
+  }
+
+  .search{
+    display: none;
+  }
+}
+
+/* DESKTOP */
+
+@media only screen and (min-width: 992px) {
+  .hero{
+    height: 70vh;
+    padding: 60px;
+    background-position: center;
+  }
+}
