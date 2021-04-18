@@ -1,3 +1,4 @@
-body{
-    background-color: blue;
-}
+
+@import './_place-styles.scss';
+@import './_login-styles.scss';
+@import './components/Search/_SearchId';
