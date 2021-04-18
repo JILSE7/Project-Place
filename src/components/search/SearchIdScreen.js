@@ -8,8 +8,7 @@ import { SearchTitle } from './SearchId/SearchTitle'
 
 export const SearchIdScreen = () => {
     return (
-        <div className="">
-             <div>ESte es el nabvar</div>
+        <div className="mt-5">
                 <div className="container searchId_container">
                     <SearchTitle/>
                     <SearchLocation/>
