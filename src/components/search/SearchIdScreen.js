@@ -26,7 +26,7 @@ export const SearchIdScreen = () => {
                 </div>
 
                 <div className="text-center">
-                    que pedo
+                    En esta parte podemos ocupar el componente de toño
                 </div>
         </div>
     )
