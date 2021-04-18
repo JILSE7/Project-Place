@@ -10,15 +10,17 @@ export const SearchIdScreen = () => {
     return (
         <div className="mt-5">
                 <div className="container searchId_container">
-                    <SearchTitle/>
-                    <SearchLocation/>
+                    
                     <main className="searchId_main">
                         <div className="searchId_imagen" >
                             <SearchidUser/>
                             <SearchidImage/>
+
+                            <SearchidInfo/>
                         </div>
                         <div className="searchId_information">
-                            <SearchidInfo/>
+                            <SearchTitle/>
+                            <SearchLocation/>
                             <SearchidPeople/>
                         </div>
                     </main>

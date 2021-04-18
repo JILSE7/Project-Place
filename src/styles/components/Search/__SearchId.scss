@@ -1,6 +1,7 @@
 @import '../base/settings';
 
 
+//Contenedor padre
 .searchId_container{
     border-radius: 50px;
     padding: 20px;
@@ -13,6 +14,7 @@
 }
 
 
+//Contenedor main
 .searchId_main{
     display: flex;
     width: 100%;
@@ -20,12 +22,12 @@
     
 }
 
+//contenedor informacion
 .searchId_information{
     display: flex;
-    justify-content: center;
+    align-items: center;
     flex-direction: column;
     width: 40%;
-
 }
 
 
@@ -34,47 +36,65 @@
     align-items: center;
     flex-direction: column;
     width: 60%;
+    border: $borde;
+
+
 
 }
 
 
 
 
+//Conenedor de la imagen
 .searchId_img-container{
     flex-direction: column;
     width: 100%;
     align-items: center;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
+
+
     .searchId_img{
-    width: 82%;
-    height: max-content;
-    border-radius: 30px;
-    box-shadow: 0px 0px 5px rgb(2, 2, 2),0px 0px 6px rgb(238, 232, 232);
-   
-    
+    width: 100%;
+    height: auto;    
+    border-radius: 5px;
    }
    
    .searchId_img-info{
-       margin-top: 30px;
-       background-color: rgb(244, 244, 248);
-       bottom: 10px;
-       width: 80%;
-       height: 80px;
+       width: 100%;
+       height: 60px;
        border-radius: 3px 5px 6px 8px;
        display: flex;
-       justify-content: space-around;
        align-items: center;
+        
+       .icon-social{
+        font-style: 10px;
+        color: black;
+       }
+       .like:hover{
+           color: #0375e3;
+           
+       }
+       .here{
+
+       }
+       .coment{}
+
+       p{
+           font-size: 14px;
+           color: black;
+           font-style: italic;
+       }
     
    }
    
 }
 
-
+//iconos de la imagen
 .searchId_img-info-social{
-    width: 80px;
+    width: 40px;
     height: auto;
-
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
@@ -89,33 +109,54 @@
 
 
 
-//Informacion de la imagen
+//pie de la imagen
 .searchId_info{
     display: flex;
-    width: 100%;
+    width: 95%;
     height: 50%;
+
     justify-content: flex-start;
-    flex-direction: column;
+    padding: 10px;
+    border-top: 1px solid #ccc;
 
+    p{
+        font-size: 10px;
+        margin: 0;
+    }
+    span{
+        font-size: 12PX;
+        color: orange;
+    }
 
 }
 
-.searchId_info-location{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+//mapa
+.SearchId_map{
+    align-self: center;
+    width: 80%;
+    height: 250px;
+    background-color: blue;
+    .gm-style .place-card-medium{
+        display: none;
+    }
 }
 
+
+
+
+//SearchId -user
 .searchId_info-user{
+    align-self: flex-start;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
-    width: 80%;
+    padding: 5px 7px;
+    width: 60%;
     height: auto;
-    border-radius: 20px;
-    box-shadow:0px 0px 6px rgb(186, 184, 184);
-    margin: 10px;
+    border-radius: 5px;
+    box-shadow:0px 0px 2px rgb(186, 184, 184);
+    margin-left: 10px;
+
 
     .searchId_info-userid{
         width: auto;
@@ -128,40 +169,89 @@
             margin: 0;
             padding: 0;
         }
+        h5{
+            font-size: 14px;
+        }
+
     }
 
 }
 
 
+//Iconos generales
+.search-icon{
+    font-size: 12px;
+    color: rgb(255, 111, 0);
+}
+
+
 .searchId_info-user-img{
-    display: block;
-    width: 60px;
-    height: 60px;
+    
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
 
 }
 
 
 .searchId_info-stay{
-    margin-top: 40px;
+    margin-top: 50px;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+ 
 
+    h5{
+        font-size: 16px;
+        font-weight: normal;
+    }
     .searchId_info-stay-user{
         display: flex;
+        flex-wrap: wrap;
+        width: 100%;
   
     }
 
 
     .searchId_info-user-img{
-        width: 60px;
-        height: 60px;
-        margin-left: -10px;
+        
+        padding: 1px;
+        width: 49px;
+        height: 50px;
+        margin-left: 0px;
+        border: 1px solid orange;
     
     }
+
+    p{
+        font-size: 16px;
+    }
 }
+
+
+//searchTitle
+.searchId_info-title{
+    .search_title{
+        font-size: 30px;
+        text-align: center;
+        font-weight: normal;
+        text-shadow: 1px 2px 3px #ccc;
+    }
+}
+
+
+//SearchLocation
+.searchId_info-location{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h3{
+        font-size: 26px;
+    }
+}
+
 
 
 
