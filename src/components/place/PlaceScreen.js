@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import hero from '../../assets/hero-Fullwidth.png'
+import hero from '../../assets/hero-Fullwidth.png';
+import arrow from '../../assets/arrow.png';
+import photo from '../../assets/photo.png';
 
 const PlaceScreen = () => {
   const [statesMexico,setStatesMexico] = useState([]);
@@ -12,9 +14,12 @@ const PlaceScreen = () => {
     'Nayarit','Nuevo Leon','Oaxaca','Puebla','Queretaro de Arteaga','Quintana Roo','San Luis Potosi','Sinaloa','Sonora','Tabasco','Tamaulipas',
     'Tlaxcala','Veracruz de Ignacio de la Llave','Yucatan','Zacatecas']);
 
-    setPlacesMexico(['Parque', 'Museo', 'Edificio', 'Estatua', 'djdnf', 'fuhdf']);
-  }, [])
-
+    //setPlacesMexico(['Parque', 'Museo', 'Edificio', 'Estatua', 'djdnf', 'fuhdf']);
+    fetch('https://my.api.mockaroo.com/plcs.json?key=3741db80')
+      .then(response => response.json())
+      .then(data => setPlacesMexico(data));
+    }, [])
+    //console.log(placesMexico)
   return (
     <>
       <div className="container pt-3 search">
@@ -58,11 +63,12 @@ const PlaceScreen = () => {
               placesMexico.map((placeMexico, index) => {
                 if(index < 4){
                   return (
-                    <div class="col">
-                      <div class="card border-light">
-                        <img class="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
-                        <div class="card-body">
-                          <p class="card-text">{placeMexico} Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div className="col" key={index}>
+                      <div className="card border-light">
+                        <img className="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
+                        <div className="card-body">
+                          <h5 className="card-title">{placeMexico.place}</h5>
+                          <p className="card-text">{placeMexico.description.slice(0,147)+ '...'}</p>
                         </div>
                       </div>
                     </div>
@@ -72,7 +78,7 @@ const PlaceScreen = () => {
             }
           </div>
         </section>
-
+        
         <section className='py-5'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
@@ -80,11 +86,12 @@ const PlaceScreen = () => {
               placesMexico.map((placeMexico, index) => {
                 if(index < 4){
                   return (
-                    <div class="col">
-                      <div class="card border-light">
-                        <img class="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
-                        <div class="card-body">
-                          <p class="card-text">{placeMexico} Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div className="col" key={index}>
+                      <div className="card border-light">
+                        <img className="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
+                        <div className="card-body">
+                          <h5 className="card-title">{placeMexico.place}</h5>
+                          <p className="card-text">{placeMexico.description.slice(0,147)+ '...'}</p>
                         </div>
                       </div>
                     </div>
@@ -102,10 +109,10 @@ const PlaceScreen = () => {
               <button className="btn btn-light btn-lg">Regístrate</button>
             </div>
             <div className="col">
-              <img src="" className="img-fluid" alt='arrow' />
+              <img src={arrow} className="img-fluid" alt='arrow' />
             </div>
             <div className="col-lg-3 col-md-5 col-7">
-              <img src="" className="img-fluid" alt='photoshare' />
+              <img src={photo} className="img-fluid" alt='photoshare' />
             </div>
           </div>
         </section>
@@ -114,19 +121,19 @@ const PlaceScreen = () => {
           <div className="row row-cols-md-2 row-cols-1">
             <div className='col'>
               <h3 className="py-3">Explora</h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
+              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" className="img-fluid" alt='' />
             </div>
             <div className='col'>
               <h3 className="py-3">Visita</h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
+              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" className="img-fluid" alt='' />
             </div>
             <div className='col'>
               <h3 className="py-3">Comenta </h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
+              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" className="img-fluid" alt='' />
             </div>
             <div className='col'>
               <h3 className="py-3">Comparte </h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
+              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" className="img-fluid" alt='' />
             </div>
           </div>
         </section>
