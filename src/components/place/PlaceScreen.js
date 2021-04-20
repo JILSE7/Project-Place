@@ -1,80 +1,53 @@
 import React, { useState, useEffect } from 'react';
 
-import hero from '../../assets/hero-Fullwidth.png';
+import Hero from './placeComponents/PlaceHero';
+import Card from './placeComponents/PlaceCard';
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
+
+const URL = 'http://localhost:4000';
 
 const PlaceScreen = () => {
   const [statesMexico,setStatesMexico] = useState([]);
   const [placesMexico,setPlacesMexico] = useState([]);
 
   useEffect(() => {
-    setStatesMexico(['Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Coahuila de Zaragoza',
-    'Colima','Ciudad de México','Durango','Guanajuato','Guerrero','Hidalgo','Jalisco','Estado de Mexico','Michoacan de Ocampo','Morelos',
-    'Nayarit','Nuevo Leon','Oaxaca','Puebla','Queretaro de Arteaga','Quintana Roo','San Luis Potosi','Sinaloa','Sonora','Tabasco','Tamaulipas',
-    'Tlaxcala','Veracruz de Ignacio de la Llave','Yucatan','Zacatecas']);
+    const getStatesMexico = async() => {
+      try {
+        const response = await fetch(`${URL}/statesMexico`);
+        const data = await response.json();
+        //console.log(data)
+        setStatesMexico(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
-    //setPlacesMexico(['Parque', 'Museo', 'Edificio', 'Estatua', 'djdnf', 'fuhdf']);
-    fetch('https://my.api.mockaroo.com/plcs.json?key=3741db80')
-      .then(response => response.json())
-      .then(data => setPlacesMexico(data));
+    const getPlacesMexico = async() => {
+      try {
+        const response = await fetch(`${URL}/places?_start=id:1&_end=4`);
+        const data = await response.json();
+        //console.log(data)
+        setPlacesMexico(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getStatesMexico();
+    getPlacesMexico();
+
     }, [])
-    //console.log(placesMexico)
+
   return (
     <>
-      <div className="container pt-3 search">
-        <div className="input-group">
-          <select className="custom-select" id="inputGroupSelect04">
-            <option defaultValue>Choose...</option>
-            {
-              statesMexico.map((stateMexico,index) => <option value={index} key={index}>{stateMexico}</option>)
-            }
-          </select>
-          <div className="input-group-append">
-            <button className="btn btn-primary" type="button">Buscar</button>
-          </div>
-        </div>
-        <h1>DESCUBRE <br/> NUEVOS LUGARES</h1>
-        <img src={hero} alt='hero' className='img-fluid' />
-      </div>
-
-      <div className="hero">
-        <section>
-          <div className="input-group">
-            <select className="custom-select" id="inputGroupSelect04">
-              <option defaultValue>Choose...</option>
-              {
-                statesMexico.map((stateMexico,index) => <option value={index} key={index}>{stateMexico}</option>)
-              }
-            </select>
-            <div className="input-group-append">
-              <button className="btn btn-primary" type="button">Buscar</button>
-            </div>
-          </div>
-        </section>
-        <h1>DESCUBRE <br/> NUEVOS LUGARES</h1>
-      </div>
+      <Hero statesMexico={statesMexico} />
 
       <div className="container">
         <section className='py-5'>
           <h2>Lugares más visitados en México</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => {
-                if(index < 4){
-                  return (
-                    <div className="col" key={index}>
-                      <div className="card border-light">
-                        <img className="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
-                        <div className="card-body">
-                          <h5 className="card-title">{placeMexico.place}</h5>
-                          <p className="card-text">{placeMexico.description.slice(0,147)+ '...'}</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              })
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
@@ -83,21 +56,7 @@ const PlaceScreen = () => {
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => {
-                if(index < 4){
-                  return (
-                    <div className="col" key={index}>
-                      <div className="card border-light">
-                        <img className="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
-                        <div className="card-body">
-                          <h5 className="card-title">{placeMexico.place}</h5>
-                          <p className="card-text">{placeMexico.description.slice(0,147)+ '...'}</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              })
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
