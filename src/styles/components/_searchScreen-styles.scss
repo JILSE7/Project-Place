@@ -1,0 +1,79 @@
+$border-color: rgb(121, 121, 121);
+$tag-bg-color: rgb(225, 225, 225);
+
+.foto-card {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  height: auto;
+  width: 200px;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+
+  img {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: 0.5s ease;
+    backface-visibility: hidden;
+    border-radius: 8px;
+  }
+
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  &:hover {
+    img {
+      opacity: 0.3;
+    }
+    .middle {
+      opacity: 1;
+    }
+    
+  }
+
+  .image-hover-text {
+    background-color: transparent;
+    color: rgb(32, 32, 32);
+    font-weight: bold;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+}
+
+.tags-container {
+    white-space:nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.tags-slider {
+    display:table-cell;
+    vertical-align:middle;
+
+    &::-webkit-scrollbar {
+        display:none;
+        height: 1px;
+    }
+}
+
+.tag {
+  padding: 5px 8px;
+  margin: 5px;
+  font-size: 10px;
+  background-color: $tag-bg-color;
+  border-radius: 20px;
+}
