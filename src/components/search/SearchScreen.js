@@ -1,16 +1,7 @@
 import React from "react";
-
+import Gallery from "./SearchScreen/Gallery"
 
 export const SearchScreen = () => {
-<<<<<<< HEAD
-    
-    return (
-        <div>
-           <h1>SearchScreen</h1> 
-        </div>
-    )
-}
-=======
   const [fotos, setFotos] = React.useState([
     {
       title: "Foto de la ciudad",
@@ -42,4 +33,4 @@ export const SearchScreen = () => {
     </div>
   );
 };
->>>>>>> 1fd7a2c976ead2b5b0d645bec5925c32afbf8e6e
+
