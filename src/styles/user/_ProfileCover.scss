@@ -1,0 +1,123 @@
+.profile-cover {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('https://imagenescityexpress.scdn6.secure.raxcdn.com/sites/default/files/2018-03/guia-chiapas.jpg');
+    position: relative;
+    height: 20rem;
+    margin-bottom: .5rem;
+    border-radius: 0 0 20px 20px;
+
+    .shadow {
+        position: absolute;
+        display: block;
+        background: linear-gradient(transparent,rgba(0, 0, 0, 0.568));
+        width: 100%;
+        height: 50%;
+        bottom: 0;
+        left: 0;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .profile-avatar {
+        display: block;
+        width: 230px;
+        height: 230px;
+        background-color: #D9DCF1;
+        position: absolute;
+        bottom: -65px;
+        left: 4rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 8px solid #FFFFFF;
+        box-shadow: 0 0 12px 2px rgba(0, 0, 0, .2);
+        
+        img {
+            width: 100%;
+        }
+
+        .change-photo {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, .5);
+            height: 57%;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(50%);
+            opacity: 0;
+            transition: all ease-in 200ms;
+
+            i {
+                margin-bottom: .5rem;
+                font-size: 2rem;
+            }
+        }
+    }
+
+    .profile-avatar:hover .change-photo {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .profile-data {
+        position: absolute;
+        display: block;
+        width: calc(100% - 230px - 8rem);
+        right: 0;
+        bottom: 0;
+        color: #fff;
+        text-shadow: 0 0 5px rgba(0, 0, 0, .2);
+        padding-bottom: 1rem;
+        padding-right: 1rem;
+
+        .profile-user {
+            font-size: 2.3rem;
+            white-space: nowrap;
+            margin-bottom: .5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .profile-biography {
+            font-size: 1em;
+            margin-bottom: .75rem;
+        }
+
+        .profile-list {
+            list-style: none;
+
+            li {
+                display: inline-block;
+                font-size: 1em;
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    .profile-options {
+        display: block;
+        position: absolute;
+        right: 2rem;
+        top: 1rem;
+
+        button {
+            border: 0;
+            padding: 8px 20px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, .5);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4CB0C6;
+        }
+    }
+}

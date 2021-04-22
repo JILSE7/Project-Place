@@ -1,9 +1,14 @@
 import React from 'react'
+import { ProfileCover } from './ProfileCover';
+import { ProfileMenu } from './ProfileMenu';
 
 export const UserScreen = () => {
     return (
-        <div>
-            <h1>User Screen</h1>
-        </div>
+        <section className="user-profile-section">
+            <div className="user-profile-container">
+                <ProfileCover />
+                <ProfileMenu />
+            </div>
+        </section>
     )
 }
