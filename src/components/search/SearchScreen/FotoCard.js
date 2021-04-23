@@ -3,20 +3,20 @@ import PropTypes from "prop-types";
 
 const FotoCard = ({dataSource}) => {
   return (
-    <div className="card">
-      <div className="image-container">
+    <div className="searchScreen_foto-card">
+      <div className="searchScreen_image-container">
         <img src={dataSource.imageUrl} />
-        <div className="middle">
-            <div className="image-hover-text">ABRIR</div>
+        <div className="searchScreen_middle">
+            <div className="searchScreen_image-hover-text">ABRIR</div>
         </div>
       </div>
       <h5 className="card-title">{dataSource.title}</h5>
       <p className="card-text">{dataSource.location}</p>
-      <div className="container">
+      <div className="searchScreen_tags-container">
         <div className="tags-slider">
             {dataSource.tags.map(tag => {
                 return <span 
-                className="badge rouded-pill bg-secondary">{tag}</span>
+                className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary">{tag}</span>
             })}
         </div>
       </div>

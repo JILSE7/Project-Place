@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Gallery = (props) => {
   return (
-    <div className="container-fluid row align-items-center">
+    <div className="container-fluid p-3 row justify-content-center">
       {props.fotos.map((foto, index) => {
         return <FotoCard dataSource={foto} key={index}></FotoCard>;
       })}
