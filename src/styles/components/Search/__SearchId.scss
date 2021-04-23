@@ -36,7 +36,7 @@
     align-items: center;
     flex-direction: column;
     width: 60%;
-    border: $borde;
+
 
 
 
@@ -200,6 +200,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    border: $borde;
  
 
     h5{
@@ -208,6 +209,7 @@
     }
     .searchId_info-stay-user{
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         width: 100%;
   
@@ -257,6 +259,47 @@
 
 
 //Responsive
-@media (max-width: ) {
+// @media (max-width: 1000px ) {
+//     .searchId_imagen{
+//         width: 55%;
+//     }
     
+//     .searchId_info-user{
+//         width: 94%;
+//     }
+
+//     .searchId_information {
+//         width: 45%;
+//     }
+//     .searchId_info-location{
+//         h4{
+//             font-size: 22px;
+//         }
+//         p{
+//             font-size: 14px;
+//         }
+//     }
+
+//     .searchId_info-stay .searchId_info-user-img{
+//         width: 40px;
+//         height: 40px;
+//     }
+// } 
+
+
+
+
+@media (max-width: 800px) {
+
+    .searchId_main{
+        flex-direction: column;
+    }
+    .searchId_imagen{
+        width: 100%;
+    }
+
+    .searchId_information{
+        width: 100%;
+        flex-direction: column-reverse;
+    }
 } 

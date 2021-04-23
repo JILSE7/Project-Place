@@ -11,12 +11,12 @@ export const SearchidUser = () => {
                 <div className="searchId_info-userid">
                     <h5>Martin Carrera</h5>
                     <div className="d-flex">
-                        <p className="me-2"> <i class="fas fa-users search-icon"></i> 7700</p>
-                        <p ><i class="fas fa-image search-icon"></i> 7</p>
+                        <p className="me-2"> <i className="fas fa-users search-icon"></i> 7700</p>
+                        <p ><i className="fas fa-image search-icon"></i> 7</p>
                     </div>
                 </div>
             </div>
-            <button className="btn btn-success d-flex align-items-center"><i class="fas fa-user-check"></i></button>
+            <button className="btn btn-success d-flex align-items-center"><i className="fas fa-user-check"></i></button>
         </div>
     )
 }
