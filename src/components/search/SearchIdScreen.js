@@ -44,12 +44,12 @@ export const SearchIdScreen = () => {
                      <div className="searchId_imagen" >
                          <SearchidUser/>
                          <SearchidImage/>
-                    
                          <SearchidInfo/>
                      </div>
                      <div className="searchId_information">
-                     <SearchTitle/>
+                        <SearchTitle/>
                          <SearchLocation/>
+                         <SearchMap/>
                          <SearchidPeople/>
                      </div>
                     </main>
