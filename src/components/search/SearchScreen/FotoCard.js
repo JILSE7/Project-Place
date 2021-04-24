@@ -1,17 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const FotoCard = ({dataSource}) => {
+  console.log(dataSource);
   return (
     <div className="searchScreen_foto-card">
       <div className="searchScreen_image-container">
-        <img src={dataSource.imageUrl} />
+        <Link to="/">
+        <img src={dataSource.image} />
+        </Link>
         <div className="searchScreen_middle">
             <div className="searchScreen_image-hover-text">ABRIR</div>
         </div>
       </div>
-      <h5 className="card-title">{dataSource.title}</h5>
-      <p className="card-text">{dataSource.location}</p>
+      <h5 className="card-title">{dataSource.place}</h5>
+      <p className="card-text">{dataSource.address}</p>
       <div className="searchScreen_tags-container">
         <div className="tags-slider">
             {dataSource.tags.map(tag => {
@@ -23,7 +27,7 @@ const FotoCard = ({dataSource}) => {
       <p className="fst-italic">
           Posted by: 
             <span className="user-link">
-                {`@${dataSource.owner}`}
+                {`@${dataSource.userId}`}
             </span>
       </p>
     </div>

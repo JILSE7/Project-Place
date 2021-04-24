@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SearchidImage } from './SearchId/SearchidImage'
 import { SearchidInfo } from './SearchId/SearchidInfo'
 import { SearchidPeople } from './SearchId/SearchidPeople'
@@ -7,12 +7,14 @@ import { SearchLocation } from './SearchId/SearchLocation'
 import { SearchTitle } from './SearchId/SearchTitle'
 
 import { SearchMap } from './SearchId/SearchMap'
+import { placeContext } from '../../Context/placeContext'
+import { SearchScreen } from './SearchScreen'
 
 export const SearchIdScreen = () => {
-
-
     const [size, setsize] = useState( window.outerWidth)
     window.addEventListener("resize", function(){setsize(this.outerWidth)});
+
+    
 
     return (
         <div className="mt-5">
@@ -61,9 +63,7 @@ export const SearchIdScreen = () => {
 
            
 
-                <div className="text-center">
-                    En esta parte podemos ocupar el componente de toño
-                </div>
+             
         </div>
     )
 }
