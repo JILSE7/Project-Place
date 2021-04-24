@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PlaceCard = ({ place, description = '' }) => {
   return (
@@ -12,6 +13,11 @@ const PlaceCard = ({ place, description = '' }) => {
       </div>
     </div>
   )
+}
+
+PlaceCard.propTypes = {
+  place: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 export default PlaceCard;

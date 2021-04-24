@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import Hero from './placeComponents/PlaceHero';
 import Card from './placeComponents/PlaceCard';
+
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
 
@@ -35,7 +37,6 @@ const PlaceScreen = () => {
     }
     getStatesMexico();
     getPlacesMexico();
-
     }, [])
 
   return (
@@ -106,6 +107,13 @@ const PlaceScreen = () => {
       </div>
     </>
   )
+}
+
+PlaceScreen.propTypes = {
+  statesMexico: PropTypes.array.isRequired,
+  placesMexico: PropTypes.array.isRequired,
+  arrow: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
 }
 
 export default PlaceScreen;
