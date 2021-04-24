@@ -14,51 +14,51 @@ export const SearchIdScreen = () => {
     const [size, setsize] = useState( window.outerWidth)
     window.addEventListener("resize", function(){setsize(this.outerWidth)});
 
-
-  
     return (
         <div className="mt-5">
-                    {size <= 800 && 
-                     <div className="container searchId_container">
-                        <SearchTitle/>
+
+                {(size >=916)? 
+                    
+                    (<div className=" searchId_container">
+                    <main className="searchId_main">
+                    <div className="searchId_imagen" >
+                        <SearchidUser/>
+                        <SearchidImage/>
+                        <SearchidInfo/>
+                    </div>
+                    <div className="searchId_information">
+                       <SearchTitle/>
+                        <SearchLocation/>
+                        <SearchMap/>
+                        <SearchidPeople/>
+                    </div>
+                   </main>
+                   
+                   </div>)      :
+
+                   ( <div className="searchId_container">
+                            <SearchTitle/>
                         <main className="searchId_main">
-                            <div className="searchId_imagen" >
-                                <SearchLocation/>
+                        <SearchLocation/>
+                        <div className="searchId_imagen" >
+                               
                                 <SearchidUser/>
                                 <SearchidImage/>
                                 <SearchidInfo/>
-                            </div>
-                        <div className="searchId_information">
-                                <SearchidPeople/>
-                                <SearchMap/>
                         </div>
-                    </main>
-         
-                    </div>
-                    }
+                   <div className="searchId_information">
+                           <SearchidPeople/>
+                           <SearchMap/>
+                           <p>Ubicacion</p>
+                   </div>
+                        </main>
+
+                         </div>)
+                
+                }
+                    
 
 
-                    {size > 800 && 
-                    <div className="container searchId_container">
-                     <main className="searchId_main">
-                     <div className="searchId_imagen" >
-                         <SearchidUser/>
-                         <SearchidImage/>
-                    
-                         <SearchidInfo/>
-                     </div>
-                     <div className="searchId_information">
-                     <SearchTitle/>
-                         <SearchLocation/>
-                         <SearchidPeople/>
-                     </div>
-                    </main>
-                    
-                    </div>
-                    
-                    
-                    
-                    }
            
 
                 <div className="text-center">
