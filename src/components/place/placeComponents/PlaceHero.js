@@ -1,5 +1,7 @@
 import React from 'react';
 import hero from '../../../assets/hero-Fullwidth.png';
+import PropTypes from 'prop-types';
+
 const Hero = ( { statesMexico } ) => {
   return (
     <>
@@ -37,6 +39,10 @@ const Hero = ( { statesMexico } ) => {
       </div>
     </>
   )
+}
+
+Hero.propTypes = {
+  statesMexico: PropTypes.array.isRequired,
 }
 
 export default Hero;
