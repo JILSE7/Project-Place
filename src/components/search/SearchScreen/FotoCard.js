@@ -6,12 +6,12 @@ const FotoCard = ({dataSource}) => {
     <div className="card">
       <div className="image-container">
         <img src={dataSource.imageUrl} />
-        <div class="middle">
-            <div class="image-hover-text">ABRIR</div>
+        <div className="middle">
+            <div className="image-hover-text">ABRIR</div>
         </div>
       </div>
       <h5 className="card-title">{dataSource.title}</h5>
-      <p class="card-text">{dataSource.location}</p>
+      <p className="card-text">{dataSource.location}</p>
       <div className="container">
         <div className="tags-slider">
             {dataSource.tags.map(tag => {

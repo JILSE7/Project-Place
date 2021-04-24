@@ -3,14 +3,13 @@
 
 //Contenedor padre
 .searchId_container{
-    border-radius: 50px;
+    width: 85%;
+    margin: 0 auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-
-    box-shadow: 0px 1px 20px 0px rgba(67, 66, 66, 0.713);
 }
 
 
@@ -27,7 +26,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 40%;
+    width: 50%;
+   margin-left: 45px;
+
+
 }
 
 
@@ -36,7 +38,9 @@
     align-items: center;
     flex-direction: column;
     width: 60%;
-    border: $borde;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 1px 20px 0px rgba(67, 66, 66, 0.713);
 
 
 
@@ -50,39 +54,29 @@
     flex-direction: column;
     width: 100%;
     align-items: center;
-    padding: 0px 10px 10px 10px;
+
+  
 
 
     .searchId_img{
     width: 100%;
     height: auto;    
-    border-radius: 5px;
+
    }
    
    .searchId_img-info{
        width: 100%;
-       height: 60px;
+       height: 80px;
        border-radius: 3px 5px 6px 8px;
        display: flex;
        align-items: center;
-        
-       .icon-social{
-        font-style: 10px;
-        color: black;
-       }
-       .like:hover{
-           color: #0375e3;
-           
-       }
-       .here{
-
-       }
-       .coment{}
-
+       margin-top: 10px;
+       
        p{
-           font-size: 14px;
+           font-size: 16px;
            color: black;
            font-style: italic;
+           text-align: center;
        }
     
    }
@@ -91,7 +85,7 @@
 
 //iconos de la imagen
 .searchId_img-info-social{
-    width: 40px;
+    width: 70px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -110,31 +104,69 @@
 
 
 //pie de la imagen
-.searchId_info{
+.searchId_comments{
+    height: 400px;
+    overflow-y: scroll;
+
+
+    &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: rgba(133, 133, 133, 0.866);
+      }
+     
+      &::-webkit-scrollbar {
+        width: 5px;
+        border-radius: 10px;
+        background-color: green;
+      }
+     
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        
+        background-color: rgb(255, 92, 4);
+      }
+}
+.searchId_comments-users{
     display: flex;
     width: 95%;
-    height: 50%;
-
+    height: auto;
     justify-content: flex-start;
     padding: 10px;
     border-top: 1px solid #ccc;
 
     p{
-        font-size: 10px;
+        font-size: 14px;
         margin: 0;
     }
     span{
-        font-size: 12PX;
-        color: orange;
+        font-size: 14px;
+        color: rgb(255, 130, 5);
+        font-weight: bold;
+    }
+
+
+    .Comment-user{
+    
+        margin-left: 8px;
     }
 
 }
+
+.searchId_Comments-people{
+    display: flex;
+    width: 95%;
+    height: auto;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+
 
 //mapa
 .SearchId_map{
     align-self: center;
     width: 80%;
-    height: 250px;
+    height: 350px;
     background-color: blue;
     .gm-style .place-card-medium{
         display: none;
@@ -151,11 +183,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 7px;
-    width: 60%;
+    width: 100%;
     height: auto;
     border-radius: 5px;
     box-shadow:0px 0px 2px rgb(186, 184, 184);
-    margin-left: 10px;
+    
 
 
     .searchId_info-userid{
@@ -164,14 +196,25 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        margin-left: 8px;
 
         p,h5{
             margin: 0;
             padding: 0;
         }
         h5{
-            font-size: 14px;
+            font-size: 22px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+            transition: all 300ms;
+            &:hover{
+             color: green;
+            }
         }
+        p{
+            color: green;
+        }
+       
 
     }
 
@@ -180,15 +223,44 @@
 
 //Iconos generales
 .search-icon{
-    font-size: 12px;
+    font-size: 18px;
     color: rgb(255, 111, 0);
+}
+
+//Iconos usuarios
+.search-icon-user{
+    font-size: 16px;
+    color: rgb(255, 126, 12);
+    margin-right: 5px;
+}
+
+.icon-social{
+    font-size: 30px;
+    color: black;
+    transition: all 300ms;
+    cursor: pointer;
+}
+  
+.like:hover{
+    color: #0375e3;
+}
+.wonder:hover{
+    color: rgba(228, 228, 7, 0.777);
+}
+
+.be:hover{
+ color: rgb(222, 91, 10);
+ }
+ 
+.coment:hover{
+    color: rgb(150, 149, 149);
 }
 
 
 .searchId_info-user-img{
-    
-    width: 40px;
-    height: 40px;
+    cursor: pointer;
+    width: 50px;
+    height: 49px;
     border-radius: 100%;
 
 }
@@ -200,6 +272,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
  
 
     h5{
@@ -208,14 +281,15 @@
     }
     .searchId_info-stay-user{
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         width: 100%;
+        margin-top: 10px;
   
     }
 
 
     .searchId_info-user-img{
-        
         padding: 1px;
         width: 49px;
         height: 50px;
@@ -233,9 +307,8 @@
 //searchTitle
 .searchId_info-title{
     .search_title{
-        font-size: 30px;
+        font-size: 40px;
         text-align: center;
-        font-weight: normal;
         text-shadow: 1px 2px 3px #ccc;
     }
 }
@@ -252,11 +325,38 @@
     }
 }
 
+.searchId_Ubicacion{
+  width: 85%;
+  display: block;
+  margin: 0 auto;
+
+  text-align: center;
+}
 
 
 
 
-//Responsive
-@media (max-width: ) {
+@media (max-width: 1200px) {
+
+ 
+    .searchId_main{
+        flex-direction: column;
+        
+    }
+    .searchId_imagen{
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .searchId_information{
+        width: 100%;
+        flex-direction: column-reverse;
+        margin-left: 0;
+    }
+   
+    .search-icon{
+        font-size: 22px;
+    }
     
+
 } 

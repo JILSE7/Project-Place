@@ -7,20 +7,20 @@ export const SearchidImage = () => {
             <img className="searchId_img" src = "https://cdn-3.expansion.mx/27/68/6114b00a4c909d0e55cd9479e5b4/angel-de-la-independencia.jpeg" />
             <div className="searchId_img-info">
                 <div className="searchId_img-info-social">
-                <i class="far fa-smile-wink icon-social"></i>
-                    <p>65</p>
+                <i className="far fa-smile-wink icon-social like"></i>
+                    <p >65</p>
                 </div>
                 <div className="searchId_img-info-social">
-                    <i class="far fa-surprise icon-social"></i>
+                    <i className="far fa-surprise icon-social wonder"></i>
                     <p>65</p>
                 </div>
 
                 <div className="searchId_img-info-social">
-                    <i class="fas fa-angle-double-down icon-social here"></i>
+                    <i className="fas fa-angle-double-down icon-social be"></i>
                     <p>3500</p>
                 </div>
                 <div className="searchId_img-info-social">
-                    <i class="far fa-comment-dots icon icon-social coment"></i>
+                    <i className="far fa-comment-dots icon icon-social coment"></i>
                     <p>220</p>
                 </div>
             </div>
