@@ -17,6 +17,7 @@ Gallery.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       owner: PropTypes.string,
+      ownerPhoto: PropTypes.string.isRequired,
       imageUrl: PropTypes.string.isRequired,
       location: PropTypes.string.isRequired,
       tags: PropTypes.arrayOf(PropTypes.string),
