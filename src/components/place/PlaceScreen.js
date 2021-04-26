@@ -11,8 +11,6 @@ import { PlaceContext } from '../../context/PlaceContext';
 
 const PlaceScreen = () => {
   const { statesMexico, placesMexico } = useContext(PlaceContext);
-  console.log(statesMexico)
-  console.log(placesMexico)
 
   return (
     <>
