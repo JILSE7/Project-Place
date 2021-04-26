@@ -5,7 +5,7 @@ import logo from '../../assets/plcs-black.png';
 const Header = () => {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Link to="/">
           <img src={logo} className="img-fluid pr-4" alt="logo" />
         </Link>

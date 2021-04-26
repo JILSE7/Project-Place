@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const FotoCard = ({dataSource}) => {
-  console.log(dataSource);
+const FotoCard = ({dataSource, history}) => {
+
   return (
     <div className="searchScreen_foto-card">
       <div className="searchScreen_image-container">
-        <Link to="/">
+        <Link to={`/search/${dataSource.id}`}>
         <img src={dataSource.image} />
         </Link>
         <div className="searchScreen_middle">
@@ -44,4 +44,5 @@ FotoCard.propTypes = {
   })
 };
 
-export default FotoCard;
+
+export default withRouter(FotoCard);

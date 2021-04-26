@@ -126,13 +126,17 @@
         background-color: rgb(255, 92, 4);
       }
 }
+
+//Comenatarios
 .searchId_comments-users{
     display: flex;
     width: 95%;
     height: auto;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 10px;
     border-top: 1px solid #ccc;
+
+
 
     p{
         font-size: 14px;
@@ -144,11 +148,19 @@
         font-weight: bold;
     }
 
+    i{
+       justify-self: flex-end;
+    }
 
+    .box-user{
+        display: flex;
+        width: 90%;
+    }
     .Comment-user{
-    
         margin-left: 8px;
     }
+
+
 
 }
 
@@ -160,6 +172,44 @@
     padding: 10px;
 }
 
+.searchId_comments-add{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+    width: 95%;
+    height: 100px;
+    max-height: auto;
+
+    align-items: center;
+
+    img{
+        margin-left: -5px;
+    }
+    textarea{
+        border: none;
+        width: 80%;
+        height: auto;
+        font-size: 14px;
+        display: block;
+        margin: 0 auto;
+
+
+        &:focus{
+            outline: none;
+        }
+
+  
+    }
+
+    i{
+        display: block;
+        margin: 0 auto;
+        font-size: 26px;
+        color: cadetblue;
+    }
+
+  
+}
 
 
 //mapa
@@ -255,6 +305,10 @@
 .coment:hover{
     color: rgb(150, 149, 149);
 }
+.heart{
+    color: rgb(188, 8, 8);
+    
+}
 
 
 .searchId_info-user-img{
@@ -320,9 +374,10 @@
     flex-direction: column;
     justify-content: center;
 
-    h3{
+    h4{
         font-size: 26px;
     }
+
 }
 
 .searchId_Ubicacion{
@@ -332,6 +387,10 @@
 
   text-align: center;
 }
+
+
+
+
 
 
 
@@ -356,6 +415,7 @@
    
     .search-icon{
         font-size: 22px;
+        
     }
     
 

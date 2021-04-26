@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './placeComponents/PlaceHero';
@@ -6,38 +6,42 @@ import Card from './placeComponents/PlaceCard';
 
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
+import { placeContext } from '../../Context/placeContext';
 
 const URL = 'http://localhost:4000';
 
 const PlaceScreen = () => {
-  const [statesMexico,setStatesMexico] = useState([]);
-  const [placesMexico,setPlacesMexico] = useState([]);
 
-  useEffect(() => {
-    const getStatesMexico = async() => {
-      try {
-        const response = await fetch(`${URL}/statesMexico`);
-        const data = await response.json();
-        //console.log(data)
-        setStatesMexico(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  const {estados: statesMexico, placeScreen} = useContext(placeContext)
+  console.log(placeScreen);
+  // const [statesMexico,setStatesMexico] = useState([]);
+  // const [placesMexico,setPlacesMexico] = useState([]);
 
-    const getPlacesMexico = async() => {
-      try {
-        const response = await fetch(`${URL}/places?_start=id:1&_end=4`);
-        const data = await response.json();
-        //console.log(data)
-        setPlacesMexico(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getStatesMexico();
-    getPlacesMexico();
-    }, [])
+  // useEffect(() => {
+  //   const getStatesMexico = async() => {
+  //     try {
+  //       const response = await fetch(`${URL}/statesMexico`);
+  //       const data = await response.json();
+  //       //console.log(data)
+  //       setStatesMexico(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+
+  //   const getPlacesMexico = async() => {
+  //     try {
+  //       const response = await fetch(`${URL}/places?_start=id:1&_end=4`);
+  //       const data = await response.json();
+  //       //console.log(data)
+  //       setPlacesMexico(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   getStatesMexico();
+  //   getPlacesMexico();
+  //   }, [])
 
   return (
     <>
@@ -48,7 +52,7 @@ const PlaceScreen = () => {
           <h2>Lugares más visitados en México</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+              placeScreen.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
@@ -57,7 +61,7 @@ const PlaceScreen = () => {
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+              placeScreen.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
