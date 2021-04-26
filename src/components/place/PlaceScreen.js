@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Hero from './placeComponents/PlaceHero';
@@ -7,37 +7,12 @@ import Card from './placeComponents/PlaceCard';
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
 
-const URL = 'http://localhost:4000';
+import { PlaceContext } from '../../context/PlaceContext';
 
 const PlaceScreen = () => {
-  const [statesMexico,setStatesMexico] = useState([]);
-  const [placesMexico,setPlacesMexico] = useState([]);
-
-  useEffect(() => {
-    const getStatesMexico = async() => {
-      try {
-        const response = await fetch(`${URL}/statesMexico`);
-        const data = await response.json();
-        //console.log(data)
-        setStatesMexico(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    const getPlacesMexico = async() => {
-      try {
-        const response = await fetch(`${URL}/places?_start=id:1&_end=4`);
-        const data = await response.json();
-        //console.log(data)
-        setPlacesMexico(data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getStatesMexico();
-    getPlacesMexico();
-    }, [])
+  const { statesMexico, placesMexico } = useContext(PlaceContext);
+  console.log(statesMexico)
+  console.log(placesMexico)
 
   return (
     <>
@@ -52,7 +27,7 @@ const PlaceScreen = () => {
             }
           </div>
         </section>
-        
+
         <section className='py-5'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
