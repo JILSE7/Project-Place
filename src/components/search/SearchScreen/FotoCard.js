@@ -16,7 +16,7 @@ const FotoCard = ({dataSource}) => {
       </div>
       <div className="px-3 py-1">
         <h5 className="card-title">{dataSource.title}</h5>
-        <p className="card-text">{dataSource.location}</p>
+        <p className="card-text text-secondary">{dataSource.location}</p>
         <div className="searchScreen_tags-container">
           <div className="tags-slider mb-2">
               {dataSource.tags.map(tag => {
