@@ -6,7 +6,7 @@ const FotoCard = ({dataSource}) => {
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">
         <img className="searchScreen_user-photo" src={dataSource.ownerPhoto} alt="Photo"/>
-        <p className="text-bold ml-2">{dataSource.owner}</p>
+        <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.owner}</p>
       </div>
       <div className="searchScreen_image-container">
         <img src={dataSource.imageUrl} />
