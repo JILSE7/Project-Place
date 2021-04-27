@@ -9,7 +9,8 @@ import { SearchTitle } from './SearchId/SearchTitle'
 import { SearchMap } from './SearchId/SearchMap'
 import { useParams } from 'react-router'
 import { getPlaceById } from '../../helpers/Gets'
-import { PlaceContext } from '../../Context/PlaceContext'
+import { PlaceContext } from '../../context/PlaceContext';
+import { SearchScreen } from './SearchScreen'
 
 
 export const SearchIdScreen = () => {
@@ -54,7 +55,7 @@ export const SearchIdScreen = () => {
                         <SearchidPeople/>
                     </div>
                    </main>
-                   
+                    <SearchScreen/>
                    </div>) 
                                :   
                 
@@ -74,7 +75,7 @@ export const SearchIdScreen = () => {
                            <p>Ubicacion</p>
                    </div>
                         </main>
-
+                        <SearchScreen/>
                          </div>)
 
                    :

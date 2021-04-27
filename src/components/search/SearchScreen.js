@@ -1,5 +1,5 @@
 import React, { memo, useContext } from "react";
-import { PlaceContext } from "../../Context/PlaceContext";
+import { PlaceContext } from "../../context/PlaceContext";
 import Gallery from "./SearchScreen/Gallery"
 
 export const SearchScreen = memo(() => {
