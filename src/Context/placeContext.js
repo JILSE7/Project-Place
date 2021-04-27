@@ -1,3 +1,7 @@
-import React, { createContext } from 'react';
+import  { createContext } from 'react';
 
-export const placeContext = createContext(null)
+export const placeContext = createContext({
+    places:[],
+    estados: [],
+    placeScreen: []
+})

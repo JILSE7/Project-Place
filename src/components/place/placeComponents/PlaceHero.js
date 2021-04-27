@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import hero from '../../../assets/hero-Fullwidth.png';
 import PropTypes from 'prop-types';
 
-const Hero = ( { statesMexico } ) => {
+const Hero = memo(( { statesMexico } ) => {
+  console.log(statesMexico);
   return (
     <>
       <div className="container pt-3 search">
@@ -39,7 +40,7 @@ const Hero = ( { statesMexico } ) => {
       </div>
     </>
   )
-}
+})
 
 Hero.propTypes = {
   statesMexico: PropTypes.array.isRequired,

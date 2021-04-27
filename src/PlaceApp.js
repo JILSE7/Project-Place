@@ -15,13 +15,15 @@ import {url} from './helpers/Gets';
 
 export const PlaceApp = () => {
 
-    const {data} = useFetch(`${url}/places`);
-    const {data: estados} = useFetch(`${url}/statesMexico`);
-    const {data: placeScreen}  = useFetch(`${url}/places?_start=id:1&_end=4`);
+    const places = useFetch(`${url}/places`);
+    const estados = useFetch(`${url}/statesMexico`);
+    const placeScreen  = useFetch(`${url}/places?_start=id:1&_end=4`);
+ 
 
+   
     return ( 
         <>
-        <placeContext.Provider value={{data, estados, placeScreen}} >
+        <placeContext.Provider value={{ places, estados, placeScreen}} >
             <AppRouter/>
         </placeContext.Provider>
         </>

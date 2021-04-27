@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
 const Gallery = ({places}) => {
-
+  console.log(places);
   return (
     <div className="container-fluid p-3 row justify-content-center">
       {places.map(place => {

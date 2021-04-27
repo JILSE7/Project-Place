@@ -23,14 +23,13 @@ export const SearchIdScreen = () => {
 
     
     //Context
-    const {data} = useContext(placeContext);
+    const {places} = useContext(placeContext);
 
 
     //GetPLace si nuestros lugares son obtenidos
-    if(data !== null && data.length >=1)search =  getPlaceById(placeId, data)
+    if(places.length >=1)search =  getPlaceById(placeId, places)
     
-    console.log(search);
-
+ 
     
     return (
         <div className="mt-5">
@@ -82,11 +81,7 @@ export const SearchIdScreen = () => {
                    null    
                 
             }   
-                     
 
-
-    
-             
         </div>
     )
 }
