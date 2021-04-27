@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { PlaceContext } from '../../context/PlaceContext';
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
+
+    const { verifyUser } = useContext(PlaceContext);
+
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -12,7 +16,9 @@ const LoginScreen = () => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(form);
+        //console.log(form.email);
+        verifyUser(form);
+        props.history.push('/');
     }
 
     return (

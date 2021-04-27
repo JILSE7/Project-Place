@@ -1,5 +1,16 @@
 {
-  "users": [],
+  "users": [
+    {
+    "id": 1,
+    "email": "david@gmail.com",
+    "password": "123456",
+    "username": "davidportilla",
+    "firstName": "David",
+    "lastName": "Portilla",
+    "country": "México",
+    "age": "24"
+    }
+  ],
   "statesMexico":[
     "Aguascalientes","Baja California","Baja California Sur","Campeche","Chiapas","Chihuahua","Coahuila de Zaragoza",
     "Colima","Ciudad de México","Durango","Guanajuato","Guerrero","Hidalgo","Jalisco","Estado de Mexico","Michoacan de Ocampo","Morelos",
