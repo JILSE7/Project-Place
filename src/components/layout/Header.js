@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/plcs-black.png';
-import { PlaceContext } from '../../context/PlaceContext';
 import { withRouter } from 'react-router-dom';
+
+import { PlaceContext } from '../../context/PlaceContext';
+import InputSearch from './layoutComponents/InputSearch';
+
+import logo from '../../assets/plcs-black.png';
 
 const Header = (props) => {
 
-  const { userLogin, setUserLogin } = useContext(PlaceContext);
+  const { userLogin, setUserLogin, statesMexico } = useContext(PlaceContext);
 
   const logout = () => {
     setUserLogin({})
@@ -16,7 +19,7 @@ const Header = (props) => {
 
   return (
     <header>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <Link to="/">
           <img src={logo} className="img-fluid pr-4" alt="logo" />
         </Link>
@@ -30,6 +33,11 @@ const Header = (props) => {
               <Link to="/search" className="nav-link"> Lugares</Link>
             </li>
           </ul>
+
+          <ul className="navbar-nav d-none d-md-block">
+            <InputSearch statesMexico={statesMexico} />
+          </ul>
+
           {
             userLogin.email ?
             <ul className="navbar-nav ml-auto">
@@ -51,7 +59,7 @@ const Header = (props) => {
             </ul>
             :
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
+              <li className="nav-item my-2 my-lg-0">
                 <Link to="/login"><button className="btn btn-secondary" type="button">Login</button></Link>
               </li>
               <li className="nav-item">
