@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { PlaceContext } from '../../Context/PlaceContext';
 
-const RegisterScreen = () => {
+const RegisterScreen = (props) => {
+  const { registerUser } = useContext(PlaceContext);
+
   const [form, setForm] = useState({
     email: '',
-    password: ''
+    password: '',
+    username: '',
+    firstName: '',
+    lastName: '',
+    country: '',
+    age: ''
   });
 
   const handleInput = event => {
@@ -12,7 +20,8 @@ const RegisterScreen = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(form);
+    registerUser(form);
+    props.history.push('/login');
   }
 
   return (
@@ -35,7 +44,7 @@ const RegisterScreen = () => {
                           placeholder="Email address"
                           required
                           autoFocus=""
-                          className="form-control rounded-pill border-0 shadow-sm px-4" 
+                          className="form-control rounded-pill border-0 shadow-sm px-4"
                           onChange={handleInput}
                         />
                     </div>
@@ -45,6 +54,62 @@ const RegisterScreen = () => {
                           name="password"
                           type="password"
                           placeholder="Password"
+                          required
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          onChange={handleInput}
+                        />
+                    </div>
+                    <hr className="border border-primary my-4"/>
+                    <div className="form-group mb-3">
+                        <input
+                          id="inputUsername"
+                          name="username"
+                          type="username"
+                          placeholder="Username"
+                          required
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          onChange={handleInput}
+                        />
+                    </div>
+                    <div className="form-group mb-3">
+                        <input
+                          id="inputFirstName"
+                          name="firstName"
+                          type="firstName"
+                          placeholder="First Name"
+                          required
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          onChange={handleInput}
+                        />
+                    </div>
+                    <div className="form-group mb-3">
+                        <input
+                          id="inputLastName"
+                          name="lastName"
+                          type="lastName"
+                          placeholder="Last Name"
+                          required
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          onChange={handleInput}
+                        />
+                    </div>
+                    <div className="form-group mb-3">
+                        <input
+                          id="inputCountry"
+                          name="country"
+                          type="country"
+                          placeholder="Country"
+                          required
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          onChange={handleInput}
+                        />
+                    </div>
+                    <div className="form-group mb-3">
+                        <input
+                          id="inputAge"
+                          name="age"
+                          type="number"
+                          placeholder="Age"
                           required
                           className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
                           onChange={handleInput}

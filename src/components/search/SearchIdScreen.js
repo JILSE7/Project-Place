@@ -9,7 +9,7 @@ import { SearchTitle } from './SearchId/SearchTitle'
 import { SearchMap } from './SearchId/SearchMap'
 import { useParams } from 'react-router'
 import { getPlaceById } from '../../helpers/Gets'
-import { placeContext } from '../../Context/placeContext'
+import { PlaceContext } from '../../Context/PlaceContext'
 
 
 export const SearchIdScreen = () => {
@@ -22,14 +22,14 @@ export const SearchIdScreen = () => {
     const {placeId} = useParams();
 
     
-    //Context
-    const {places} = useContext(placeContext);
+    // Context
+    const {places} = useContext(PlaceContext);
 
 
-    //GetPLace si nuestros lugares son obtenidos
+    // GetPLace si nuestros lugares son obtenidos
     if(places.length >=1)search =  getPlaceById(placeId, places)
     
- 
+    console.log(search);
     
     return (
         <div className="mt-5">

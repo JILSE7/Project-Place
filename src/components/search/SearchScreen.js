@@ -1,10 +1,11 @@
 import React, { memo, useContext } from "react";
-import { placeContext } from "../../Context/placeContext";
+import { PlaceContext } from "../../Context/PlaceContext";
 import Gallery from "./SearchScreen/Gallery"
 
 export const SearchScreen = memo(() => {
   //PlaceContext
- const {places} = useContext(placeContext);
+ const {places} = useContext(PlaceContext);
+ console.log(places);
   
   return (
     <div>
