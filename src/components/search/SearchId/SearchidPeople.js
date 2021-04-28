@@ -3,7 +3,8 @@ import React from 'react'
 export const SearchidPeople = () => {
     return (
         <div className="searchId_info-stay">
-            <h5>Han estado aqui</h5>
+            
+            <i className="fas fa-angle-double-down icon-social be"></i>
 
             <div className="searchId_info-stay-user ms-3">
             <img
@@ -35,7 +36,7 @@ export const SearchidPeople = () => {
             className="searchId_info-user-img"
             />
             </div>
-            <p>& 7759 personas mas......</p>
+            <p>& 3443 personas mas......</p>
         </div>
 
     )

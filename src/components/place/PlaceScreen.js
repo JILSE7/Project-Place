@@ -1,145 +1,118 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import { PlaceContext } from '../../context/PlaceContext';
+import { Link } from 'react-router-dom';
 
-import hero from '../../assets/hero-Fullwidth.png'
+import Hero from './placeComponents/PlaceHero';
+import Card from './placeComponents/PlaceCard';
+
+import arrow from '../../assets/arrow.png';
+import photo from '../../assets/photo.png';
+import newsletter from '../../assets/newsletter.svg';
 
 const PlaceScreen = () => {
-  const [statesMexico,setStatesMexico] = useState([]);
-  const [placesMexico,setPlacesMexico] = useState([]);
-
-  useEffect(() => {
-    setStatesMexico(['Aguascalientes','Baja California','Baja California Sur','Campeche','Chiapas','Chihuahua','Coahuila de Zaragoza',
-    'Colima','Ciudad de México','Durango','Guanajuato','Guerrero','Hidalgo','Jalisco','Estado de Mexico','Michoacan de Ocampo','Morelos',
-    'Nayarit','Nuevo Leon','Oaxaca','Puebla','Queretaro de Arteaga','Quintana Roo','San Luis Potosi','Sinaloa','Sonora','Tabasco','Tamaulipas',
-    'Tlaxcala','Veracruz de Ignacio de la Llave','Yucatan','Zacatecas']);
-
-    setPlacesMexico(['Parque', 'Museo', 'Edificio', 'Estatua', 'djdnf', 'fuhdf']);
-  }, [])
+  const { statesMexico, placesMexico } = useContext(PlaceContext);
 
   return (
     <>
-      <div className="container pt-3 search">
-        <div className="input-group">
-          <select className="custom-select" id="inputGroupSelect04">
-            <option defaultValue>Choose...</option>
-            {
-              statesMexico.map((stateMexico,index) => <option value={index} key={index}>{stateMexico}</option>)
-            }
-          </select>
-          <div className="input-group-append">
-            <button className="btn btn-primary" type="button">Buscar</button>
-          </div>
-        </div>
-        <h1>DESCUBRE <br/> NUEVOS LUGARES</h1>
-        <img src={hero} alt='hero' className='img-fluid' />
-      </div>
-
-      <div className="hero">
-        <section>
-          <div className="input-group">
-            <select className="custom-select" id="inputGroupSelect04">
-              <option defaultValue>Choose...</option>
-              {
-                statesMexico.map((stateMexico,index) => <option value={index} key={index}>{stateMexico}</option>)
-              }
-            </select>
-            <div className="input-group-append">
-              <button className="btn btn-primary" type="button">Buscar</button>
-            </div>
-          </div>
-        </section>
-        <h1>DESCUBRE <br/> NUEVOS LUGARES</h1>
-      </div>
+      <Hero statesMexico={statesMexico} />
 
       <div className="container">
         <section className='py-5'>
-          <h2>Lugares más visitados en México</h2>
+          <h2>Lugares más populares</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => {
-                if(index < 4){
-                  return (
-                    <div class="col">
-                      <div class="card border-light">
-                        <img class="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
-                        <div class="card-body">
-                          <p class="card-text">{placeMexico} Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              })
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
 
-        <section className='py-5'>
+        <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => {
-                if(index < 4){
-                  return (
-                    <div class="col">
-                      <div class="card border-light">
-                        <img class="card-img-top" src="https://i2.wp.com/foodandpleasure.com/wp-content/uploads/2020/08/cenote-ik-kil-mexico.jpg?fit=1024%2C680&ssl=1" alt={placeMexico} />
-                        <div class="card-body">
-                          <p class="card-text">{placeMexico} Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                }
-              })
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
 
-        <section className="calltoaction">
+        <section className='py-4'>
+          <h2>Lugares que les gusta a la comunidad</h2>
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
+            {
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+            }
+          </div>
+        </section>
+
+        <section className="calltoaction bg-primary text-white">
           <div className="row">
             <div className="p-4 col-lg-6 col-md col order-md-first order-last">
               <h3>Comparte tus lugares<br/> favoritos con nosotros</h3>
-              <button className="btn btn-light btn-lg">Regístrate</button>
+              <Link to="/signup">
+                <button className="btn btn-secondary btn-lg">Regístrate</button>
+              </Link>
             </div>
             <div className="col">
-              <img src="" className="img-fluid" alt='arrow' />
+              <img src={arrow} className="img-fluid" alt='arrow' />
             </div>
             <div className="col-lg-3 col-md-5 col-7">
-              <img src="" className="img-fluid" alt='photoshare' />
+              <img src={photo} className="img-fluid" alt='photoshare' />
             </div>
           </div>
         </section>
 
         <section className="py-5">
-          <div className="row row-cols-md-2 row-cols-1">
-            <div className='col'>
-              <h3 className="py-3">Explora</h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
+          <h3>Suscríbete a nuestro newsletter</h3>
+          <div className="row py-4">
+            <div className="col-md">
+              <form>
+                <div class="form-group">
+                    <label for="inputEmail">Correo electrónico</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" required />
+                </div>
+                <div class="form-group">
+                    <label for="inputFirstName">Nombre</label>
+                    <input type="firstName" class="form-control" id="inputFirstName" placeholder="Nombre" required />
+                </div>
+                <div class="form-group">
+                    <label for="inputLastName">Apellido</label>
+                    <input type="lastName" class="form-control" id="inputLastName" placeholder="Apellido" required />
+                </div>
+                <div class="form-group">
+                    <label for="inputCountry">País</label>
+                    <input type="country" class="form-control" id="inputCountry" placeholder="País" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-check-label"><input type="checkbox" /> Acepta nuestros Términos y Condiciones y Aviso de Privacidad</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Suscribirse</button>
+              </form>
             </div>
-            <div className='col'>
-              <h3 className="py-3">Visita</h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
-            </div>
-            <div className='col'>
-              <h3 className="py-3">Comenta </h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
-            </div>
-            <div className='col'>
-              <h3 className="py-3">Comparte </h3>
-              <img src="https://s3-us-west-1.amazonaws.com/tipsparatuviaje/wp-content/uploads/2016/09/4.-Huasteca-Potosina-San-Luis-Potos%C3%AD.jpg" class="img-fluid" alt='' />
+            <div className="col-md">
+              <img src={newsletter} alt="" className="img-fluid"/>
             </div>
           </div>
         </section>
       </div>
 
-      <div className='bg-primary text-center jumbotron jumbotron-fluid'>
+      <div className='bg-primary text-white text-center jumbotron jumbotron-fluid'>
         <div className='container'>
           <h2>Visita y descubre lugares que <br/> no sabías que existian</h2>
-          <button type="button" className="mt-5 btn btn-secondary btn-lg">Regístrate</button>
+          <Link to="/signup">
+            <button type="button" className="mt-5 btn btn-secondary btn-lg">Regístrate</button>
+          </Link>
         </div>
       </div>
     </>
   )
+}
+
+PlaceScreen.propTypes = {
+  statesMexico: PropTypes.array.isRequired,
+  placesMexico: PropTypes.array.isRequired,
+  arrow: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
 }
 
 export default PlaceScreen;

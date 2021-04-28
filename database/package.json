@@ -1,0 +1,15 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 4000"
+  },
+  "keywords": [],
+  "author": "David Portilla <davidportilla179@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}

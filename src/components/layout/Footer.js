@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container py-4">
         <div className="row row-cols-lg-4 row-cols-md-3 row-cols-1">
           <div className="col">
-            <img src={logo} class="pb-4 img-fluid" alt="logo" />
+            <img src={logo} className="pb-4 img-fluid" alt="logo" />
             <p>Copyright © 2021 PLCS Place.</p>
             <p>All rights reserved</p>
           </div>
