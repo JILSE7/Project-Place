@@ -1,18 +1,6 @@
 $border-color: rgb(121, 121, 121);
 $tag-bg-color: rgb(225, 225, 225);
 
-<<<<<<< HEAD
-.foto-card {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid $border-color;
-  border-radius: 8px;
-  height: auto;
-  width: 200px;
-}
-
-.image-container {
-=======
 .searchScreen_foto-card {
   width: 300px ;
   margin: 10px ;
@@ -22,7 +10,6 @@ $tag-bg-color: rgb(225, 225, 225);
 }
 
 .searchScreen_image-container {
->>>>>>> master
   position: relative;
   width: 100%;
 
@@ -33,17 +20,10 @@ $tag-bg-color: rgb(225, 225, 225);
     height: auto;
     transition: 0.5s ease;
     backface-visibility: hidden;
-<<<<<<< HEAD
-    border-radius: 8px;
-  }
-
-  .middle {
-=======
     border-radius: 0 0 10px 10px;
   }
 
   .searchScreen_middle {
->>>>>>> master
     transition: .5s ease;
     opacity: 0;
     position: absolute;
@@ -58,21 +38,13 @@ $tag-bg-color: rgb(225, 225, 225);
     img {
       opacity: 0.3;
     }
-<<<<<<< HEAD
-    .middle {
-=======
     .searchScreen_middle {
->>>>>>> master
       opacity: 1;
     }
     
   }
 
-<<<<<<< HEAD
-  .image-hover-text {
-=======
   .searchScreen_image-hover-text {
->>>>>>> master
     background-color: transparent;
     color: rgb(32, 32, 32);
     font-weight: bold;
@@ -81,39 +53,22 @@ $tag-bg-color: rgb(225, 225, 225);
   }
 }
 
-<<<<<<< HEAD
-.tags-container {
-=======
 .searchScreen_tags-container {
->>>>>>> master
     white-space:nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-}
-
-<<<<<<< HEAD
-.tags-slider {
-=======
-.searchScreen_tags-slider {
->>>>>>> master
-    display:table-cell;
-    vertical-align:middle;
 
     &::-webkit-scrollbar {
-        display:none;
-        height: 1px;
-    }
+      display:none;
+      height: 1px;
+  }
 }
 
-<<<<<<< HEAD
-.tag {
-  padding: 5px 8px;
-  margin: 5px;
-  font-size: 10px;
-  background-color: $tag-bg-color;
-  border-radius: 20px;
+.searchScreen_tags-slider {
+    display:table-cell;
+    vertical-align:middle;
 }
-=======
+
 .searchScreen_user-photo {
     cursor: pointer;
     width: 40px;
@@ -122,4 +77,3 @@ $tag-bg-color: rgb(225, 225, 225);
     border-radius: 100%;
     margin: 5px;
 }
->>>>>>> master
