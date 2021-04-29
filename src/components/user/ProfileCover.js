@@ -1,31 +1,51 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export const ProfileCover = () => {
+const ProfileCover = ({user}) => {
   return(
-    <div className="profile-cover">
-        <div className="shadow"></div>
-        <div className="profile-avatar">
-            <img src="https://scontent.fcvj3-1.fna.fbcdn.net/v/t1.6435-0/p526x296/45886642_887495194707397_3858252169484435456_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=_xeH-7Rq9pkAX_hFd5i&_nc_ht=scontent.fcvj3-1.fna&tp=6&oh=313471eaa5c02079b57a0d779b7cd8b7&oe=609D30C0" alt="img" />
-            <a href="#" className="change-photo">
-                <i className="fas fa-camera"></i> 
-                <span>Cambiar foto</span>
-            </a>
-        </div>
+      <div className="profile-cover" style={{backgroundImage: `url(${user.coverPhoto})`}}>
+          <div className="shadow"></div>
+          <div className="profile-avatar">
+              <img src= {user.profilePhoto} alt="img" />
+              <a href="#" className="change-photo">
+                  <i className="fas fa-camera"></i> 
+                  <span>Cambiar foto</span>
+              </a>
+          </div>
 
-        <div className="profile-data">
-            <h4 className="profile-user">Benito Gutierritos</h4>
-            <p className="profile-biography">Soy el Beni pa' los compas, soy de Jaguares de Chiapas, me gusta visitar la Sierra Tarahumara y tomarme fotos con esculturas olmecas.</p>
-            <ul className="profile-list">
-                <li>8 Seguidores</li>
-                <li>15 Seguidos</li>
-                <li>5 Publicaciones</li>
-            </ul>
-        </div>
+          { 
+            user.posts !== undefined ?
+              (<div className="profile-data">
+                  <h4 className="profile-user">{user.firstName} {user.lastName}</h4>
+                  <p className="profile-biography">{ user.information }</p>
+                  <ul className="profile-list">
+                      <li>{user.followers.length} Seguidores</li>
+                      <li>{user.followed.length} Seguidos</li>
+                      <li>{user.posts.length} Publicaciones</li>
+                  </ul>
+              </div>)
+              : null
+          }
 
-        <div className="profile-options">
-            <button type="">Cambiar portada</button>
-            <button type=""><i className="fas fa-wrench"></i></button>
-        </div>
-    </div>
+          <div className="profile-options">
+              <button type="">Cambiar portada</button>
+              <button type=""><i className="fas fa-wrench"></i></button>
+          </div>
+      </div>
   )
 };
+
+/*ProfileCover.propTypes = {
+    fotos: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        owner: PropTypes.string,
+        imageUrl: PropTypes.string.isRequired,
+        location: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string),
+      })
+    ),
+    profilePhoto: PropTypes.string.isRequired
+  };*/
+
+  export default ProfileCover;

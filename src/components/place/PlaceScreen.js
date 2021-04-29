@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { PlaceContext } from '../../context/PlaceContext';
+import { PlaceContext } from '../../context/placeContext';
 import { Link } from 'react-router-dom';
 
 import Hero from './placeComponents/PlaceHero';

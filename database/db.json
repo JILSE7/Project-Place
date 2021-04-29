@@ -107,6 +107,92 @@
       "country": "Mexico",
       "age": "13",
       "id": 3
+    },
+    {
+      "id": 4,
+      "email": "benito@gmail.com",
+      "password": "123456",
+      "username": "Beni",
+      "firstName": "Benito",
+      "lastName": "Gutierritos",
+      "country": "México",
+      "age": 20,
+      "profilePhoto": "https://scontent.fcvj3-1.fna.fbcdn.net/v/t1.6435-0/p526x296/45886642_887495194707397_3858252169484435456_n.jpg?_nc_cat=108&ccb=1-3&_nc_sid=8bfeb9&_nc_ohc=_xeH-7Rq9pkAX_hFd5i&_nc_ht=scontent.fcvj3-1.fna&tp=6&oh=313471eaa5c02079b57a0d779b7cd8b7&oe=609D30C0",
+      "coverPhoto": "https://imagenescityexpress.scdn6.secure.raxcdn.com/sites/default/files/2018-03/guia-chiapas.jpg",
+      "information": "Soy el Beni pa' los compas, soy de Jaguares de Chiapas, me gusta visitar la Sierra Tarahumara y tomarme fotos con esculturas olmecas.",
+      "friends": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "followers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "followed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "posts": [
+        {
+          "id": 1023,
+          "photo": "https://estaticos.muyhistoria.es/media/cache/400x300_thumb/uploads/images/article/575fcaf95bafe880ebe03a24/adoradores-del-jaguar-cuadrada_0.jpg",
+          "description": "Andaba caminando y no pude contener las ganas de tomarle foto a esta cabeza olmeca.",
+          "likes": 8,
+          "comments": 4
+        },
+        {
+          "id": 1024,
+          "photo": "https://1.bp.blogspot.com/-hJHGJs0wksI/WaikwTdD7II/AAAAAAAAIG8/7oG-16II4cQ3fsDZ3ejtIljzm1QUnsaHwCLcBGAs/s1600/Barrancas%2B031.JPG",
+          "description": "Pasando el rato en la hermosa Sierra Tarahumara, un saludo.",
+          "likes": 15,
+          "comments": 9
+        },
+        {
+          "id": 1025,
+          "photo": "https://d36tnp772eyphs.cloudfront.net/blogs/2/2019/08/Ojo-de-Agua-2.jpeg",
+          "description": "En el majestuoso Ojo de Agua de San Juan Chamula, lastima que no se nadar :(",
+          "likes": 37,
+          "comments": 14
+        },
+        {
+          "id": 1026,
+          "photo": "https://i.pinimg.com/564x/c0/fb/c4/c0fbc4deff0a8b7b5ec7a6ec68ea0811.jpg",
+          "description": "En una nueva aventura con mis amigos en la selva Gran Chimpance de Guanajuato.",
+          "likes": 5,
+          "comments": 1
+        },
+        {
+          "id": 1027,
+          "photo": "https://www.eternal-expat.com/wp-content/uploads/2018/04/DSC_5948-2.jpg",
+          "description": "Visitando la grandiosa piramide Toniná, me hubiera gustado vivir en esa época y ver como la construían.",
+          "likes": 9,
+          "comments": 3
+        }
+      ]
+
     }
   ],
   "statesMexico": [
