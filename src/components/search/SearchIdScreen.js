@@ -9,7 +9,7 @@ import { SearchTitle } from './SearchId/SearchTitle'
 import { SearchMap } from './SearchId/SearchMap'
 import { useParams } from 'react-router'
 import { getPlaceById } from '../../helpers/Gets'
-import { PlaceContext } from '../../context/PlaceContext';
+import { PlaceContext } from '../../Context/PlaceContext';
 import { SearchScreen } from './SearchScreen'
 
 
