@@ -62,30 +62,21 @@ Create-React-App tiene configurado un comando para realizar un deploy de la apli
 
 Para hacer el deploy, sigue los siguientes pasos:
 
-1. Crea y accede a Heroku con tu cuenta
-2. Pulsa en el botón "Create new app"
-3. Ponle un nombre a la app y selecciona tu región
-4. Sube tu código a un repositorio de GitHub
-5. En la sección "Deployment method", selecciona "Connect to Github" y conectala con tu cuenta.
-6. Busca tu repositorio por su nombre y selecciona la rama donde tienes tu código final.
-7. Pulsa el botón "Deploy Branch" para desplegar tu aplicación
-8. Dirígete a "Setting" y en la sección "Config Vars" agrega las siguientes variables de entorno:
-```bash
-export NODE_ENV='production'
-export PORT= '80'
-export SECRET='supersecret'
-export MONGODB_URI=''
+1. En la terminal de comando ejecuta la siguiente linea:
 ```
-En MONGODB_URI pon la URI que tienes en tu archivo ./env.sh
-9. Abre la app con el botón "Open app" situado en la parte superior derecha de la pantalla.
-
-Ya podrás hacer las mismas peticiones que hacias con tu aplicación de peticiones HTTP usando la url que te proporciona Heroku.
+$ npm run build
+```
+2. Cargará todos los archivos del proyecto y generará una carpeta con los archivos comprimidos.
+3. Puedes acceder desde la terminal ejecutando:
+```
+$ cd dist
+```
 
 ## Construido con 🛠️
 
 * [React.js](https://es.reactjs.org/) - Librería de Javascript
 * [Bootstrap](https://getbootstrap.com/) - Toolkit CSS
-* [JSON-Server](https://github.com/typicode/json-server) - Toolkit CSS
+* [JSON-Server](https://github.com/typicode/json-server) - Fake API
 * [Visual Studio Code 2019](https://visualstudio.microsoft.com/es/) - Editor de Texto
 
 ## Autores ✒️
