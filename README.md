@@ -2,10 +2,12 @@
 
 El proyecto consta de una plataforma donde los usuarios pueden encontrar nuevos lugares en distintas ubicaciones del mundo. Cada usuario puede publicar, compartir e interactuar con las publicaciones de la plataforma.
 
+![plcs](./src/assets/Hero_oneslide.png)
+
 ## PLCS en **GitHub Pages**
 Entra en el siguiente link para interactuar con la aplicación de PLCS
 
-https://bytewise-backend-api.herokuapp.com/
+https://github.com/JILSE7/Project-Place
 
 ## Usuarios de PLCS 👱🏻‍♀️👱🏻‍♂️
 En PLCS, los usuarios pueden hacer varias acciones:
@@ -67,10 +69,38 @@ Para hacer el deploy, sigue los siguientes pasos:
 $ npm run build
 ```
 2. Cargará todos los archivos del proyecto y generará una carpeta con los archivos comprimidos.
-3. Puedes acceder desde la terminal ejecutando:
+3. Puedes acceder a la carpeta desde la terminal ejecutando:
 ```
-$ cd dist
+$ cd build
+
 ```
+4. Agrega los archivos del proyecto a la carpeta raíz de tu servidor para correr la aplicación
+
+## Despliegue en GitHub Pages 📦
+
+GitHub nos da la herramienta de hacer deploy de nuestros proyectos Frontend en su opción **GitHub Pages**
+
+Sigue los siguientes pasos para hacer deploy en GitHub Pages:
+
+1. En la raíz del proyecto, instala la dependencia de github pages:
+```
+$ npm install gh-pages
+```
+2. Agrega 2 nuevos scripts dentro del campo **scripts** en package.json:
+```js
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build"
+```
+3. Ejecuta en la terminal **predeploy** para generar la carpeta build:
+```
+$ npm run predeploy
+```
+4. Ejecuta **deploy** para crear una nueva rama en tu repositorio donde tendrá los archivos de **build**:
+```
+$ npm run deploy
+```
+
+En tu repositorio verás una rama llamada gh-pages y en automático GitHub generará la configuración pertinente para usar GitHub Pages.
 
 ## Construido con 🛠️
 
@@ -93,4 +123,4 @@ $ cd dist
 
 * Agradecemos al equipo de BEDU en general por su gran trabajo y apoyo en este proyecto. 📢🤓.
 ---
-⌨️ con ❤️ por el EQUIPO 21
+⌨️ con ❤️ por el EQUIPO 3
