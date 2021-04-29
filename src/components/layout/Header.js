@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
-import { PlaceContext } from '../../context/PlaceContext';
+import { PlaceContext } from '../../Context/PlaceContext';
 import InputSearch from './layoutComponents/InputSearch';
 
 import logo from '../../assets/plcs-black.png';
