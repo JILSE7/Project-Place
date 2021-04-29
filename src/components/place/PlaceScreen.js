@@ -8,21 +8,33 @@ import Card from './placeComponents/PlaceCard';
 
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
+
+
+
 import newsletter from '../../assets/newsletter.svg';
 
+
+
+
+ 
+
 const PlaceScreen = () => {
+
   const { statesMexico, placesMexico } = useContext(PlaceContext);
+  console.log(statesMexico, placesMexico);
+
 
   return (
-    <>
-      <Hero statesMexico={statesMexico} />
+    <div>
 
+      <Hero statesMexico={statesMexico} />
+      
       <div className="container">
         <section className='py-5'>
           <h2>Lugares más populares</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+              placesMexico.map((placeMexico, index) =>  <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
             }
           </div>
         </section>
@@ -31,7 +43,7 @@ const PlaceScreen = () => {
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />) 
             }
           </div>
         </section>
@@ -104,7 +116,9 @@ const PlaceScreen = () => {
           </Link>
         </div>
       </div>
-    </>
+
+          
+    </div>
   )
 }
 

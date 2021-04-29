@@ -9,10 +9,10 @@ import logo from '../../assets/plcs-black.png';
 
 const Header = (props) => {
 
-  const { userLogin, setUserLogin, statesMexico } = useContext(PlaceContext);
+  const {userLogin, statesMexico } = useContext(PlaceContext);
 
   const logout = () => {
-    setUserLogin({})
+    // setUserLogin({})
     props.history.go('/');
     props.history.push('/');
   }
@@ -67,6 +67,7 @@ const Header = (props) => {
               </li>
             </ul>
           }
+         
         </div>
       </nav>
 

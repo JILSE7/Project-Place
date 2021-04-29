@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link, withRouter } from "react-router-dom";
 
-const FotoCard = ({dataSource}) => {
+const FotoCard = ({dataSource, history}) => {
+
   return (
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">
@@ -9,23 +11,29 @@ const FotoCard = ({dataSource}) => {
         <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.owner}</p>
       </div>
       <div className="searchScreen_image-container">
-        <img src={dataSource.imageUrl} />
+        <Link to={`/search/${dataSource.id}`}>
+        <img src={dataSource.image} />
+        </Link>
         <div className="searchScreen_middle">
             <div className="searchScreen_image-hover-text">ABRIR</div>
         </div>
       </div>
-      <div className="px-3 py-1">
-        <h5 className="card-title">{dataSource.title}</h5>
-        <p className="card-text text-secondary">{dataSource.location}</p>
-        <div className="searchScreen_tags-container">
-          <div className="tags-slider mb-2">
-              {dataSource.tags.map(tag => {
-                  return <span 
-                  className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary">{tag}</span>
-              })}
-          </div>
+      <h5 className="card-title">{dataSource.place}</h5>
+      <p className="card-text">{dataSource.address}</p>
+      <div className="searchScreen_tags-container">
+        <div className="tags-slider">
+            {dataSource.tags.map(tag => {
+                return <span 
+                className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary">{tag}</span>
+            })}
         </div>
       </div>
+      <p className="fst-italic">
+          Posted by: 
+            <span className="user-link">
+                {`@${dataSource.userId}`}
+            </span>
+      </p>
     </div>
   );
 };
@@ -41,4 +49,5 @@ FotoCard.propTypes = {
   })
 };
 
-export default FotoCard;
+
+export default withRouter(FotoCard);

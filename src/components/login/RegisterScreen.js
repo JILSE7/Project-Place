@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { PlaceContext } from '../../context/PlaceContext';
+
+import{registerUser} from '../../helpers/Gets'
 
 const RegisterScreen = (props) => {
-  const { registerUser } = useContext(PlaceContext);
+
 
   const [form, setForm] = useState({
     email: '',

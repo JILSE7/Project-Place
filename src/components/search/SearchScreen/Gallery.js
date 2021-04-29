@@ -1,12 +1,15 @@
 import React from "react";
 import FotoCard from "./FotoCard";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
-const Gallery = (props) => {
+const Gallery = ({places}) => {
+  console.log(places);
   return (
     <div className="container-fluid p-3 row justify-content-center">
-      {props.fotos.map((foto, index) => {
-        return <FotoCard dataSource={foto} key={index}></FotoCard>;
+      {places.map(place => {
+        
+        return <FotoCard dataSource={place} key={place.id}></FotoCard>;
       })}
     </div>
   );

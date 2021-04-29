@@ -1,10 +1,11 @@
 import React from 'react'
 
-export const SearchidImage = () => {
+export const SearchidImage = ({image}) => {
+    console.log(image);
     return (
         <div className="searchId_img-container d-flex">
         
-            <img className="searchId_img" src = "https://cdn-3.expansion.mx/27/68/6114b00a4c909d0e55cd9479e5b4/angel-de-la-independencia.jpeg" />
+            <img className="searchId_img" src= {image} />
             <div className="searchId_img-info">
                 <div className="searchId_img-info-social">
                 <i className="far fa-smile-wink icon-social like"></i>
