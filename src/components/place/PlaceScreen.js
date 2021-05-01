@@ -4,7 +4,7 @@ import { PlaceContext } from '../../context/PlaceContext';
 import { Link } from 'react-router-dom';
 
 import Hero from './placeComponents/PlaceHero';
-import Gallery from '../search/SearchScreen/Gallery';
+import PlaceCard from './placeComponents/PlaceCard';
 
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
@@ -14,7 +14,7 @@ const PlaceScreen = () => {
 
   const { statesMexico, places } = useContext(PlaceContext);
   console.log(places);
-
+  const firstPlaces = places.slice(0,3)
 
   return (
     <div>
@@ -24,22 +24,31 @@ const PlaceScreen = () => {
       <div className="container">
         <section className='py-5'>
           <h2>Lugares más populares</h2>
-          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-          <h1>{places}</h1>
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
+          {firstPlaces.map(place => {
+            const hola = Math.floor(Math.random()* 50);
+            return <PlaceCard dataSource={place} key={place.id} id= {hola}></PlaceCard>;
+          })}
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
-          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
+            {firstPlaces.map(place => {
+              const hola = Math.floor(Math.random()* 50);
+              return <PlaceCard dataSource={place} key={place.id} id= {hola}></PlaceCard>;
+            })}
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares que les gusta a la comunidad</h2>
-          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
+            {firstPlaces.map(place => {
+              const hola = Math.floor(Math.random()* 50);
+              return <PlaceCard dataSource={place} key={place.id} id= {hola}></PlaceCard>;
+            })}
           </div>
         </section>
 
