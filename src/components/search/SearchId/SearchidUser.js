@@ -1,21 +1,20 @@
 import React from 'react'
 
-export const SearchidUser = () => {
-
+export const SearchidUser = ({user}) => {
     let follow = false;
 
     return (
         <div className="searchId_info-user">
             <div className="d-flex align-items-center">
                 <img
-                src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
+                src={user.profilePhoto}
                 className="searchId_info-user-img me-2"
                 />
                 <div className="searchId_info-userid">
-                    <h5>Martin Carrera</h5>
+                    <h5>{user.username}</h5>
                     <div className="d-flex">
-                        <p className="me-2"> <i className="fas fa-users search-icon-user"></i>7700 </p>
-                        <p className="ml-3" ><i className="fas fa-image search-icon-user"></i>7</p>
+                        <p className="me-2"> <i className="fas fa-users search-icon-user"></i>{user.followers} </p>
+                        <p className="ml-3" ><i className="fas fa-image search-icon-user"></i>{user.posts.length}</p>
                     </div>
                 </div>
             </div>

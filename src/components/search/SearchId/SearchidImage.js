@@ -1,7 +1,8 @@
 import React from 'react'
 
 export const SearchidImage = ({image}) => {
-    console.log(image);
+    
+
     return (
         <div className="searchId_img-container d-flex">
         

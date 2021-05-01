@@ -4,12 +4,23 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 
 const Gallery = ({places}) => {
+
+  const mezclarArreglo = arreglo => {
+    for (let i = arreglo.length - 1; i > 0; i--) {
+      let indiceAleatorio = Math.floor(Math.random() * (i + 1));
+      let temporal = arreglo[i];
+      arreglo[i] = arreglo[indiceAleatorio];
+      arreglo[indiceAleatorio] = temporal;
+    }
+  }
+
+  mezclarArreglo(places)
   console.log(places);
   return (
     <div className="container-fluid p-3 row justify-content-center">
       {places.map(place => {
-        
-        return <FotoCard dataSource={place} key={place.id}></FotoCard>;
+        const hola = Math.floor(Math.random()* 50);
+        return <FotoCard dataSource={place} key={place.id} id= {hola}></FotoCard>;
       })}
     </div>
   );

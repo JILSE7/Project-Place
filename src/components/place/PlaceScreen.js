@@ -34,7 +34,7 @@ const PlaceScreen = () => {
           <h2>Lugares más populares</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) =>  <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+              placesMexico.map((placeMexico, index) =>  <Card place={placeMexico.place} description={placeMexico.description} key={index} img= {placeMexico.image} />)
             }
           </div>
         </section>
@@ -43,7 +43,7 @@ const PlaceScreen = () => {
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />) 
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} img= {placeMexico.image} />) 
             }
           </div>
         </section>
@@ -52,7 +52,7 @@ const PlaceScreen = () => {
           <h2>Lugares que les gusta a la comunidad</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
             {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
+              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index}  img= {placeMexico.image}/>)
             }
           </div>
         </section>

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const SearchLocation = ({location}) => {
    const {city, address, country} = location;
-   console.log(country, city, address);
+
     return (
         <div className="searchId_info-location">
             <div className="d-flex w-80 m-auto justify-content-between">
