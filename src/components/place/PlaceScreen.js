@@ -13,42 +13,38 @@ import newsletter from '../../assets/newsletter.svg';
 const PlaceScreen = () => {
 
   const { statesMexico, places } = useContext(PlaceContext);
-  console.log(places);
-  const firstPlaces = places.slice(0,3)
+  const firstPlaces = places.slice(0,3);
+  const secondPlaces = places.slice(3,6);
+  const thirdPlaces = places.slice(6,9);
 
   return (
     <div>
-
       <Hero statesMexico={statesMexico} />
-      
       <div className="container">
         <section className='py-5'>
           <h2>Lugares más populares</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-          {firstPlaces.map(place => {
-            const hola = Math.floor(Math.random()* 50);
-            return <PlaceCard dataSource={place} key={place.id} id= {hola}></PlaceCard>;
-          })}
+            { firstPlaces.map(place =>  <PlaceCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {firstPlaces.map(place => {
+            {/* {secondPlaces.map(place => {
               const hola = Math.floor(Math.random()* 50);
-              return <PlaceCard dataSource={place} key={place.id} id= {hola}></PlaceCard>;
-            })}
+              return <PlaceCard dataSource={place} key={hola} ></PlaceCard>;
+            })} */}
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares que les gusta a la comunidad</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {firstPlaces.map(place => {
+            {/* {thirdPlaces.map(place => {
               const hola = Math.floor(Math.random()* 50);
-              return <PlaceCard dataSource={place} key={place.id} id= {hola}></PlaceCard>;
-            })}
+              return <PlaceCard dataSource={place} key={hola} ></PlaceCard>;
+            })} */}
           </div>
         </section>
 
