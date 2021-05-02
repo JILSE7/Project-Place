@@ -31,24 +31,18 @@ const PlaceScreen = () => {
         <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {/* {secondPlaces.map(place => {
-              const hola = Math.floor(Math.random()* 50);
-              return <PlaceCard dataSource={place} key={hola} ></PlaceCard>;
-            })} */}
+            { secondPlaces.map(place =>  <PlaceCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares que les gusta a la comunidad</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {/* {thirdPlaces.map(place => {
-              const hola = Math.floor(Math.random()* 50);
-              return <PlaceCard dataSource={place} key={hola} ></PlaceCard>;
-            })} */}
+            { thirdPlaces.map(place =>  <PlaceCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
-        <section className="calltoaction bg-primary text-white">
+        <section className="calltoaction bg-primary text-white mt-4">
           <div className="row">
             <div className="p-4 col-lg-6 col-md col order-md-first order-last">
               <h3>Comparte tus lugares<br/> favoritos con nosotros</h3>

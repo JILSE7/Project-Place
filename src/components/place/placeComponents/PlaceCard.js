@@ -20,9 +20,9 @@ const PlaceCard = ({dataSource, history, id}) => {
       <p className="card-text">{dataSource.address}</p>
       <div className="searchScreen_tags-container">
         <div className="tags-slider">
-            {dataSource.tags.map(tag => {
+            {dataSource.tags.map((tag, index) => {
                 return <span
-                className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary">{tag}</span>
+                className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary" key={index} >{tag}</span>
             })}
         </div>
       </div>
