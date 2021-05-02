@@ -1,29 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export const SearchIdComments = ({source}) => {
-    console.log(source);
+
     const {comment: comentario, likes} = source;
+    console.log(source.userId);
 
-    // switch (source.userId) {
-    //     case 1:
-    //         return source.userId = "Francisco Santos";
-    //     case 2:
-    //             return source.userId = "Pedro Sola";
-    //     case 3:
-    //         return source.userId = "Laura Maria";
-    //     case 4:
-    //             return source.userId = "Jose Pepe";
-    //     case 5:
-    //             return source.userId = "Sonora Dinamita";
-            
-    // }
-
-
+    useEffect(() => {
     (source.userId === 1 )? source.userId = "Francisco Santos" : 
     (source.userId === 2 )? source.userId = "Pedro Sola" :
     (source.userId === 3 )? source.userId = "Laura Maria" : 
     (source.userId === 4 )? source.userId = "Jose Pepe" :
-    (source.userId === 5 )? source.userId = "Sonora Dinamita" :  source.userId = "Usuario desconocido" ;
+    (source.userId === 5 )? source.userId = "Sonora Dinamita" : source.userId = "usuario desconocido" ;
+    }, [])
+
+    
+   
     return (
         <div className="searchId_comments-users">
                <div className="box-user">

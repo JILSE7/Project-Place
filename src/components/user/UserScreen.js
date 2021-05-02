@@ -2,11 +2,12 @@ import React, { memo, useContext } from "react";
 import ProfileCover from './ProfileCover';
 import { ProfileMenu } from './ProfileMenu';
 import { ProfilePostsList } from './ProfilePostsList';
-import { PlaceContext } from '../../Context/PlaceContext';
+import { PlaceContext } from '../../context/PlaceContext';
 
 export const UserScreen = memo(() => {
     //UserContext
     const {userLogin} = useContext(PlaceContext);
+    console.log(userLogin);
 
     return (
         <React.Fragment>

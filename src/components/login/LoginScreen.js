@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { PlaceContext } from '../../Context/PlaceContext';
+import { PlaceContext } from '../../context/PlaceContext';
 
 import{verifyUser} from '../../helpers/Gets';
 

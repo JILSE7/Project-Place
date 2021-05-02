@@ -10,7 +10,7 @@ export const DataProvider = ({ children }) => {
 
   const [userLogin, setUserLogin] = useState({});
 
-const places = useFetch(`${URL}/places`);
+const places = useFetch(`${URL}/places?_expand=users`);
 const statesMexico = useFetch(`${URL}/statesMexico`);
 const placesMexico  = useFetch(`${URL}/places?_start=id:1&_end=4`);
 
