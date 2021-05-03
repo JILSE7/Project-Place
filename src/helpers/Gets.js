@@ -1,10 +1,8 @@
-import { useState } from "react";
-
 //URL
 export const URL = `http://localhost:4000`;
 
 //GETPLACEBYID
-const getPlaceById = (id,array) => array.filter(place => place.id == id);
+const getPlaceById = (id,array) => array.filter(place => place.id === id);
 
 
 //Verify

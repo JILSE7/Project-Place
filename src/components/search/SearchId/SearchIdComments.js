@@ -1,35 +1,43 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { fakeName, resetDate } from '../../../helpers/Conditionals';
+import { toggleHeart } from '../../../helpers/Patch';
 
-export const SearchIdComments = ({source}) => {
+export const SearchIdComments = ({comment, placeId, comments}) => {
+    //Destructuring 
+    const {comment: comentario, likes, profilePhoto, date, likeMe} = comment;
 
-    const {comment: comentario, likes} = source;
-    console.log(source.userId);
-
-    useEffect(() => {
-    (source.userId === 1 )? source.userId = "Francisco Santos" : 
-    (source.userId === 2 )? source.userId = "Pedro Sola" :
-    (source.userId === 3 )? source.userId = "Laura Maria" : 
-    (source.userId === 4 )? source.userId = "Jose Pepe" :
-    (source.userId === 5 )? source.userId = "Sonora Dinamita" : source.userId = "usuario desconocido" ;
-    }, [])
+    const [heartComments, setHeartcomments] = useState(likes)
 
     
+
+
+        
+
+    //Simulando usuarios
+    let usuario = fakeName(comment.userId);
+
+    //Reset de la fecha
+    const dateReset = date.split('/');
+
+    let month = resetDate(dateReset);
    
+
     return (
         <div className="searchId_comments-users">
                <div className="box-user">
                     <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
+                    src={profilePhoto}
                     className="searchId_info-user-img me-2"
+                    alt="ProfilePhoto"
                     />
                     <div className="Comment-user">
-                        <p><span>{source.userId} </span>{comentario}</p>
-                        <p className="mt-2">Enero 7 De 2015</p>
+                        <p><span>{usuario} </span>{comentario}</p>
+                        <p className="mt-2">{`${dateReset[0]} ${month} ${dateReset[2]}`}</p>
                     </div>
                </div>
                    <div d-flex flex-column>
-                    <i class="fas fa-heart heart"></i>
-                    <p className="text-center">{likes}</p>
+                    <i  onClick={(e)=> toggleHeart(e, likes, placeId, comment, comments, setHeartcomments)} className={`${(likeMe) ?  "fas fa-heart heart pointer" : "far fa-heart heart pointer" }`} ></i>
+                    <p className="text-center">{heartComments}</p>
                    </div>
             </div>
     )

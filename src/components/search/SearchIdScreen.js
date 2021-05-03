@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react'
+import React, { useContext, useState } from 'react'
 //Components
 import { SearchidImage } from './SearchId/SearchidImage'
 import { SearchidInfo } from './SearchId/SearchidInfo'
@@ -33,9 +33,10 @@ export const SearchIdScreen = () => {
     const {places} = useContext(PlaceContext);
 
 
-
     // GetPLace si nuestros lugares son obtenidos
-    if(places.length >=1)search =  getPlaceById(placeId, places)
+    if(places.length >=1)search =  getPlaceById(Number(placeId), places)
+
+
 
 
     return (
@@ -51,7 +52,7 @@ export const SearchIdScreen = () => {
                     <main className="searchId_main">
                     <div className="searchId_imagen" >
                         <SearchidUser user= {search[0].users}/>
-                        <SearchidImage image = {search[0].image} />
+                        <SearchidImage image = {search[0].image} social={{likes:search[0].likes, comments: search[0].comments, likeMe: search[0]?.likeMe, visitors: search[0].visitors}} placeId={placeId} />
                         <SearchidInfo comments = {search[0].comments} placeId={placeId}/>
                     </div>
                     <div className="searchId_information">
@@ -72,7 +73,7 @@ export const SearchIdScreen = () => {
                         <div className="searchId_imagen" >
                                
                                 <SearchidUser user= {search[0].users}/>
-                                <SearchidImage image = {search[0].image} />
+                                <SearchidImage image = {search[0].image} social={{likes:search[0].likes, comments: search[0].comments, likeMe: search[0]?.likeMe, visitors: search[0].visitors}} placeId={placeId} />
                                 <SearchidInfo comments = {search[0].comments} placeId={placeId}/>
                         </div>
                    <div className="searchId_information">
@@ -92,3 +93,5 @@ export const SearchIdScreen = () => {
         </div>
     )
 }
+
+

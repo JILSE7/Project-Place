@@ -106,7 +106,7 @@
 .searchId_comments{
     height: 400px;
     overflow-y: scroll;
-
+    width: 100%;
 
     &::-webkit-scrollbar-track {
         border-radius: 10px;
@@ -293,9 +293,12 @@
     color: #0375e3;
 }
 .wonder:hover{
-    color: rgba(228, 228, 7, 0.777);
+    color: rgba(74, 74, 239, 0.777);
 }
 
+.wonderl{
+    color:  rgba(8, 67, 244, 0.777);
+}
 .be:hover{
  color: rgb(222, 91, 10);
  }
@@ -317,7 +320,7 @@
 
 }
 
-
+.pointer{cursor: pointer;}
 .searchId_info-stay{
     margin-top: 50px;
     width: 100%;

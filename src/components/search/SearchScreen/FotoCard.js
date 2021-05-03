@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 
 const FotoCard = ({dataSource, history, id}) => {
-  console.log(dataSource.users);
   return (
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">

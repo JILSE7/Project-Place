@@ -16,8 +16,8 @@ export const useFetch = (url)=>{
 
     }, [])
 
-    useEffect(async()=>{
-       
+    useEffect(()=>{
+     
         fetch(url)
         .then(data => data.json())
         .then(data => {

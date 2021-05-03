@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+import PropTypes from 'prop-types';
 
 export const SearchLocation = ({location}) => {
    const {city, address, country} = location;
@@ -15,4 +17,8 @@ export const SearchLocation = ({location}) => {
 
         </div>
     )
+}
+
+SearchLocation.propTypes = {
+    location: PropTypes.object
 }

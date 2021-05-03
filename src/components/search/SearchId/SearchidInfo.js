@@ -1,52 +1,64 @@
 import React, { useState } from 'react'
-import { PatchEdit } from '../../../helpers/Patch';
+
+import { handleAddComment } from '../../../helpers/Patch';
 import { SearchIdComments } from './SearchIdComments';
 
+//Proptypes
+import PropTypes from 'prop-types'
+
 export const SearchidInfo = ({comments, placeId}) => {
-    console.log(comments);
 
-    const [newComment, setnewComment] = useState();
-    const handleAddComment = async()=>{
-        try {
-            await fetch(`${URL}/places/${placeId}`, {
-                method: 'PATCH',
-                body: JSON.stringify(),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-                
-            });
-            console.log('dentro del patch')
-            // window.location.href = `http://localhost:3000/search/${id}`;
-        } catch (error) {
-            console.log(error);
-        }
+
+    //newComment
+    const [comment, setComment] = useState();
+
+    //comentarios
+    const [commentsArr, setcommentsArr] = useState([...comments]);
+
+
+    const handleTextAreaChange = (e)=> setComment(e.target.value);
+
+    //fecha
+    const fecha = new Date();;
+    const newComment = {
+        userId: 1,
+        id: Date.now(),
+        profilePhoto: "https://100k-faces.glitch.me/random-image",
+        likes: 0,
+        likeMe: false,
+        comment,
+        date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`
     }
 
+    
 
-    const handleTextAreaChange = (e)=>{
-        setnewComment([...comments])
-        console.log(newComment);
-        
-    }
+
+    
     return (
         <>
         <div className="searchId_comments">
             {
-                comments.map(comment => {
-                    return <SearchIdComments source ={comment}/>
+                commentsArr.map((comment, index) => {
+                    return <SearchIdComments comment ={comment} placeId={placeId} comments= {commentsArr} key={index}/>
                 })
             }
         </div>
             <div className="searchId_comments-add">
             <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
+                    src="https://100k-faces.glitch.me/random-image"
                     className="searchId_info-user-img me-2"
+                    alt="profilePhoto"
                     />
-                <textarea placeholder="¿Comentario?" value={newComment} onChange={handleTextAreaChange}></textarea>
-                <i class="fas fa-plus" onClick={handleAddComment} ></i>
+                <textarea placeholder="¿Comentario?" value={comment} onChange={handleTextAreaChange}></textarea>
+                <i className="fas fa-plus pointer" onClick={()=> handleAddComment(placeId,commentsArr, newComment, setcommentsArr, setComment)} ></i>
             </div>
         </>
         
     )
+}
+
+
+SearchidInfo.propTypes = {
+    comment: PropTypes.array,
+    placeId: PropTypes.string
 }

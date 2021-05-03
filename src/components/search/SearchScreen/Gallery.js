@@ -15,7 +15,6 @@ const Gallery = ({places}) => {
   }
 
   mezclarArreglo(places)
-  console.log(places);
   return (
     <div className="container-fluid p-3 row justify-content-center">
       {places.map(place => {
