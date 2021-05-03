@@ -6,16 +6,19 @@ const FotoCard = ({dataSource, history, id}) => {
   return (
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">
-        <img className="searchScreen_user-photo" src={dataSource.users.profilePhoto} alt={dataSource.place} />
+        <img className="searchScreen_user-photo" src={dataSource.users.profilePhoto} alt={dataSource.place} loading="lazy" />
         <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.users.username}</p>
       </div>
       <div className="searchScreen_image-container">
         <Link to={`/search/${dataSource.id}`}>
         <img src={`${dataSource.image}`} alt={dataSource.place} />
-        </Link>
         <div className="searchScreen_middle">
-            <div className="searchScreen_image-hover-text">ABRIR</div>
+            <div className="searchScreen_image-hover-text">
+              <span ><i className="fas fa-heart" aria-hidden="true"></i> {dataSource.likes} </span>
+              <span ><i className="fas fa-comment" aria-hidden="true"></i> {dataSource.comments.length} </span>
+            </div>
         </div>
+        </Link>
       </div>
       <h5 className="card-title">{dataSource.place}</h5>
       <p className="card-text">{dataSource.address}</p>
@@ -23,7 +26,7 @@ const FotoCard = ({dataSource, history, id}) => {
         <div className="tags-slider">
             {dataSource.tags.map(tag => {
                 return <span 
-                className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary">{tag}</span>
+                className="badge rounded-pill py-1 px-2 mx-1">{tag}</span>
             })}
         </div>
       </div>
@@ -40,6 +43,13 @@ FotoCard.propTypes = {
     imageUrl: PropTypes.string,
     location: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
+    likes: PropTypes.number,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string,
+      likes: PropTypes.number,
+      profilePhoto: PropTypes.string,
+      userID: PropTypes.number
+    }))
   })
 };
 

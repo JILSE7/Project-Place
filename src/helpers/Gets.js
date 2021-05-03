@@ -13,7 +13,7 @@ const verifyUser = async(login,form) => {
     const data = await (await fetch(`${URL}/users`)).json()
     console.log(data);
     const user = data.find(dataUser => dataUser.email === form.email && dataUser.password === form.password);
-    console.log(user);
+    //console.log(user);
     if(user) {
         //console.log(user);
         //console.log("Usuario logeado");
