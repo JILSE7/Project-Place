@@ -66,9 +66,9 @@ $tag-bg-color: rgb(225, 225, 225);
 }
 
 .searchScreen_tags-container {
-  width: 100%;
-  padding: 0 10px;
-  overflow-x: auto;
+  width: 100% !important;
+  // padding: 0 10px;
+  overflow-x:scroll !important;
   overflow-y: hidden;
 
     &::-webkit-scrollbar {
@@ -77,9 +77,14 @@ $tag-bg-color: rgb(225, 225, 225);
 }
 
 .tags-slider {
-  display: flex;
-  justify-content: space-evenly;
   vertical-align:middle;
+  margin-bottom: 10px;
+  width: max-content;
+
+  span {
+    background-color: rgb(211, 211, 211);
+    font-weight: normal;
+  }
 }
 
 .searchScreen_user-photo {
