@@ -26,6 +26,11 @@ $tag-bg-color: rgb(225, 225, 225);
   }
 
   .searchScreen_middle {
+    display: flex;
+    justify-content: space-around !important;
+    align-items: center;
+    width: 100%;
+    height:100%;
     transition: .5s ease;
     opacity: 0;
     position: absolute;
@@ -33,12 +38,13 @@ $tag-bg-color: rgb(225, 225, 225);
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
   }
 
   &:hover {
     img {
-      opacity: 0.3;
+      opacity: 1;
     }
     .searchScreen_middle {
       opacity: 1;
@@ -48,33 +54,32 @@ $tag-bg-color: rgb(225, 225, 225);
 
   .searchScreen_image-hover-text {
     background-color: transparent;
-    color: rgb(32, 32, 32);
+    color: #fff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1.5rem;
     padding: 16px 32px;
+
+    span {
+      margin: 0 10px;
+    }
   }
 }
 
 .searchScreen_tags-container {
   width: 100%;
-  height: auto !important;
-    white-space:nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
+  padding: 0 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
 
     &::-webkit-scrollbar {
         display:none;
-        height: 1px;
     }
 }
 
 .tags-slider {
-   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-    vertical-align:middle;
-
-    
+  display: flex;
+  justify-content: space-evenly;
+  vertical-align:middle;
 }
 
 .searchScreen_user-photo {

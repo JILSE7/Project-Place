@@ -15,7 +15,10 @@ const FotoCard = ({dataSource, history, id}) => {
         <img src={`${dataSource.image}`} alt={dataSource.place} />
         </Link>
         <div className="searchScreen_middle">
-            <div className="searchScreen_image-hover-text">ABRIR</div>
+            <div className="searchScreen_image-hover-text">
+              <span ><i className="fas fa-heart" aria-hidden="true"></i> {dataSource.likes} </span>
+              <span ><i className="fas fa-comment" aria-hidden="true"></i> {dataSource.comments.length} </span>
+            </div>
         </div>
       </div>
       <h5 className="card-title">{dataSource.place}</h5>
@@ -41,6 +44,13 @@ FotoCard.propTypes = {
     imageUrl: PropTypes.string,
     location: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
+    likes: PropTypes.number,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string,
+      likes: PropTypes.number,
+      profilePhoto: PropTypes.string,
+      userID: PropTypes.number
+    }))
   })
 };
 
