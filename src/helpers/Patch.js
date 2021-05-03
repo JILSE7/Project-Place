@@ -65,7 +65,6 @@ export const toggleHeart = async(e,likes, placeId, comment, arrComents, setHeart
 //Likes
 export const toggleLike = async(e,likes, estadoLikes, likeMe, estadoLikeMe, placeId) =>{
 
-    const classHeart = e.target.classList;
     if(likeMe){
         estadoLikes(likes -1);
         estadoLikeMe(false);

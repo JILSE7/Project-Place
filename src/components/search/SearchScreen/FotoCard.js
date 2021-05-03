@@ -24,9 +24,9 @@ const FotoCard = ({dataSource, history, id}) => {
       <p className="card-text">{dataSource.address}</p>
       <div className="searchScreen_tags-container">
         <div className="tags-slider">
-            {dataSource.tags.map(tag => {
+            {dataSource.tags.map((tag, i) => {
                 return <span 
-                className="badge rounded-pill py-1 px-2 mx-1">{tag}</span>
+                className="badge rounded-pill py-1 px-2 mx-1" key={i}>{tag}</span>
             })}
         </div>
       </div>

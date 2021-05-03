@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { fakeName, resetDate } from '../../../helpers/Conditionals';
 import { toggleHeart } from '../../../helpers/Patch';
 
@@ -35,7 +35,7 @@ export const SearchIdComments = ({comment, placeId, comments}) => {
                         <p className="mt-2">{`${dateReset[0]} ${month} ${dateReset[2]}`}</p>
                     </div>
                </div>
-                   <div d-flex flex-column>
+                   <div className="d-flex flex-column">
                     <i  onClick={(e)=> toggleHeart(e, likes, placeId, comment, comments, setHeartcomments)} className={`${(likeMe) ?  "fas fa-heart heart pointer" : "far fa-heart heart pointer" }`} ></i>
                     <p className="text-center">{heartComments}</p>
                    </div>

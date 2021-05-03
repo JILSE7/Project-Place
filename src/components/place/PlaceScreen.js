@@ -4,11 +4,12 @@ import { PlaceContext } from '../../context/PlaceContext';
 import { Link } from 'react-router-dom';
 
 import Hero from './placeComponents/PlaceHero';
-import PlaceCard from './placeComponents/PlaceCard';
+// import PlaceCard from './placeComponents/PlaceCard';
 
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
 import newsletter from '../../assets/newsletter.svg';
+import FotoCard from '../search/SearchScreen/FotoCard';
 
 const PlaceScreen = () => {
 
@@ -24,21 +25,21 @@ const PlaceScreen = () => {
         <section className='py-5'>
           <h2>Lugares más populares</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            { firstPlaces.map(place =>  <PlaceCard dataSource={place} key={place.id} />) }
+            { firstPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            { secondPlaces.map(place =>  <PlaceCard dataSource={place} key={place.id} />) }
+            { secondPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares que les gusta a la comunidad</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            { thirdPlaces.map(place =>  <PlaceCard dataSource={place} key={place.id} />) }
+            { thirdPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 

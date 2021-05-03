@@ -11,7 +11,6 @@ const getPlaceById = (id,array) => array.filter(place => place.id === id);
 const verifyUser = async(login,form) => {
     try {
     const data = await (await fetch(`${URL}/users`)).json()
-    console.log(data);
     const user = data.find(dataUser => dataUser.email === form.email && dataUser.password === form.password);
     //console.log(user);
     if(user) {

@@ -1,7 +1,7 @@
 import React from "react";
 import FotoCard from "./FotoCard";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router";
+
 
 const Gallery = ({places}) => {
 

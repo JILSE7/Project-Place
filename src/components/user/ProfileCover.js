@@ -7,10 +7,10 @@ const ProfileCover = ({user}) => {
           <div className="shadow"></div>
           <div className="profile-avatar">
               <img src= {user.profilePhoto} alt="img" />
-              <a href="#" className="change-photo">
+              <span className="change-photo">
                   <i className="fas fa-camera"></i> 
                   <span>Cambiar foto</span>
-              </a>
+              </span>
           </div>
 
           { 
@@ -19,8 +19,8 @@ const ProfileCover = ({user}) => {
                   <h4 className="profile-user">{user.firstName} {user.lastName}</h4>
                   <p className="profile-biography">{ user.information }</p>
                   <ul className="profile-list">
-                      <li>{user.followers.length} Seguidores</li>
-                      <li>{user.followed.length} Seguidos</li>
+                      <li>{user.followers} Seguidores</li>
+                      <li>{user.followed} Seguidos</li>
                       <li>{user.posts.length} Publicaciones</li>
                   </ul>
               </div>)
@@ -35,17 +35,8 @@ const ProfileCover = ({user}) => {
   )
 };
 
-/*ProfileCover.propTypes = {
-    fotos: PropTypes.arrayOf(
-      PropTypes.shape({
-        title: PropTypes.string,
-        owner: PropTypes.string,
-        imageUrl: PropTypes.string.isRequired,
-        location: PropTypes.string.isRequired,
-        tags: PropTypes.arrayOf(PropTypes.string),
-      })
-    ),
-    profilePhoto: PropTypes.string.isRequired
-  };*/
+ProfileCover.propTypes = {
+    user: PropTypes.object.isRequired
+  };
 
   export default ProfileCover;

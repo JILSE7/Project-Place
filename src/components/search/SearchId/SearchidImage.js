@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //Generic Patch
-import {toggleLike, toggleVisitor} from '../../../helpers/Patch'
+import {toggleLike} from '../../../helpers/Patch'
 import PropTypes from 'prop-types'
 
 export const SearchidImage = ({image, social, placeId}) => {
@@ -8,7 +8,7 @@ export const SearchidImage = ({image, social, placeId}) => {
 
     const [likesState, setmeGusta] = useState(likes);
     const [likesMeState, setLikesMe] = useState(likeMe)
-    const [visitorState, setvisitor] = useState(visitors);
+    // const [visitorState, setvisitor] = useState(visitors);
     return (
         <div className="searchId_img-container d-flex">
         
@@ -20,8 +20,8 @@ export const SearchidImage = ({image, social, placeId}) => {
                 </div>
 
                 <div className="searchId_img-info-social">
-                    <i className="fas fa-angle-double-down icon-social" onClick={(e)=> toggleVisitor(e, visitorState, setvisitor)}></i>
-                    <p>{visitorState}</p>
+                    <i className="fas fa-angle-double-down icon-social"></i>
+                    <p>{visitors}</p>
                 </div>
                 <div className="searchId_img-info-social">
                     <i className="far fa-comment-dots icon icon-social coment"></i>

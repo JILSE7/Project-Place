@@ -7,7 +7,7 @@ import { PlaceContext } from '../../context/PlaceContext';
 export const UserScreen = memo(() => {
     //UserContext
     const {userLogin} = useContext(PlaceContext);
-    console.log(userLogin);
+
 
     return (
         <React.Fragment>
