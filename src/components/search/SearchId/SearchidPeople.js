@@ -1,6 +1,7 @@
 import React from 'react'
 
-export const SearchidPeople = () => {
+export const SearchidPeople = ({visitors}) => {
+
     return (
         <div className="searchId_info-stay">
             
@@ -46,7 +47,7 @@ export const SearchidPeople = () => {
             alt="profilePhoto7"
             />
             </div>
-            <p>& 3443 personas mas......</p>
+            <p>& {visitors} personas mas......</p>
         </div>
 
     )

@@ -13,7 +13,7 @@ import { PlaceContext } from '../../context/PlaceContext';
 import { SearchScreen } from './SearchScreen'
 
 
-export const SearchIdScreen = () => {
+export const SearchIdScreen = ({history}) => {
     const [size, setsize] = useState( window.outerWidth)
     window.addEventListener("resize", function(){setsize(this.outerWidth)});
 
@@ -27,7 +27,10 @@ export const SearchIdScreen = () => {
 
     //Hook params
     const {placeId} = useParams();
-    
+    let notFound = Number(placeId)
+    if(isNaN(notFound)|| placeId > 20){
+        history.push('/NotFound')
+    }
     
     // Context
     const {places} = useContext(PlaceContext);
@@ -59,7 +62,7 @@ export const SearchIdScreen = () => {
                        <SearchTitle title={search[0].place} />
                         <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }}/>
                         <SearchMap/>
-                        <SearchidPeople/>
+                        <SearchidPeople visitors = {search[0].visitors}/>
                     </div>
                    </main>
                     <SearchScreen/>
@@ -77,7 +80,7 @@ export const SearchIdScreen = () => {
                                 <SearchidInfo comments = {search[0].comments} placeId={placeId}/>
                         </div>
                    <div className="searchId_information">
-                           <SearchidPeople/>
+                           <SearchidPeople visitors = {search[0].visitors}/>
                            <SearchMap/>
                            <p>Ubicacion</p>
                    </div>

@@ -1228,8 +1228,8 @@
       "address": "24330 Artisan Avenue",
       "city": "Atlantla",
       "country": "United States",
-      "likes": 0,
-      "likeMe": false,
+      "likes": 1,
+      "likeMe": true,
       "visitors": 13,
       "comments": [
         {
@@ -2962,8 +2962,8 @@
           "id": 3,
           "profilePhoto": "https://ozgrozer.github.io/100k-faces/0/4/004180.jpg",
           "comment": "Love wounds and mark Any heart not tough or strong enough To take a lot of pain, take a lot of pain Love is like a cloud, it holds a lot of rain",
-          "likeMe": false,
-          "likes": 14,
+          "likeMe": true,
+          "likes": 15,
           "date": "25/10/2020"
         },
         {
@@ -2971,8 +2971,8 @@
           "id": 4,
           "profilePhoto": "https://100k-faces.glitch.me/random-image",
           "comment": "Total eclipse of the heart",
-          "likeMe": false,
-          "likes": 7,
+          "likeMe": true,
+          "likes": 8,
           "date": "17/11/2020"
         },
         {
