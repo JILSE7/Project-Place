@@ -29,7 +29,6 @@
     width: 50%;
    margin-left: 45px;
 
-
 }
 
 
@@ -38,9 +37,9 @@
     align-items: center;
     flex-direction: column;
     width: 60%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 1px 20px 0px rgba(67, 66, 66, 0.713);
+    border: 1px solid rgb(218, 216, 216);
+
+
 
 
 
@@ -107,7 +106,7 @@
 .searchId_comments{
     height: 400px;
     overflow-y: scroll;
-
+    width: 100%;
 
     &::-webkit-scrollbar-track {
         border-radius: 10px;
@@ -126,13 +125,17 @@
         background-color: rgb(255, 92, 4);
       }
 }
+
+//Comenatarios
 .searchId_comments-users{
     display: flex;
     width: 95%;
     height: auto;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 10px;
     border-top: 1px solid #ccc;
+
+
 
     p{
         font-size: 14px;
@@ -144,11 +147,19 @@
         font-weight: bold;
     }
 
+    i{
+       justify-self: flex-end;
+    }
 
+    .box-user{
+        display: flex;
+        width: 90%;
+    }
     .Comment-user{
-    
         margin-left: 8px;
     }
+
+
 
 }
 
@@ -160,6 +171,44 @@
     padding: 10px;
 }
 
+.searchId_comments-add{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+    width: 95%;
+    height: 100px;
+    max-height: auto;
+
+    align-items: center;
+
+    img{
+        margin-left: -5px;
+    }
+    textarea{
+        border: none;
+        width: 80%;
+        height: auto;
+        font-size: 14px;
+        display: block;
+        margin: 0 auto;
+
+
+        &:focus{
+            outline: none;
+        }
+
+  
+    }
+
+    i{
+        display: block;
+        margin: 0 auto;
+        font-size: 26px;
+        color: cadetblue;
+    }
+
+  
+}
 
 
 //mapa
@@ -185,8 +234,7 @@
     padding: 5px 7px;
     width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow:0px 0px 2px rgb(186, 184, 184);
+
     
 
 
@@ -245,15 +293,22 @@
     color: #0375e3;
 }
 .wonder:hover{
-    color: rgba(228, 228, 7, 0.777);
+    color: rgba(74, 74, 239, 0.777);
 }
 
+.wonderl{
+    color:  rgba(8, 67, 244, 0.777);
+}
 .be:hover{
  color: rgb(222, 91, 10);
  }
  
 .coment:hover{
     color: rgb(150, 149, 149);
+}
+.heart{
+    color: rgb(188, 8, 8);
+    
 }
 
 
@@ -265,7 +320,7 @@
 
 }
 
-
+.pointer{cursor: pointer;}
 .searchId_info-stay{
     margin-top: 50px;
     width: 100%;
@@ -320,9 +375,10 @@
     flex-direction: column;
     justify-content: center;
 
-    h3{
+    h4{
         font-size: 26px;
     }
+
 }
 
 .searchId_Ubicacion{
@@ -332,6 +388,10 @@
 
   text-align: center;
 }
+
+
+
+
 
 
 
@@ -356,6 +416,7 @@
    
     .search-icon{
         font-size: 22px;
+        
     }
     
 

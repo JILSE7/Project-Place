@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# PLCS (Places)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El proyecto consta de una plataforma donde los usuarios pueden encontrar nuevos lugares en distintas ubicaciones del mundo. Cada usuario puede publicar, compartir e interactuar con las publicaciones de la plataforma.
 
-## Available Scripts
+![plcs](./src/assets/Hero_oneslide.png)
 
-In the project directory, you can run:
+## PLCS en **GitHub Pages**
+Entra en el siguiente link para interactuar con la aplicación de PLCS
 
-### `npm start`
+https://github.com/JILSE7/Project-Place
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usuarios de PLCS 👱🏻‍♀️👱🏻‍♂️
+En PLCS, los usuarios pueden hacer varias acciones:
+1. Registrarse a la plataforma
+2. Iniciar sesión
+3. Suscribirse al newsletter
+4. Publicar un "PLC" (un lugar que haya visitado)
+5. Dar like, compartir y comentar las publicaciones
+6. Ver su perfil de usuario
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Comenzando 🚀
 
-### `npm test`
+Mira **Deployment** para conocer como desplegar el proyecto.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Pre-requisitos 📋
+```
+1. Tener instalado un navegador como Google Chrome o Firefox
+2. Tener una aplicación para hacer solicitudes HTTP como Insomnia o Postman
+```
 
-### `npm run build`
+## Instalación 🔧
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Sigue los siguiente pasos para obtener una copia del proyecto y ejecutarla en entorno de desarrollo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Clona el repositorio desde la linea de comandos o descargando el ZIP
+```
+$ git clone https://github.com/JILSE7/Project-Place
+```
+* Instala los paquetes que necesita el proyecto
+```
+$ npm install
+```
+* Ejecuta el comando para correr la aplicación en modo desarrollo:
+```
+$ npm start
+```
+* Abre otra terminal y dirígete a la carpeta database:
+```
+$ cd database
+```
+* Ejecuta los paquetes que utiliza la fake-api:
+```
+$ npm install
+```
+* Ejecuta el comando para correr la fake-api y pueda consumirlo la aplicación:
+```
+$ npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Despliegue 📦
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Create-React-App tiene configurado un comando para realizar un deploy de la aplicación, creando una carpeta dentro del proyecto llamada **dist**.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para hacer el deploy, sigue los siguientes pasos:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. En la terminal de comando ejecuta la siguiente linea:
+```
+$ npm run build
+```
+2. Cargará todos los archivos del proyecto y generará una carpeta con los archivos comprimidos.
+3. Puedes acceder a la carpeta desde la terminal ejecutando:
+```
+$ cd build
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+4. Agrega los archivos del proyecto a la carpeta raíz de tu servidor para correr la aplicación
 
-## Learn More
+## Despliegue en GitHub Pages 📦
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+GitHub nos da la herramienta de hacer deploy de nuestros proyectos Frontend en su opción **GitHub Pages**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Sigue los siguientes pasos para hacer deploy en GitHub Pages:
 
-### Code Splitting
+1. En la raíz del proyecto, instala la dependencia de github pages:
+```
+$ npm install gh-pages
+```
+2. Agrega 2 nuevos scripts dentro del campo **scripts** en package.json:
+```js
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build"
+```
+3. Ejecuta en la terminal **predeploy** para generar la carpeta build:
+```
+$ npm run predeploy
+```
+4. Ejecuta **deploy** para crear una nueva rama en tu repositorio donde tendrá los archivos de **build**:
+```
+$ npm run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+En tu repositorio verás una rama llamada gh-pages y en automático GitHub generará la configuración pertinente para usar GitHub Pages.
 
-### Analyzing the Bundle Size
+## Construido con 🛠️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* [React.js](https://es.reactjs.org/) - Librería de Javascript
+* [Bootstrap](https://getbootstrap.com/) - Toolkit CSS
+* [JSON-Server](https://github.com/typicode/json-server) - Fake API
+* [Visual Studio Code 2019](https://visualstudio.microsoft.com/es/) - Editor de Texto
 
-### Making a Progressive Web App
+## Autores ✒️
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* **David Cruz Portilla** - [davidportilla179](https://github.com/davidportilla179)
+* **Said Mandujano** - [JILSE7](https://github.com/JILSE7)
+* **Brandon Alberto Fuentes Ocampo** - [Brandon851](https://github.com/Brandon851)
+* **José Antonio Millán Villegas** - [AntonioMillanV](https://github.com/AntonioMillanV)
+## Versionado 📌
 
-### Advanced Configuration
+* [Git Bash](https://gitforwindows.org/) - Controlador de versiones
+* [Repositorio](https://github.com/JILSE7/Project-Place) - Repositorio del Proyecto
+## Expresiones de Gratitud 🎁
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Agradecemos al equipo de BEDU en general por su gran trabajo y apoyo en este proyecto. 📢🤓.
+---
+⌨️ con ❤️ por el EQUIPO 3

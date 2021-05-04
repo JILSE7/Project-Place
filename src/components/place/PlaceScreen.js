@@ -4,48 +4,46 @@ import { PlaceContext } from '../../context/PlaceContext';
 import { Link } from 'react-router-dom';
 
 import Hero from './placeComponents/PlaceHero';
-import Card from './placeComponents/PlaceCard';
+// import PlaceCard from './placeComponents/PlaceCard';
 
 import arrow from '../../assets/arrow.png';
 import photo from '../../assets/photo.png';
 import newsletter from '../../assets/newsletter.svg';
+import FotoCard from '../search/SearchScreen/FotoCard';
 
 const PlaceScreen = () => {
-  const { statesMexico, placesMexico } = useContext(PlaceContext);
+
+  const { statesMexico, places } = useContext(PlaceContext);
+  const firstPlaces = places.slice(0,3);
+  const secondPlaces = places.slice(3,6);
+  const thirdPlaces = places.slice(6,9);
 
   return (
-    <>
+    <div>
       <Hero statesMexico={statesMexico} />
-
       <div className="container">
         <section className='py-5'>
           <h2>Lugares más populares</h2>
-          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
-            }
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
+            { firstPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
-          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
-            }
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
+            { secondPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares que les gusta a la comunidad</h2>
-          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1">
-            {
-              placesMexico.map((placeMexico, index) => <Card place={placeMexico.place} description={placeMexico.description} key={index} />)
-            }
+          <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
+            { thirdPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
-        <section className="calltoaction bg-primary text-white">
+        <section className="calltoaction bg-primary text-white mt-4">
           <div className="row">
             <div className="p-4 col-lg-6 col-md col order-md-first order-last">
               <h3>Comparte tus lugares<br/> favoritos con nosotros</h3>
@@ -67,26 +65,26 @@ const PlaceScreen = () => {
           <div className="row py-4">
             <div className="col-md">
               <form>
-                <div class="form-group">
-                    <label for="inputEmail">Correo electrónico</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" required />
+                <div className="form-group">
+                    <label htmlFor="inputEmail">Correo electrónico</label>
+                    <input type="email" className="form-control" id="inputEmail" placeholder="Email" required />
                 </div>
-                <div class="form-group">
-                    <label for="inputFirstName">Nombre</label>
-                    <input type="firstName" class="form-control" id="inputFirstName" placeholder="Nombre" required />
+                <div className="form-group">
+                    <label htmlFor="inputFirstName">Nombre</label>
+                    <input type="firstName" className="form-control" id="inputFirstName" placeholder="Nombre" required />
                 </div>
-                <div class="form-group">
-                    <label for="inputLastName">Apellido</label>
-                    <input type="lastName" class="form-control" id="inputLastName" placeholder="Apellido" required />
+                <div className="form-group">
+                    <label htmlFor="inputLastName">Apellido</label>
+                    <input type="lastName" className="form-control" id="inputLastName" placeholder="Apellido" required />
                 </div>
-                <div class="form-group">
-                    <label for="inputCountry">País</label>
-                    <input type="country" class="form-control" id="inputCountry" placeholder="País" required />
+                <div className="form-group">
+                    <label htmlFor="inputCountry">País</label>
+                    <input type="country" className="form-control" id="inputCountry" placeholder="País" required />
                 </div>
-                <div class="form-group">
-                    <label class="form-check-label"><input type="checkbox" /> Acepta nuestros Términos y Condiciones y Aviso de Privacidad</label>
+                <div className="form-group">
+                    <label className="form-check-label"><input type="checkbox" /> Acepta nuestros Términos y Condiciones y Aviso de Privacidad</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Suscribirse</button>
+                <button type="submit" className="btn btn-primary">Suscribirse</button>
               </form>
             </div>
             <div className="col-md">
@@ -104,15 +102,14 @@ const PlaceScreen = () => {
           </Link>
         </div>
       </div>
-    </>
+
+    </div>
   )
 }
 
 PlaceScreen.propTypes = {
-  statesMexico: PropTypes.array.isRequired,
-  placesMexico: PropTypes.array.isRequired,
-  arrow: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
+  statesMexico: PropTypes.array,
+  placesMexico: PropTypes.array,
 }
 
 export default PlaceScreen;

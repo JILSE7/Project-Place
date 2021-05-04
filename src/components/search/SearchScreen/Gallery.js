@@ -2,11 +2,24 @@ import React from "react";
 import FotoCard from "./FotoCard";
 import PropTypes from "prop-types";
 
-const Gallery = (props) => {
+
+const Gallery = ({places}) => {
+
+  const mezclarArreglo = arreglo => {
+    for (let i = arreglo.length - 1; i > 0; i--) {
+      let indiceAleatorio = Math.floor(Math.random() * (i + 1));
+      let temporal = arreglo[i];
+      arreglo[i] = arreglo[indiceAleatorio];
+      arreglo[indiceAleatorio] = temporal;
+    }
+  }
+
+  mezclarArreglo(places)
   return (
     <div className="container-fluid p-3 row justify-content-center">
-      {props.fotos.map((foto, index) => {
-        return <FotoCard dataSource={foto} key={index}></FotoCard>;
+      {places.map(place => {
+        const hola = Math.floor(Math.random()* 50);
+        return <FotoCard dataSource={place} key={place.id} id= {hola}></FotoCard>;
       })}
     </div>
   );

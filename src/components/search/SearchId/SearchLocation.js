@@ -1,16 +1,24 @@
-import React from 'react'
+import React from 'react';
 
-export const SearchLocation = () => {
+import PropTypes from 'prop-types';
+
+export const SearchLocation = ({location}) => {
+   const {city, address, country} = location;
+
     return (
         <div className="searchId_info-location">
-            <div className="d-flex w-65 m-auto justify-content-between">
-                <h4 ><i className="fas fa-globe-americas search-icon"></i> Mexico</h4>
-                <h4> <i className="fas fa-city search-icon"></i> CDMX</h4>
+            <div className="d-flex w-80 m-auto justify-content-between">
+                <h4 ><i className="fas fa-globe-americas search-icon"></i> {country}</h4>
+                <h4 className="ml-3"> <i className="fas fa-city search-icon"></i> {city}</h4>
             </div>
             <div className="searchId_Ubicacion">
-                <p><i className="fas fa-map-marker-alt search-icon"></i> Av. Paseo de la Reforma, Juárez, Cuauhtémoc, 06500 Ciudad de México, CDMX</p>
+                <p><i className="fas fa-map-marker-alt search-icon"></i> {address}</p>
             </div>
 
         </div>
     )
+}
+
+SearchLocation.propTypes = {
+    location: PropTypes.object
 }

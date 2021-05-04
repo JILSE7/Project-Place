@@ -1,66 +1,64 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export const SearchidInfo = () => {
+import { handleAddComment } from '../../../helpers/Patch';
+import { SearchIdComments } from './SearchIdComments';
+
+//Proptypes
+import PropTypes from 'prop-types'
+
+export const SearchidInfo = ({comments, placeId}) => {
+
+
+    //newComment
+    const [comment, setComment] = useState();
+
+    //comentarios
+    const [commentsArr, setcommentsArr] = useState([...comments]);
+
+
+    const handleTextAreaChange = (e)=> setComment(e.target.value);
+
+    //fecha
+    const fecha = new Date();;
+    const newComment = {
+        userId: 1,
+        id: Date.now(),
+        profilePhoto: "https://100k-faces.glitch.me/random-image",
+        likes: 0,
+        likeMe: false,
+        comment,
+        date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`
+    }
+
+    
+
+
+    
     return (
+        <>
         <div className="searchId_comments">
-            <div className="searchId_comments-users">
-                <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
-                    className="searchId_info-user-img me-2"
-                    />
-                    <div className="Comment-user">
-                        <p><span>Martin Carrera: </span> ugiat proident commodo cillum anim aute. Dolor sit voluptate duis voluptate magna duis anim est nostrud. Laborum eiusmod proident nisi nostrud pariatur cillum deserunt eu. Culpa ex adipisicing et id aliqua cupidatat exercitation ex culpa eiusmod fugiat. Officia minim nulla excepteur excepteur cillum ea. Laborum reprehenderit nostrud nostrud et exercitation velit do nostrud proident</p>
-                        <p className="mt-2">Enero 7 De 2015</p>
-                    </div>
-                    <i class="far fa-heart"></i>
-            </div>
-            <div className="searchId_comments-users">
-                <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
-                    className="searchId_info-user-img me-2"
-                    />
-                    <div className="Comment-user">
-                        <p><span>Martin Carrera: </span> Officia minim nulla excepteur excepteur cillum ea. Laborum reprehenderit nostrud nostrud et exercitation velit do nostrud proident</p>
-                        <p className="mt-2">Enero 7 De 2015</p>
-                    </div>
-                    <i class="fas fa-heart"></i>
-            </div>
-            <div className="searchId_comments-users">
-                <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
-                    className="searchId_info-user-img me-2"
-                    />
-                    <div className="Comment-user">
-                        <p><span>Martin Carrera: </span> Officia minim nulla excepteur excepteur cillum ea. Laborum reprehenderit nostrud nostrud et exercitation velit do nostrud proident</p>
-                        <p className="mt-2">Enero 7 De 2015</p>
-                    </div>
-                    <i class="fas fa-heart"></i>
-            </div>
-            <div className="searchId_comments-users">
-                <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
-                    className="searchId_info-user-img me-2"
-                    />
-                    <div className="Comment-user">
-                        <p><span>Martin Carrera: </span> Officia minim nulla excepteur excepteur cillum ea. Laborum reprehenderit nostrud nostrud et exercitation velit do nostrud proident</p>
-                        <p className="mt-2">Enero 7 De 2015</p>
-                    </div>
-                    <i class="far fa-heart"></i>
-            </div>
-            <div className="searchId_comments-users">
-                <img
-                    src="https://www.entrenamiento.com/wp-content/uploads/2018/05/gente-feliz-es-optimista-720x480.jpg"
-                    className="searchId_info-user-img me-2"
-                    />
-                    <div className="Comment-user">
-                        <p><span>Martin Carrera: </span> Officia minim nulla excepteur excepteur cillum ea. Laborum reprehenderit nostrud nostrud et exercitation velit do nostrud proident</p>
-                        <p className="mt-2">Enero 7 De 2015</p>
-                    </div>
-                    <i class="fas fa-heart"></i>
-            </div>
-       
+            {
+                commentsArr.map((comment, index) => {
+                    return <SearchIdComments comment ={comment} placeId={placeId} comments= {commentsArr} key={index}/>
+                })
+            }
         </div>
-
+            <div className="searchId_comments-add">
+            <img
+                    src="https://100k-faces.glitch.me/random-image"
+                    className="searchId_info-user-img me-2"
+                    alt="profilePhoto"
+                    />
+                <textarea placeholder="¿Comentario?" value={comment} onChange={handleTextAreaChange}></textarea>
+                <i className="fas fa-plus pointer" onClick={()=> handleAddComment(placeId,commentsArr, newComment, setcommentsArr, setComment)} ></i>
+            </div>
+        </>
         
     )
+}
+
+
+SearchidInfo.propTypes = {
+    comment: PropTypes.array,
+    placeId: PropTypes.string
 }

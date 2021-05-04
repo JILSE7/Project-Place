@@ -1,30 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react';
+//Generic Patch
+import {toggleLike} from '../../../helpers/Patch'
+import PropTypes from 'prop-types'
 
-export const SearchidImage = () => {
+export const SearchidImage = ({image, social, placeId}) => {
+    const {likes, comments, visitors, likeMe} = social;
+
+    const [likesState, setmeGusta] = useState(likes);
+    const [likesMeState, setLikesMe] = useState(likeMe)
+    // const [visitorState, setvisitor] = useState(visitors);
     return (
         <div className="searchId_img-container d-flex">
         
-            <img className="searchId_img" src = "https://cdn-3.expansion.mx/27/68/6114b00a4c909d0e55cd9479e5b4/angel-de-la-independencia.jpeg" />
-            <div className="searchId_img-info">
-                <div className="searchId_img-info-social">
-                <i className="far fa-smile-wink icon-social like"></i>
-                    <p >65</p>
-                </div>
-                <div className="searchId_img-info-social">
-                    <i className="far fa-surprise icon-social wonder"></i>
-                    <p>65</p>
+            <img className="searchId_img" src= {image} alt="profilePhoto"/>
+            <div className="searchId_img-info">                                        
+                <div className="searchId_img-info-social">              
+                    <i onClick={(e)=> toggleLike(e, likesState, setmeGusta,likesMeState, setLikesMe, placeId)} className= {`${(likesMeState) ? "fas fa-surprise icon-social wonderl": "far fa-surprise icon-social wonder"}`}></i>
+                    <p>{likesState}</p>
                 </div>
 
                 <div className="searchId_img-info-social">
-                    <i className="fas fa-angle-double-down icon-social be"></i>
-                    <p>3500</p>
+                    <i className="fas fa-angle-double-down icon-social"></i>
+                    <p>{visitors}</p>
                 </div>
                 <div className="searchId_img-info-social">
                     <i className="far fa-comment-dots icon icon-social coment"></i>
-                    <p>220</p>
+                    <p>{comments.length}</p>
                 </div>
             </div>
             
         </div>
     )
+}
+
+
+SearchidImage.propTypes = {
+    image: PropTypes.string
 }
