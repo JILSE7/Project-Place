@@ -83,35 +83,6 @@ export const SearchIdScreen = () => {
                 
             }   
 
-<<<<<<< HEAD
-=======
-                    {size > 800 && 
-                    <div className="container searchId_container">
-                     <main className="searchId_main">
-                     <div className="searchId_imagen" >
-                         <SearchidUser/>
-                         <SearchidImage/>
-                         <SearchidInfo/>
-                     </div>
-                     <div className="searchId_information">
-                        <SearchTitle/>
-                         <SearchLocation/>
-                         <SearchMap/>
-                         <SearchidPeople/>
-                     </div>
-                    </main>
-                    
-                    </div>
-                    
-                    
-                    
-                    }
-           
-
-                <div className="text-center">
-                    En esta parte podemos ocupar el componente de toño
-                </div>
->>>>>>> 42bac778296cdbefff258d4affe0455c8f57f360
         </div>
     )
 }
