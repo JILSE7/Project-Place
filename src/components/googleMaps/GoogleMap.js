@@ -1,0 +1,82 @@
+import React, { useEffect} from 'react'
+import { GoogleMap,Marker} from '@react-google-maps/api';
+import Geocode from "react-geocode";
+
+//maps
+import {getCity, getCountry} from '../../helpers/maps'
+import { GoogleAutoComplete } from './GoogleAutoComplete';
+
+//Geocode
+Geocode.setApiKey(process.env.G_KEY)
+
+
+const containerStyle = {
+    display:"block",
+    margin: "0 auto",
+  width: '250px',
+  height: '250px',
+};
+
+
+export const Mapa = ({newPlace, setnewPlace, pin}) => {
+
+  const onMarketDragEnd = async(e) =>{
+
+    try {
+      let newLat = e.latLng.lat();
+      let newLng = e.latLng.lng()
+      //DESTRUCTURING
+      const {results} = await Geocode.fromLatLng(newLat, newLng)
+      const {address_components} = results[0]
+        let ciudad = getCity(address_components);
+        let pais = getCountry(address_components);   
+      
+      if(results && address_components){
+        setnewPlace({
+          ...newPlace,
+          address: results[0].formatted_address,
+          city: (typeof ciudad === "string")? ciudad : ciudad.long_name,
+          country: pais.long_name,
+          mapPosition:{
+            lat: newLat,
+            lng: newLng
+          },
+          marketPosition:{
+            lat: newLat,
+            lng: newLng
+          }
+        })
+        console.log('me movi');
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+       localStorage.setItem('newPlace', JSON.stringify(newPlace))
+  }, [newPlace, setnewPlace]);
+
+    return (
+        <div className="google_mapa">  
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={newPlace.mapPosition}
+              zoom={17}
+              
+              
+            >
+              { /* Child components, such as markers, info windows, etc. */ }
+           <Marker position={newPlace.marketPosition}
+                    draggable={pin}
+                    onDragEnd = {onMarketDragEnd}
+           />
+            </GoogleMap>
+            
+          <div className="google__autocomplete-container">
+          <GoogleAutoComplete newPlace={newPlace} setnewPlace={setnewPlace} />
+          </div>
+          </div>
+    )
+}

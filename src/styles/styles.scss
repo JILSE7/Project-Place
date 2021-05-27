@@ -3,6 +3,13 @@
 @import 'user/_ProfileCover';
 @import 'user/_ProfileMenu';
 @import 'user/_ProfilePost';
+@import './_place-styles.scss';
+@import './_login-styles.scss';
+@import './components/Search/_SearchId';
+@import './_notFound-styles.scss';
+@import './components/searchScreen-styles';
+@import './components/maps/googlemaps';
+@import './components//maps/modal';
 
 * {
     margin: 0;
@@ -34,8 +41,3 @@ html {
     border: 1px solid white
 }
 
-@import './_place-styles.scss';
-@import './_login-styles.scss';
-@import './components/Search/_SearchId';
-@import './_notFound-styles.scss';
-@import './components/searchScreen-styles';

@@ -51,7 +51,7 @@ const Header = (props) => {
                   {userLogin.email}
                 </div>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to="/user">Perfil</Link>
+                  <Link className="dropdown-item" to={`/user/${userLogin.id}`}>Perfil</Link>
                   <div className="dropdown-divider"></div>
                   <button className="dropdown-item" onClick={logout}>Cerrar Sesión</button>
                 </div>

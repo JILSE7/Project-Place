@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ProfileCover = ({user}) => {
+    console.log(user);
   return(
       <div className="profile-cover" style={{backgroundImage: `url(${user.coverPhoto})`}}>
           <div className="shadow"></div>

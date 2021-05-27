@@ -1,7 +1,6 @@
 import {URL} from './Gets'
 
 
-
 export const handleAddComment = async(placeId,commentsArr,newComment, setcommentsArr, setComment)=>{
     console.log(placeId);
     //PATCH de los comentarios

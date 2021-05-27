@@ -214,8 +214,8 @@
     },
     {
       "id": 77,
-      "firstname": "Mireielle",
-      "lastname": "Terencio",
+      "firstName": "Mireielle",
+      "lastName": "Terencio",
       "email": "Mireielle.Terencio@gmail.com",
       "password": "123456",
       "username": "Mireielle77",
@@ -268,8 +268,8 @@
     },
     {
       "id": 59,
-      "firstname": "Tatiania",
-      "lastname": "Llovera",
+      "firstName": "Tatiania",
+      "lastName": "Llovera",
       "email": "Tatiania.Llovera@gmail.com",
       "password": "123456",
       "username": "Tatiania59",
@@ -322,8 +322,8 @@
     },
     {
       "id": 35,
-      "firstname": "Anestassia",
-      "lastname": "Fancie",
+      "firstName": "Anestassia",
+      "lastName": "Fancie",
       "email": "Anestassia.Fancie@gmail.com",
       "password": "123456",
       "username": "Anestassia35",
@@ -376,8 +376,8 @@
     },
     {
       "id": 40,
-      "firstname": "Jorry",
-      "lastname": "Sabella",
+      "firstName": "Jorry",
+      "lastName": "Sabella",
       "email": "Jorry.Sabella@gmail.com",
       "password": "123456",
       "username": "Jorry40",
@@ -430,8 +430,8 @@
     },
     {
       "id": 24,
-      "firstname": "Dulce",
-      "lastname": "Felizio",
+      "firstName": "Dulce",
+      "lastName": "Felizio",
       "email": "Dulce.Felizio@gmail.com",
       "password": "123456",
       "username": "Dulce24",
@@ -484,8 +484,8 @@
     },
     {
       "id": 14,
-      "firstname": "Donnie",
-      "lastname": "Vastah",
+      "firstName": "Donnie",
+      "lastName": "Vastah",
       "email": "Donnie.Vastah@gmail.com",
       "password": "123456",
       "username": "Donnie14",
@@ -538,8 +538,8 @@
     },
     {
       "id": 57,
-      "firstname": "Henriette",
-      "lastname": "Rillings",
+      "firstName": "Henriette",
+      "lastName": "Rillings",
       "email": "Henriette.Rillings@gmail.com",
       "password": "123456",
       "username": "Henriette57",
@@ -592,8 +592,8 @@
     },
     {
       "id": 20,
-      "firstname": "Sherrie",
-      "lastname": "Swanhildas",
+      "firstName": "Sherrie",
+      "lastName": "Swanhildas",
       "email": "Sherrie.Swanhildas@gmail.com",
       "password": "123456",
       "username": "Sherrie20",
@@ -646,8 +646,8 @@
     },
     {
       "id": 78,
-      "firstname": "Rhoda",
-      "lastname": "MacIntosh",
+      "firstName": "Rhoda",
+      "lastName": "MacIntosh",
       "email": "Rhoda.MacIntosh@gmail.com",
       "password": "123456",
       "username": "Rhoda78",
@@ -700,8 +700,8 @@
     },
     {
       "id": 60,
-      "firstname": "Millie",
-      "lastname": "Joachim",
+      "firstName": "Millie",
+      "lastName": "Joachim",
       "email": "Millie.Joachim@gmail.com",
       "password": "123456",
       "username": "Millie60",
@@ -754,8 +754,8 @@
     },
     {
       "id": 98,
-      "firstname": "Kathy",
-      "lastname": "Noelyn",
+      "firstName": "Kathy",
+      "lastName": "Noelyn",
       "email": "Kathy.Noelyn@gmail.com",
       "password": "123456",
       "username": "Kathy98",
@@ -808,8 +808,8 @@
     },
     {
       "id": 47,
-      "firstname": "Tani",
-      "lastname": "Teryn",
+      "firstName": "Tani",
+      "lastName": "Teryn",
       "email": "Tani.Teryn@gmail.com",
       "password": "123456",
       "username": "Tani47",
@@ -862,8 +862,8 @@
     },
     {
       "id": 51,
-      "firstname": "Marline",
-      "lastname": "Fennessy",
+      "firstName": "Marline",
+      "lastName": "Fennessy",
       "email": "Marline.Fennessy@gmail.com",
       "password": "123456",
       "username": "Marline51",
@@ -916,8 +916,8 @@
     },
     {
       "id": 92,
-      "firstname": "Wynne",
-      "lastname": "Erminia",
+      "firstName": "Wynne",
+      "lastName": "Erminia",
       "email": "Wynne.Erminia@gmail.com",
       "password": "123456",
       "username": "Wynne92",
@@ -970,8 +970,8 @@
     },
     {
       "id": 67,
-      "firstname": "Dominga",
-      "lastname": "Libna",
+      "firstName": "Dominga",
+      "lastName": "Libna",
       "email": "Dominga.Libna@gmail.com",
       "password": "123456",
       "username": "Dominga67",
@@ -1024,8 +1024,8 @@
     },
     {
       "id": 60,
-      "firstname": "Gisela",
-      "lastname": "Sibyls",
+      "firstName": "Gisela",
+      "lastName": "Sibyls",
       "email": "Gisela.Sibyls@gmail.com",
       "password": "123456",
       "username": "Gisela60",
@@ -1078,8 +1078,8 @@
     },
     {
       "id": 100,
-      "firstname": "Jerry",
-      "lastname": "Adore",
+      "firstName": "Jerry",
+      "lastName": "Adore",
       "email": "Jerry.Adore@gmail.com",
       "password": "123456",
       "username": "Jerry100",
@@ -1132,8 +1132,8 @@
     },
     {
       "id": 87,
-      "firstname": "Gusella",
-      "lastname": "Lowry",
+      "firstName": "Gusella",
+      "lastName": "Lowry",
       "email": "Gusella.Lowry@gmail.com",
       "password": "123456",
       "username": "Gusella87",
@@ -2178,7 +2178,7 @@
       "address": "6608 Oxford Circle",
       "city": "Polanco",
       "country": "United States",
-      "likes": 77,
+      "likes": 0,
       "likeMe": false,
       "visitors": 23,
       "comments": [
@@ -3267,6 +3267,166 @@
         "Relax",
         "Sky high"
       ]
+    },
+    {
+      "id": 1620951978294,
+      "place": "La marquesa",
+      "description": "un dia en la marquesa con mis cuates",
+      "image": "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1620951990/journal/qdonwrglu1rhkpwrp0km.jpg",
+      "address": "La Marquesa, Parque La Marqueza, Parques Nacionales, 50100 Toluca de Lerdo, Méx., México",
+      "city": "Toluca de Lerdo",
+      "country": "México",
+      "likes": 0,
+      "likeMe": false,
+      "visitors": 0,
+      "comments": [],
+      "usersId": 2,
+      "tags": [],
+      "zoom": 15,
+      "height": 400,
+      "mapPosition": {
+        "lat": 19.3035742,
+        "lng": -99.371173
+      },
+      "marketPosition": {
+        "lat": 19.3035742,
+        "lng": -99.371173
+      }
+    },
+    {
+      "id": 1621445225906,
+      "place": "Halo",
+      "description": "casco de master chied",
+      "image": "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1621445245/journal/uycoopuxln7zeskcx1rv.jpg",
+      "address": "Masaryk 111, Av. Pdte. Masaryk 111, Chapultepec Morales, Polanco III Secc, Miguel Hidalgo, 11550 Ciudad de México, CDMX, México",
+      "city": "Ciudad de México",
+      "country": "México",
+      "likes": 0,
+      "likeMe": false,
+      "visitors": 0,
+      "comments": [],
+      "usersId": 2,
+      "tags": [],
+      "zoom": 15,
+      "height": 400,
+      "mapPosition": {
+        "lat": 19.4319472,
+        "lng": -99.1860116
+      },
+      "marketPosition": {
+        "lat": 19.4319472,
+        "lng": -99.1860116
+      }
+    },
+    {
+      "id": 1621625620123,
+      "place": "Calabera del sur de michigan",
+      "description": "una super calabera",
+      "image": "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1621625696/journal/dc2efj9jwsprbbabnd20.jpg",
+      "address": "San Juan Teotihuacan de Arista, Méx., México",
+      "city": "Estado de México",
+      "country": "México",
+      "likes": 0,
+      "likeMe": false,
+      "visitors": 0,
+      "comments": [
+        {
+          "userId": 1,
+          "id": 1621625821583,
+          "profilePhoto": "https://100k-faces.glitch.me/random-image",
+          "likes": 1,
+          "likeMe": true,
+          "comment": "no manches, que excelente\n",
+          "date": "21/5/2021"
+        }
+      ],
+      "usersId": 2,
+      "tags": [],
+      "zoom": 15,
+      "height": 400,
+      "mapPosition": {
+        "lat": 19.6860799,
+        "lng": -98.87163609999999
+      },
+      "marketPosition": {
+        "lat": 19.6860799,
+        "lng": -98.87163609999999
+      }
+    },
+    {
+      "id": 1621626446561,
+      "place": "calaca",
+      "description": "dssdds",
+      "image": "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1621626643/journal/f3g9ssoqhxwtovxk5wdn.jpg",
+      "address": "No.2, 25/88 Jalan Pedoman, Taman Sri Muda, 40400 Shah Alam, Selangor, Malasia",
+      "city": "Shah Alam",
+      "country": "Malasia",
+      "likes": 0,
+      "likeMe": false,
+      "visitors": 0,
+      "comments": [],
+      "usersId": 2,
+      "tags": [],
+      "zoom": 15,
+      "height": 400,
+      "mapPosition": {
+        "lat": 3.024865,
+        "lng": 101.537404
+      },
+      "marketPosition": {
+        "lat": 3.024865,
+        "lng": 101.537404
+      }
+    },
+    {
+      "id": 1621626724697,
+      "place": "jsiijsa",
+      "description": "sasjdsds",
+      "image": "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1621626731/journal/zgyluj2ilxxxk0b7khyu.jpg",
+      "address": "Nome, Alaska, EE. UU.",
+      "city": "Nome",
+      "country": "Estados Unidos",
+      "likes": 0,
+      "likeMe": false,
+      "visitors": 0,
+      "comments": [],
+      "usersId": 2,
+      "tags": [],
+      "zoom": 15,
+      "height": 400,
+      "mapPosition": {
+        "lat": 64.5011111,
+        "lng": -165.4063889
+      },
+      "marketPosition": {
+        "lat": 64.5011111,
+        "lng": -165.4063889
+      }
+    },
+    {
+      "id": 1622084868602,
+      "place": "mazatlan",
+      "description": "que buen luegar",
+      "image": "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1622084893/journal/qjmbwnirwlym7uphh5ar.png",
+      "address": "Cuernavaca, Mor., México",
+      "city": "Morelos",
+      "country": "México",
+      "likes": 0,
+      "likeMe": false,
+      "visitors": 0,
+      "comments": [],
+      "usersId": 2,
+      "tags": [],
+      "zoom": 15,
+      "height": 400,
+      "mapPosition": {
+        "lat": 18.9242095,
+        "lng": -99.22156590000002
+      },
+      "marketPosition": {
+        "lat": 18.9242095,
+        "lng": -99.22156590000002
+      }
     }
   ],
   "relaciones": [

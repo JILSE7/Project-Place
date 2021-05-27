@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 //Components
 import { SearchidImage } from './SearchId/SearchidImage'
 import { SearchidInfo } from './SearchId/SearchidInfo'
@@ -14,9 +14,10 @@ import { SearchScreen } from './SearchScreen'
 
 
 export const SearchIdScreen = ({history}) => {
-    const [size, setsize] = useState( window.outerWidth)
+    const [size, setsize] = useState( window.outerWidth);
+    const [comentarios, setcomentarios] = useState([]);
     window.addEventListener("resize", function(){setsize(this.outerWidth)});
-
+    
     window.scroll({
         top: 0,
         left:0,
@@ -28,19 +29,18 @@ export const SearchIdScreen = ({history}) => {
     //Hook params
     const {placeId} = useParams();
     let notFound = Number(placeId)
-    if(isNaN(notFound)|| placeId > 20){
+    if(isNaN(notFound)){
         history.push('/NotFound')
     }
     
     // Context
     const {places} = useContext(PlaceContext);
+    if(places.length >=1)search =  getPlaceById(Number(placeId), places);
+    
 
-
-    // GetPLace si nuestros lugares son obtenidos
-    if(places.length >=1)search =  getPlaceById(Number(placeId), places)
-
-
-
+    useEffect(() => {
+        if(search) setcomentarios(search[0].comments)
+    }, [placeId, search])
 
     return (
         <div className="mt-5">
@@ -56,12 +56,12 @@ export const SearchIdScreen = ({history}) => {
                     <div className="searchId_imagen" >
                         <SearchidUser user= {search[0].users}/>
                         <SearchidImage image = {search[0].image} social={{likes:search[0].likes, comments: search[0].comments, likeMe: search[0]?.likeMe, visitors: search[0].visitors}} placeId={placeId} />
-                        <SearchidInfo comments = {search[0].comments} placeId={placeId}/>
+                        <SearchidInfo comments = {comentarios} placeId={placeId}/>
                     </div>
                     <div className="searchId_information">
                        <SearchTitle title={search[0].place} />
                         <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }}/>
-                        <SearchMap/>
+                        <SearchMap mapPosition={search[0].mapPosition}  marketPosition={search[0].marketPosition}/>
                         <SearchidPeople visitors = {search[0].visitors}/>
                     </div>
                    </main>

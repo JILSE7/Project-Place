@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { handleAddComment } from '../../../helpers/Patch';
 import { SearchIdComments } from './SearchIdComments';
@@ -13,7 +13,12 @@ export const SearchidInfo = ({comments, placeId}) => {
     const [comment, setComment] = useState();
 
     //comentarios
-    const [commentsArr, setcommentsArr] = useState([...comments]);
+    const [commentsArr, setcommentsArr] = useState([]);
+
+    useEffect(() => {
+        setcommentsArr([...comments])
+    }, [comments])
+    
 
 
     const handleTextAreaChange = (e)=> setComment(e.target.value);
@@ -37,10 +42,15 @@ export const SearchidInfo = ({comments, placeId}) => {
     return (
         <>
         <div className="searchId_comments">
-            {
+            { commentsArr.length>=1 ?
                 commentsArr.map((comment, index) => {
                     return <SearchIdComments comment ={comment} placeId={placeId} comments= {commentsArr} key={index}/>
                 })
+                :
+                <div className="searchId_Without_comments">
+                    <p>Aun no tienes comentarios</p>
+                    <i className="far fa-grin-beam-sweat"></i>
+                </div>
             }
         </div>
             <div className="searchId_comments-add">

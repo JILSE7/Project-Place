@@ -3,6 +3,7 @@ import { fakeName, resetDate } from '../../../helpers/Conditionals';
 import { toggleHeart } from '../../../helpers/Patch';
 
 export const SearchIdComments = ({comment, placeId, comments}) => {
+
     //Destructuring 
     const {comment: comentario, likes, profilePhoto, date, likeMe} = comment;
 

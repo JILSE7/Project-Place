@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 
 export const SearchidUser = ({user}) => {
     let follow = false;
-
-
     return (
         <div className="searchId_info-user">
             <div className="d-flex align-items-center">
@@ -14,7 +13,7 @@ export const SearchidUser = ({user}) => {
                 alt="userPhoto"
                 />
                 <div className="searchId_info-userid">
-                    <h5>{user.username}</h5>
+                   <Link to= {`/user/${user.id}`}> <h5>{user.username}</h5> </Link>
                     <div className="d-flex">
                         <p className="me-2"> <i className="fas fa-users search-icon-user"></i>{user.followers} </p>
                         <p className="ml-3" ><i className="fas fa-image search-icon-user"></i>{user.posts.length}</p>

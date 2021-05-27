@@ -4,10 +4,20 @@ export const URL = `http://localhost:4000`;
 //GETPLACEBYID
 const getPlaceById = (id,array) => array.filter(place => place.id === id);
 
+//GETUSER
+const getUserById = async(id) => {
+try {
+    const user = await (await fetch(`${URL}/users/${id}`)).json();
+    return user;
+} catch (error) {
+    console.log(error);
+}
+    
+    
+    
+}
 
 //Verify
-
-
 const verifyUser = async(login,form) => {
     try {
     const data = await (await fetch(`${URL}/users`)).json()
@@ -44,6 +54,7 @@ const registerUser = async(form) => {
 
 export{
     getPlaceById,
+    getUserById,
     verifyUser,
     registerUser
 }

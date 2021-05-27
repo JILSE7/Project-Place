@@ -110,7 +110,7 @@
 
     &::-webkit-scrollbar-track {
         border-radius: 10px;
-        background-color: rgba(133, 133, 133, 0.866);
+        background-color: white;
       }
      
       &::-webkit-scrollbar {
@@ -169,6 +169,22 @@
     height: auto;
     justify-content: flex-start;
     padding: 10px;
+}
+
+.searchId_Without_comments{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    color: orangered;
+
+    i{  
+        display: block;
+        font-size: 40px;
+    }
+
 }
 
 .searchId_comments-add{
@@ -245,6 +261,11 @@
         align-items: flex-start;
         justify-content: flex-start;
         margin-left: 8px;
+        
+        a{
+            text-decoration: none;
+            color: green;
+        }
 
         p,h5{
             margin: 0;
@@ -256,11 +277,8 @@
             border-bottom: 1px solid #ccc;
             transition: all 300ms;
             &:hover{
-             color: green;
+             color: darken($color: green, $amount: 5);
             }
-        }
-        p{
-            color: green;
         }
        
 

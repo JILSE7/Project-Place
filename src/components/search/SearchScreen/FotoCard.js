@@ -21,7 +21,7 @@ const FotoCard = ({dataSource, history, id}) => {
         </Link>
       </div>
       <h5 className="card-title">{dataSource.place}</h5>
-      <p className="card-text">{dataSource.address}</p>
+      <p className="card-text">{dataSource.city}</p>
       <div className="searchScreen_tags-container">
         <div className="tags-slider">
             {dataSource.tags.map((tag, i) => {
