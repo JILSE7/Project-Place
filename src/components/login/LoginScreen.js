@@ -5,8 +5,8 @@ import{verifyUser} from '../../helpers/Gets';
 
 const LoginScreen = (props) => {
 
-    const {setUserLogin } = useContext(PlaceContext);
-    
+    const {setUserLogin, setInputSearch } = useContext(PlaceContext);
+    setInputSearch(false);
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -20,6 +20,7 @@ const LoginScreen = (props) => {
         event.preventDefault();
         //console.log(form.email);
         verifyUser(setUserLogin,form);
+        setInputSearch(true);
         props.history.push('/');
     }
 

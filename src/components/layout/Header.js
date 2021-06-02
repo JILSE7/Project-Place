@@ -9,7 +9,8 @@ import logo from '../../assets/plcs-black.png';
 
 const Header = (props) => {
 
-  const {userLogin, statesMexico } = useContext(PlaceContext);
+  const {userLogin, statesMexico, inputSearch, setInputSearch, setPlacesFiltered } = useContext(PlaceContext);
+  setInputSearch(true);
 
   const logout = () => {
     // setUserLogin({})
@@ -30,12 +31,12 @@ const Header = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/search" className="nav-link"> Lugares</Link>
+              <Link to="/search" className="nav-link" onClick={() => setPlacesFiltered()}> Lugares</Link>
             </li>
           </ul>
 
           <ul className="navbar-nav d-none d-md-block">
-            <InputSearch statesMexico={statesMexico} />
+              {inputSearch ? <InputSearch statesMexico={statesMexico} history={props.history}/> : ''}
           </ul>
 
           {
