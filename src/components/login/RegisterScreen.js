@@ -7,7 +7,8 @@ import { paises, startRegister } from '../../helpers/auth';
 
 const RegisterScreen = (props) => {
  //Context
-  const {setUserLogin, userLogin } = useContext(PlaceContext);
+  const {setUserLogin, userLogin, setInputSearch } = useContext(PlaceContext);
+  setInputSearch(false);
   //Select Paises
   let selectCountry = '';
 

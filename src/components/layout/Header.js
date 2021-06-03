@@ -10,7 +10,7 @@ import { startLogout } from '../../helpers/auth';
 
 const Header = (props) => {
 
-  const {userLogin, setUserLogin, statesMexico } = useContext(PlaceContext);
+  const {userLogin, setUserLogin, statesMexico, inputSearch, setInputSearch, setPlacesFiltered } = useContext(PlaceContext);
 
   const logout = () => {
     startLogout();
@@ -35,7 +35,7 @@ const Header = (props) => {
           </ul>
 
           <ul className="navbar-nav d-none d-md-block">
-            <InputSearch statesMexico={statesMexico} />
+            {inputSearch ? <InputSearch statesMexico={statesMexico} history={props.history}/> : ''}
           </ul>
 
           {

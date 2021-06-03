@@ -6,8 +6,8 @@ import Swal from 'sweetalert2';
 
 const LoginScreen = (props) => {
 
-    const {setUserLogin, userLogin } = useContext(PlaceContext);
-    
+    const {setUserLogin, userLogin, setInputSearch } = useContext(PlaceContext);
+    setInputSearch(false);
     const [form, setForm] = useState({
         email: '',
         password: ''
@@ -64,7 +64,7 @@ const LoginScreen = (props) => {
                 no-repeat`
             })
         } 
-
+        setInputSearch(true);
 
     }
 
