@@ -8,7 +8,7 @@ import heroTwoSlide from '../../../assets/Hero_twoslide.png';
 import heroThreeSlide from '../../../assets/Hero_threeslide.png';
 
 
-const Hero = ( { statesMexico }) => {
+const Hero = ( { history } ) => {
   return (
     <>
       <div id="carouselPlaces" className="carousel slide carousel-fade d-none d-md-block" data-ride="carousel">
@@ -35,7 +35,7 @@ const Hero = ( { statesMexico }) => {
       <div className="d-md-none mt-5">
         <img src={heroOneSlide} className="mb-3 img-fluid" alt={heroOneSlide} />
         <div className="container">
-          <InputSearch statesMexico={statesMexico} />
+          <InputSearch history={history}/>
         </div>
       </div>
     </>

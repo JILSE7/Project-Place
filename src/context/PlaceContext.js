@@ -27,12 +27,15 @@ export const DataProvider = ({ children }) => {
       
     }
   }, [setPlaces, userLogin])
+  //Obtener array de las ciudades registradas y array de ciudades sin repetirse
+  const countries = places.map(places => places.country);
+  const uniqueCountries = [...new Set(countries)];
   //Poner el input de busqueda en el header o no
   const [inputSearch, setInputSearch] = useState(true);
   //Filtrar las ciudad por el input
   const [placesFiltered, setPlacesFiltered] = useState();
   return (
-    <PlaceContext.Provider value ={{places, userLogin, setUserLogin, inputSearch, setInputSearch }}>
+    <PlaceContext.Provider value ={{places, userLogin, setUserLogin, inputSearch, setInputSearch, placesFiltered, setPlacesFiltered, uniqueCountries }}>
       { children }
     </PlaceContext.Provider>
   )

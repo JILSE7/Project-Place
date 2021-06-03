@@ -11,16 +11,16 @@ import photo from '../../assets/photo.png';
 import newsletter from '../../assets/newsletter.svg';
 import FotoCard from '../search/SearchScreen/FotoCard';
 
-const PlaceScreen = () => {
+const PlaceScreen = ( props ) => {
 
-  const { statesMexico, places } = useContext(PlaceContext);
+  const { places } = useContext(PlaceContext);
   // const firstPlaces = places.slice(0,3);
   // const secondPlaces = places.slice(3,6);
   // const thirdPlaces = places.slice(6,9);
 
   return (
     <div>
-      <Hero statesMexico={statesMexico} />
+      <Hero history={props.history}/>
       <div className="container">
         <section className='py-5'>
           <h2>Lugares más populares</h2>

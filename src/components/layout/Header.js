@@ -10,7 +10,7 @@ import { startLogout } from '../../helpers/auth';
 
 const Header = (props) => {
 
-  const {userLogin, setUserLogin, statesMexico, inputSearch, setInputSearch, setPlacesFiltered } = useContext(PlaceContext);
+  const {userLogin, setUserLogin, inputSearch, setPlacesFiltered } = useContext(PlaceContext);
 
   const logout = () => {
     startLogout();
@@ -30,12 +30,12 @@ const Header = (props) => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/search" className="nav-link"> Lugares</Link>
+              <Link to="/search" className="nav-link" onClick={() => setPlacesFiltered()}> Lugares</Link>
             </li>
           </ul>
 
           <ul className="navbar-nav d-none d-md-block">
-            {inputSearch ? <InputSearch statesMexico={statesMexico} history={props.history}/> : ''}
+            {inputSearch ? <InputSearch history={props.history}/> : ''}
           </ul>
 
           {
