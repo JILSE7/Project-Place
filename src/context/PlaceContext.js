@@ -1,22 +1,36 @@
-import React, { createContext,useState } from 'react';
+import React, { createContext,useEffect,useState } from 'react';
+import { fetchConToken } from '../helpers/fetch';
 import { useFetch } from '../hooks/useFetch';
 
 
 export const PlaceContext = createContext();
 
-const URL = 'http://localhost:4000';
 
 export const DataProvider = ({ children }) => {
+  //Estado para el usuario logeado, este estara dentro del constex
+  const [userLogin, setUserLogin] = useState({
+    checking: false //proceso de autenticacion   
+  });
+  const [places, setPlaces] = useState([]);
+  console.log(userLogin);
+  
 
-  const [userLogin, setUserLogin] = useState({});
-
-const places = useFetch(`${URL}/places`);
-const statesMexico = useFetch(`${URL}/statesMexico`);
-const placesMexico  = useFetch(`${URL}/places?_start=id:1&_end=4`);
+  useEffect(() => {
+    if(userLogin.uid){
+      
+      fetchConToken('places/')
+                    .then(resp => {
+                      const body = resp.json();
+                      body.then(respuesta => setPlaces(respuesta.places));
+                    })
+  
+      
+    }
+  }, [setPlaces, userLogin])
 
 
   return (
-    <PlaceContext.Provider value ={{statesMexico,placesMexico, places, userLogin, setUserLogin }}>
+    <PlaceContext.Provider value ={{places, userLogin, setUserLogin }}>
       { children }
     </PlaceContext.Provider>
   )

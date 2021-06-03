@@ -2,38 +2,37 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 
-const FotoCard = ({dataSource, history}) => {
+const FotoCard = ({dataSource, history, id}) => {
+
 
   return (
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">
-        <img className="searchScreen_user-photo" src={dataSource.ownerPhoto} alt="Photo"/>
-        <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.owner}</p>
+        <img className="searchScreen_user-photo" src={dataSource.user.profilePhoto} alt={dataSource.place} loading="lazy" />
+        <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.user.userName}</p>
       </div>
       <div className="searchScreen_image-container">
-        <Link to={`/search/${dataSource.id}`}>
-        <img src={dataSource.image} />
-        </Link>
+        <Link to={`/search/${dataSource.placeId}`}>
+        <img src={`${dataSource.image}`} alt={dataSource.place} />
         <div className="searchScreen_middle">
-            <div className="searchScreen_image-hover-text">ABRIR</div>
+            <div className="searchScreen_image-hover-text">
+              <span ><i className="fas fa-heart" aria-hidden="true"></i> {dataSource.likes} </span>
+              <span ><i className="fas fa-comment" aria-hidden="true"></i> {dataSource.comments.length} </span>
+            </div>
         </div>
+        </Link>
       </div>
       <h5 className="card-title">{dataSource.place}</h5>
-      <p className="card-text">{dataSource.address}</p>
+      <p className="card-text">{dataSource.city}</p>
       <div className="searchScreen_tags-container">
         <div className="tags-slider">
-            {dataSource.tags.map(tag => {
+            {dataSource.tags.map((tag, i) => {
                 return <span 
-                className="badge rounded-pill text-light text-thin py-1 px-2 mx-1 bg-secondary">{tag}</span>
+                className="badge rounded-pill py-1 px-2 mx-1" key={i}>{tag}</span>
             })}
         </div>
       </div>
-      <p className="fst-italic">
-          Posted by: 
-            <span className="user-link">
-                {`@${dataSource.userId}`}
-            </span>
-      </p>
+     
     </div>
   );
 };
@@ -42,10 +41,17 @@ FotoCard.propTypes = {
   dataSource: PropTypes.shape({
     title: PropTypes.string,
     owner: PropTypes.string,
-    ownerPhoto: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
+    ownerPhoto: PropTypes.string,
+    imageUrl: PropTypes.string,
+    location: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
+    likes: PropTypes.string,
+    comments: PropTypes.arrayOf(PropTypes.shape({
+      comment: PropTypes.string,
+      likes: PropTypes.string,
+      profilePhoto: PropTypes.string,
+      userID: PropTypes.number
+    }))
   })
 };
 

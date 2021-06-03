@@ -2,10 +2,12 @@
 
 El proyecto consta de una plataforma donde los usuarios pueden encontrar nuevos lugares en distintas ubicaciones del mundo. Cada usuario puede publicar, compartir e interactuar con las publicaciones de la plataforma.
 
+![plcs](./src/assets/Hero_oneslide.png)
+
 ## PLCS en **GitHub Pages**
 Entra en el siguiente link para interactuar con la aplicación de PLCS
 
-https://bytewise-backend-api.herokuapp.com/
+https://github.com/JILSE7/Project-Place
 
 ## Usuarios de PLCS 👱🏻‍♀️👱🏻‍♂️
 En PLCS, los usuarios pueden hacer varias acciones:
@@ -62,30 +64,49 @@ Create-React-App tiene configurado un comando para realizar un deploy de la apli
 
 Para hacer el deploy, sigue los siguientes pasos:
 
-1. Crea y accede a Heroku con tu cuenta
-2. Pulsa en el botón "Create new app"
-3. Ponle un nombre a la app y selecciona tu región
-4. Sube tu código a un repositorio de GitHub
-5. En la sección "Deployment method", selecciona "Connect to Github" y conectala con tu cuenta.
-6. Busca tu repositorio por su nombre y selecciona la rama donde tienes tu código final.
-7. Pulsa el botón "Deploy Branch" para desplegar tu aplicación
-8. Dirígete a "Setting" y en la sección "Config Vars" agrega las siguientes variables de entorno:
-```bash
-export NODE_ENV='production'
-export PORT= '80'
-export SECRET='supersecret'
-export MONGODB_URI=''
+1. En la terminal de comando ejecuta la siguiente linea:
 ```
-En MONGODB_URI pon la URI que tienes en tu archivo ./env.sh
-9. Abre la app con el botón "Open app" situado en la parte superior derecha de la pantalla.
+$ npm run build
+```
+2. Cargará todos los archivos del proyecto y generará una carpeta con los archivos comprimidos.
+3. Puedes acceder a la carpeta desde la terminal ejecutando:
+```
+$ cd build
 
-Ya podrás hacer las mismas peticiones que hacias con tu aplicación de peticiones HTTP usando la url que te proporciona Heroku.
+```
+4. Agrega los archivos del proyecto a la carpeta raíz de tu servidor para correr la aplicación
+
+## Despliegue en GitHub Pages 📦
+
+GitHub nos da la herramienta de hacer deploy de nuestros proyectos Frontend en su opción **GitHub Pages**
+
+Sigue los siguientes pasos para hacer deploy en GitHub Pages:
+
+1. En la raíz del proyecto, instala la dependencia de github pages:
+```
+$ npm install gh-pages
+```
+2. Agrega 2 nuevos scripts dentro del campo **scripts** en package.json:
+```js
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build"
+```
+3. Ejecuta en la terminal **predeploy** para generar la carpeta build:
+```
+$ npm run predeploy
+```
+4. Ejecuta **deploy** para crear una nueva rama en tu repositorio donde tendrá los archivos de **build**:
+```
+$ npm run deploy
+```
+
+En tu repositorio verás una rama llamada gh-pages y en automático GitHub generará la configuración pertinente para usar GitHub Pages.
 
 ## Construido con 🛠️
 
 * [React.js](https://es.reactjs.org/) - Librería de Javascript
 * [Bootstrap](https://getbootstrap.com/) - Toolkit CSS
-* [JSON-Server](https://github.com/typicode/json-server) - Toolkit CSS
+* [JSON-Server](https://github.com/typicode/json-server) - Fake API
 * [Visual Studio Code 2019](https://visualstudio.microsoft.com/es/) - Editor de Texto
 
 ## Autores ✒️
@@ -102,4 +123,4 @@ Ya podrás hacer las mismas peticiones que hacias con tu aplicación de peticion
 
 * Agradecemos al equipo de BEDU en general por su gran trabajo y apoyo en este proyecto. 📢🤓.
 ---
-⌨️ con ❤️ por el EQUIPO 21
+⌨️ con ❤️ por el EQUIPO 3

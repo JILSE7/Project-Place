@@ -11,7 +11,7 @@ export const DashBoarRoutes = () => {
         <div>
             <Switch>
                 <Route exact path="/" component={PlaceScreen}/>
-                <Route exact path="/user" component={UserScreen}/>
+                <Route exact path="/user/:id" component={UserScreen}/>
                 <Route exact path="/search" component={SearchScreen}/>
                 <Route exact path="/search/:placeId" component={SearchIdScreen}/>
 

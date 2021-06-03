@@ -8,7 +8,7 @@ export const ProfilePostsList = ({user}) => {
                 {
                     user.posts !== undefined ?
                         (user.posts.map(post => {
-                            return <ProfilePost post = {post} />
+                            return <ProfilePost key={post.id} post = {post} />
                         }))
                         : null
                 }

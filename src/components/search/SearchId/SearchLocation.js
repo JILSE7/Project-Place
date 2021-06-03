@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
+
+import PropTypes from 'prop-types';
 
 export const SearchLocation = ({location}) => {
    const {city, address, country} = location;
-   console.log(country, city, address);
+
     return (
         <div className="searchId_info-location">
             <div className="d-flex w-80 m-auto justify-content-between">
@@ -15,4 +17,8 @@ export const SearchLocation = ({location}) => {
 
         </div>
     )
+}
+
+SearchLocation.propTypes = {
+    location: PropTypes.object
 }

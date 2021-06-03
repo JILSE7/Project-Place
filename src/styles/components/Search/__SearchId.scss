@@ -29,7 +29,6 @@
     width: 50%;
    margin-left: 45px;
 
-
 }
 
 
@@ -38,9 +37,9 @@
     align-items: center;
     flex-direction: column;
     width: 60%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 1px 20px 0px rgba(67, 66, 66, 0.713);
+    border: 1px solid rgb(218, 216, 216);
+
+
 
 
 
@@ -107,11 +106,11 @@
 .searchId_comments{
     height: 400px;
     overflow-y: scroll;
-
+    width: 100%;
 
     &::-webkit-scrollbar-track {
         border-radius: 10px;
-        background-color: rgba(133, 133, 133, 0.866);
+        background-color: white;
       }
      
       &::-webkit-scrollbar {
@@ -170,6 +169,22 @@
     height: auto;
     justify-content: flex-start;
     padding: 10px;
+}
+
+.searchId_Without_comments{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    color: orangered;
+
+    i{  
+        display: block;
+        font-size: 40px;
+    }
+
 }
 
 .searchId_comments-add{
@@ -235,8 +250,7 @@
     padding: 5px 7px;
     width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow:0px 0px 2px rgb(186, 184, 184);
+
     
 
 
@@ -247,6 +261,11 @@
         align-items: flex-start;
         justify-content: flex-start;
         margin-left: 8px;
+        
+        a{
+            text-decoration: none;
+            color: green;
+        }
 
         p,h5{
             margin: 0;
@@ -258,11 +277,8 @@
             border-bottom: 1px solid #ccc;
             transition: all 300ms;
             &:hover{
-             color: green;
+             color: darken($color: green, $amount: 5);
             }
-        }
-        p{
-            color: green;
         }
        
 
@@ -295,9 +311,12 @@
     color: #0375e3;
 }
 .wonder:hover{
-    color: rgba(228, 228, 7, 0.777);
+    color: rgba(74, 74, 239, 0.777);
 }
 
+.wonderl{
+    color:  rgba(8, 67, 244, 0.777);
+}
 .be:hover{
  color: rgb(222, 91, 10);
  }
@@ -319,7 +338,7 @@
 
 }
 
-
+.pointer{cursor: pointer;}
 .searchId_info-stay{
     margin-top: 50px;
     width: 100%;

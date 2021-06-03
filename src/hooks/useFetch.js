@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import {useRef, useState, useEffect} from 'react';
 
 export const useFetch = (url)=>{
 
@@ -16,8 +16,8 @@ export const useFetch = (url)=>{
 
     }, [])
 
-    useEffect(async()=>{
-       
+    useEffect(()=>{
+     
         fetch(url)
         .then(data => data.json())
         .then(data => {

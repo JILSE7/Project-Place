@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export const SearchTitle = ({title}) => {
     return (
@@ -7,4 +8,9 @@ export const SearchTitle = ({title}) => {
             <hr/>
         </div>
     )
+}
+
+
+SearchTitle.propTypes = {
+    title: PropTypes.string
 }
