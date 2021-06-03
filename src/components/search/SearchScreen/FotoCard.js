@@ -3,14 +3,16 @@ import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 
 const FotoCard = ({dataSource, history, id}) => {
+
+
   return (
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">
-        <img className="searchScreen_user-photo" src={dataSource.users.profilePhoto} alt={dataSource.place} loading="lazy" />
-        <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.users.username}</p>
+        <img className="searchScreen_user-photo" src={dataSource.user.profilePhoto} alt={dataSource.place} loading="lazy" />
+        <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.user.userName}</p>
       </div>
       <div className="searchScreen_image-container">
-        <Link to={`/search/${dataSource.id}`}>
+        <Link to={`/search/${dataSource.placeId}`}>
         <img src={`${dataSource.image}`} alt={dataSource.place} />
         <div className="searchScreen_middle">
             <div className="searchScreen_image-hover-text">
@@ -43,10 +45,10 @@ FotoCard.propTypes = {
     imageUrl: PropTypes.string,
     location: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
-    likes: PropTypes.number,
+    likes: PropTypes.string,
     comments: PropTypes.arrayOf(PropTypes.shape({
       comment: PropTypes.string,
-      likes: PropTypes.number,
+      likes: PropTypes.string,
       profilePhoto: PropTypes.string,
       userID: PropTypes.number
     }))

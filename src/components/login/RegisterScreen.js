@@ -1,28 +1,95 @@
-import React, { useState} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
+import Swal from 'sweetalert2';
+import { PlaceContext } from '../../context/PlaceContext';
+import { paises, startRegister } from '../../helpers/auth';
 
-import{registerUser} from '../../helpers/Gets'
+
 
 const RegisterScreen = (props) => {
-
+ //Context
+  const {setUserLogin, userLogin } = useContext(PlaceContext);
+  //Select Paises
+  let selectCountry = '';
 
   const [form, setForm] = useState({
     email: '',
     password: '',
-    username: '',
+    userName: '',
     firstName: '',
     lastName: '',
     country: '',
-    age: ''
+    age: '',
+    profilePhoto: "https://i.pinimg.com/originals/71/f3/51/71f3519243d136361d81df71724c60a0.png",
+    coverPhoto: "https://res.cloudinary.com/dxqnlqxa1/image/upload/v1622572478/journal/Blue_Mountains_Explore_the_World_Travel_Framed_Art_Print_jmxa9h.png",
+    information: 'Bienvenido a Places',
+    friends: Math.floor(Math.random()*1000),
+    followers:  Math.floor(Math.random()*900),
+    followed: Math.floor(Math.random()*500),
+    posts: []
   });
+
+    
+  const llenarSelect = (paises) => {
+    paises.forEach(pais => {
+        //Llenando el select
+        const option = document.createElement('option');
+        option.value = pais;
+        option.textContent = pais;
+        selectCountry.appendChild(option);
+    });
+  };
+
+  
+  useEffect(() => {
+    selectCountry = document.querySelector('#selectCountry');
+    if(selectCountry){
+      llenarSelect(paises);
+    }
+  }, [selectCountry]);
+
 
   const handleInput = event => {
     setForm({ ...form, [event.target.name]: event.target.value });
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    registerUser(form);
-    props.history.push('/login');
+    console.log(form);
+    const register = await startRegister(form);
+    console.log(register);
+
+    if(register.ok){
+      localStorage.setItem('token', register.token);
+      localStorage.setItem('token-creacion', new Date().getTime());
+  
+      setUserLogin({
+          ...userLogin,
+        checking: false,
+        uid: register.uid,
+        userName: register.userName,
+        firstName: register.firstName,
+        lastName: register.lastName 
+        });
+
+       }else if(register.msg){
+          Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title : register.msg, 
+              showConfirmButton : false,
+              timer: 2000,
+              padding: '3em',
+              background: '#fff',
+              backdrop: `
+                  rgba(0,0,123,0.4)
+                  left top
+                  no-repeat
+              `
+              })
+      }else if(register.errors){
+        Swal.fire('Error', register.errors.password.msg, 'error')
+    }
+
   }
 
   return (
@@ -64,8 +131,8 @@ const RegisterScreen = (props) => {
                     <div className="form-group mb-3">
                         <input
                           id="inputUsername"
-                          name="username"
-                          type="username"
+                          name="userName"
+                          type="userName"
                           placeholder="Username"
                           required
                           className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
@@ -94,7 +161,7 @@ const RegisterScreen = (props) => {
                           onChange={handleInput}
                         />
                     </div>
-                    <div className="form-group mb-3">
+                    {/* <div className="form-group mb-3">
                         <input
                           id="inputCountry"
                           name="country"
@@ -104,6 +171,19 @@ const RegisterScreen = (props) => {
                           className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
                           onChange={handleInput}
                         />
+                    </div> */}
+                    <div className="form-group mb-3">
+                        <select
+                          id="selectCountry"
+                          name="country"
+                          type="country"
+                          placeholder="Country"
+                          required
+                          className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                          onChange={handleInput}
+                        >
+                           <option value=""  select= "false" >Select your country</option>
+                        </select>
                     </div>
                     <div className="form-group mb-3">
                         <input

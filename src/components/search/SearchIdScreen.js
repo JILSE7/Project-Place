@@ -28,14 +28,16 @@ export const SearchIdScreen = ({history}) => {
 
     //Hook params
     const {placeId} = useParams();
-    let notFound = Number(placeId)
-    if(isNaN(notFound)){
-        history.push('/NotFound')
-    }
+
+    // let notFound = Number(placeId)
+    // if(isNaN(notFound)){
+    //     history.push('/NotFound')
+    // }
     
     // Context
     const {places} = useContext(PlaceContext);
-    if(places.length >=1)search =  getPlaceById(Number(placeId), places);
+
+    if(places.length >=1)search =  getPlaceById(placeId, places);
     
 
     useEffect(() => {
@@ -54,8 +56,8 @@ export const SearchIdScreen = ({history}) => {
                     (<div className=" searchId_container">
                     <main className="searchId_main">
                     <div className="searchId_imagen" >
-                        <SearchidUser user= {search[0].users}/>
-                        <SearchidImage image = {search[0].image} social={{likes:search[0].likes, comments: search[0].comments, likeMe: search[0]?.likeMe, visitors: search[0].visitors}} placeId={placeId} />
+                        <SearchidUser user= {search[0].user}/> 
+                        <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors} placeId={placeId} />
                         <SearchidInfo comments = {comentarios} placeId={placeId}/>
                     </div>
                     <div className="searchId_information">
@@ -75,13 +77,13 @@ export const SearchIdScreen = ({history}) => {
                         <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }}/>
                         <div className="searchId_imagen" >
                                
-                                <SearchidUser user= {search[0].users}/>
-                                <SearchidImage image = {search[0].image} social={{likes:search[0].likes, comments: search[0].comments, likeMe: search[0]?.likeMe, visitors: search[0].visitors}} placeId={placeId} />
+                                <SearchidUser user= {search[0].user}/>
+                                <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors}  placeId={placeId} />
                                 <SearchidInfo comments = {search[0].comments} placeId={placeId}/>
                         </div>
                    <div className="searchId_information">
                            <SearchidPeople visitors = {search[0].visitors}/>
-                           <SearchMap/>
+                           <SearchMap mapPosition={search[0].mapPosition}  marketPosition={search[0].marketPosition}/>
                            <p>Ubicacion</p>
                    </div>
                         </main>

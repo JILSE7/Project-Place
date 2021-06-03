@@ -6,15 +6,15 @@ import { PlaceContext } from '../../context/PlaceContext';
 import InputSearch from './layoutComponents/InputSearch';
 
 import logo from '../../assets/plcs-black.png';
+import { startLogout } from '../../helpers/auth';
 
 const Header = (props) => {
 
-  const {userLogin, statesMexico } = useContext(PlaceContext);
+  const {userLogin, setUserLogin, statesMexico } = useContext(PlaceContext);
 
   const logout = () => {
-    // setUserLogin({})
-    props.history.go('/');
-    props.history.push('/');
+    startLogout();
+    setUserLogin({checking: false});
   }
 
   return (
@@ -39,19 +39,19 @@ const Header = (props) => {
           </ul>
 
           {
-            userLogin.email ?
+            userLogin.uid ?
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <span className="navbar-text">
-                  Bienvenido
+                  **Bienvenido
                 </span>
               </li>
               <li className="nav-item dropdown">
                 <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {userLogin.email}
+                  {userLogin.userName}
                 </div>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`/user/${userLogin.id}`}>Perfil</Link>
+                  <Link className="dropdown-item" to={`/user/${userLogin.uid}`}>Perfil</Link>
                   <div className="dropdown-divider"></div>
                   <button className="dropdown-item" onClick={logout}>Cerrar Sesión</button>
                 </div>

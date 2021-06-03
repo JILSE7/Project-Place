@@ -13,7 +13,7 @@ export const SearchidUser = ({user}) => {
                 alt="userPhoto"
                 />
                 <div className="searchId_info-userid">
-                   <Link to= {`/user/${user.id}`}> <h5>{user.username}</h5> </Link>
+                   <Link to= {`/user/${user._id}`}> <h5>{user.userName}</h5> </Link>
                     <div className="d-flex">
                         <p className="me-2"> <i className="fas fa-users search-icon-user"></i>{user.followers} </p>
                         <p className="ml-3" ><i className="fas fa-image search-icon-user"></i>{user.posts.length}</p>

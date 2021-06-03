@@ -1,28 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const ProfileCover = ({user}) => {
-    console.log(user);
+    const [usuario, setUsuario] = useState([])
+
+    useEffect(() => {
+      setUsuario(user[0]);
+    }, [setUsuario, user])
+    
   return(
-      <div className="profile-cover" style={{backgroundImage: `url(${user.coverPhoto})`}}>
+      <>  
+      {  (usuario) ? 
+      <div className="profile-cover" style={{backgroundImage: `url(${usuario.coverPhoto})`}}>
           <div className="shadow"></div>
           <div className="profile-avatar">
-              <img src= {user.profilePhoto} alt="img" />
+              <img src= {usuario.profilePhoto} alt="img" />
               <span className="change-photo">
                   <i className="fas fa-camera"></i> 
                   <span>Cambiar foto</span>
               </span>
-          </div>
+          </div> 
 
           { 
-            user.posts !== undefined ?
+            usuario.posts !== undefined ?
               (<div className="profile-data">
-                  <h4 className="profile-user">{user.firstName} {user.lastName}</h4>
-                  <p className="profile-biography">{ user.information }</p>
+                  <h4 className="profile-user">{usuario.firstName} {usuario.lastName}</h4>
+                  <p className="profile-biography">{ usuario.information }</p>
                   <ul className="profile-list">
-                      <li>{user.followers} Seguidores</li>
-                      <li>{user.followed} Seguidos</li>
-                      <li>{user.posts.length} Publicaciones</li>
+                      <li>{usuario.followers} Seguidores</li>
+                      <li>{usuario.followed} Seguidos</li>
+                      <li>{usuario.posts.length} Publicaciones</li>
                   </ul>
               </div>)
               : null
@@ -33,6 +40,12 @@ const ProfileCover = ({user}) => {
               <button type=""><i className="fas fa-wrench"></i></button>
           </div>
       </div>
+      
+          : null
+        }
+    </>
+
+  
   )
 };
 

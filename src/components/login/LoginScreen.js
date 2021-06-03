@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { PlaceContext } from '../../context/PlaceContext';
+import {startLogin} from '../../helpers/auth'
+import Swal from 'sweetalert2';
 
-import{verifyUser} from '../../helpers/Gets';
 
 const LoginScreen = (props) => {
 
-    const {setUserLogin } = useContext(PlaceContext);
+    const {setUserLogin, userLogin } = useContext(PlaceContext);
     
     const [form, setForm] = useState({
         email: '',
@@ -16,11 +17,55 @@ const LoginScreen = (props) => {
         setForm({ ...form, [event.target.name]: event.target.value });
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async(event) => {
+        //Realizando el login
         event.preventDefault();
-        //console.log(form.email);
-        verifyUser(setUserLogin,form);
-        props.history.push('/');
+        const login = await startLogin(form.email, form.password)
+        
+        //Si el login se realiza correctamente
+        if(login.ok){
+        localStorage.setItem('token', login.token);
+        localStorage.setItem('token-creacion', new Date().getTime());
+        //Estableciendo el usuario en el estado global
+        setUserLogin({
+          checking: false,
+          uid: login.uid,
+          userName: login.userName,
+          profilePhoto: login.profilePhoto
+          });
+          //Si existe un error
+         }else if(login.msg){
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title : login.msg, 
+                showConfirmButton : false,
+                timer: 2000,
+                padding: '3em',
+                background: '#fff',
+                backdrop: `
+                    rgba(0,0,123,0.4)
+                    left top
+                    no-repeat
+                `
+                });
+        }else if(login.errors){
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title : login.errors.password.msg, 
+            showConfirmButton : false,
+            timer: 2000,
+            padding: '3em',
+            background: '#fff',
+            backdrop: `
+                rgba(0,0,123,0.4)
+                left top
+                no-repeat`
+            })
+        } 
+
+
     }
 
     return (

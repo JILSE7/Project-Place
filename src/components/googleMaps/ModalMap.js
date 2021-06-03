@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { uploadPhoto } from '../../helpers/maps';
 import { Mapa } from './GoogleMap';
-import {addNewPlace} from '../../helpers/post';
 import Swal from 'sweetalert2';
+import { fetchConToken } from '../../helpers/fetch';
 
 
 
@@ -24,7 +24,7 @@ const customStyles = {
 
 
 export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
-    
+    console.log(userLogin);
   const initialState = {
     id: Date.now(),
     place: "",
@@ -37,7 +37,6 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
     likeMe:false,
     visitors:0,
     comments:[],
-    usersId: "",
     tags:[],
     zoom: 15,
     height: 400,
@@ -58,11 +57,12 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
 
     //Inputs
     const {place,description} = newPlace;
+    //Capturando los campos
     const handleInputChange = (e)=>{
         setnewPlace({
             ...newPlace,
             [e.target.name] : e.target.value,
-            usersId: userLogin.id
+            user: userLogin[0].uid
         })
         console.log(newPlace);
     }
@@ -100,8 +100,16 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
 
     const handleSubtmitPlace = (e)=>{
         e.preventDefault();
-        addNewPlace(newPlace)
-        setnewPlace(initialState);
+        try {
+            //addNewPlace(newPlace)
+            fetchConToken('places/',newPlace,'POST');
+            Swal.fire("Excelente", place.place, 'success')
+            setnewPlace(initialState);
+            
+        } catch (error) {
+            console.log(error);
+            Swal.fire("Error", error, 'error')
+        }
     }
   
     return (
@@ -125,7 +133,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
             <div>
                 <div>
                     <div className="d-flex justify-content-center google_newImage">
-                    <img src={newPlace.image} className="google__image" />
+                    <img src={newPlace.image} className="google__image" alt={"Nueva imagen"} />
                     </div>
                     <div className="form-group">
                     <textarea 

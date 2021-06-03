@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
-import { handleAddComment } from '../../../helpers/Patch';
 import { SearchIdComments } from './SearchIdComments';
 
 //Proptypes
 import PropTypes from 'prop-types'
+import { fetchConToken } from '../../../helpers/fetch';
+import { PlaceContext } from '../../../context/PlaceContext';
+import Swal from 'sweetalert2';
 
 export const SearchidInfo = ({comments, placeId}) => {
+    //Context
+    const {userLogin : {uid, profilePhoto, userName}} = useContext(PlaceContext)
 
-
+    console.log(comments);
     //newComment
     const [comment, setComment] = useState();
 
-    //comentarios
+    //Todos los comentarios
     const [commentsArr, setcommentsArr] = useState([]);
 
     useEffect(() => {
@@ -23,20 +27,42 @@ export const SearchidInfo = ({comments, placeId}) => {
 
     const handleTextAreaChange = (e)=> setComment(e.target.value);
 
+
+    const handleAddComment = async() =>{
+        try {
+            const newCom = await (await fetchConToken(`places/${placeId}`,{comments : [...commentsArr, newComment]}, 'PUT' )).json();
+            if(newCom.ok) setcommentsArr([...commentsArr, newCommentLocal]);
+            
+        } catch (error) {
+            console.log(error);
+            Swal.fire('Error', 'Upsss...! tu comentario tuvo un problemilla, intenta nuevamente', 'warning');
+        }
+        
+
+    }
+
+
     //fecha
-    const fecha = new Date();;
-    const newComment = {
-        userId: 1,
-        id: Date.now(),
-        profilePhoto: "https://100k-faces.glitch.me/random-image",
+    const fecha = new Date();
+    const newCommentLocal = {//Este es el que se muestra temporalmente
+        user: {
+            _id: uid,
+            profilePhoto,
+            userName
+        },
         likes: 0,
         likeMe: false,
         comment,
         date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`
     }
 
-    
-
+    const newComment = {//Este es que va a la base de datos
+        user: uid,
+        comment,
+        likes: 0,
+        likeMe: false,
+        date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`
+    }
 
     
     return (
