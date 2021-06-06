@@ -15,7 +15,7 @@ import { fetchConToken } from "../../helpers/fetch";
 export  const UserScreen = memo(() => {
     //UserContext
     const {userLogin} = useContext(PlaceContext);
-    const [userPost, setuserPost] = useState([])
+    const [userPost, setuserPost] = useState({})
     const {id} = useParams();
 
     
@@ -24,7 +24,7 @@ export  const UserScreen = memo(() => {
         const getUser = async() => await (await fetchConToken(`users/${id}`)).json();
         
         getUser()
-        .then(({user}) => setuserPost([user]))
+        .then(({user}) => setuserPost(user))
         .catch(console.log())
         
     }, [id,userLogin.uid])

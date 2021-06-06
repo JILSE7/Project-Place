@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const ProfileCover = ({user}) => {
-    const [usuario, setUsuario] = useState([])
-
+    const [usuario, setUsuario] = useState({})
+    console.log(user);
     useEffect(() => {
-      setUsuario(user[0]);
+      setUsuario(user);
     }, [setUsuario, user])
   
     

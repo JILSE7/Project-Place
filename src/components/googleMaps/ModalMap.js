@@ -33,7 +33,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
     city: "",
     country: "",
     likes:[],
-    visitors:0,
+    visitors:[],
     comments:[],
     tags:[],
     zoom: 15,
