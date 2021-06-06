@@ -6,7 +6,6 @@ import { PlaceContext } from '../../context/PlaceContext';
 import { useParams } from 'react-router'
 import { ModalMap } from "../googleMaps/ModalMap";
 import { AddNewFab } from "../layout/layoutComponents/AddNewFab";
-import { getUserById } from "../../helpers/Gets";
 import { fetchConToken } from "../../helpers/fetch";
 
 
@@ -19,7 +18,6 @@ export  const UserScreen = memo(() => {
     const [userPost, setuserPost] = useState([])
     const {id} = useParams();
 
-    console.log(id);
     
     useEffect(() => {
         

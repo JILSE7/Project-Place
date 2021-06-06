@@ -9,11 +9,11 @@ export const PublicRoute = ({
     ...rest
 }) => {
     
-    console.log(IsAunthenticated);
+    const path = localStorage.getItem('lastPath') || '';
     return (
         <Route {...rest}
         component= {(props) =>(
-            (IsAunthenticated) ?  (<Redirect to="/"/>) : (<Component {...props}/>)  
+            (IsAunthenticated) ?  (<Redirect to={path.length> 0 ? path: '/'}/>) : (<Component {...props}/>)  
         )}
         />
     )

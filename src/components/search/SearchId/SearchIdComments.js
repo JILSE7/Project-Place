@@ -1,81 +1,67 @@
-import React, { useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import moment from 'moment'
 import { fetchConToken } from '../../../helpers/fetch';
+import { PlaceContext } from '../../../context/PlaceContext';
 
 
-export const SearchIdComments = ({comment, placeId, comments}) => {
+export const SearchIdComments = memo(({comment, placeId, comments}) => {
+
+    //UserLogin
+    const {userLogin: {uid}} = useContext(PlaceContext);
 
     //Destructuring 
-    const {comment: comentario, likes, date, likeMe, user} = comment;
-    console.log(typeof likes);
-    const [heartComments, setHeartcomments] = useState(likes);
+    const {comment: comentario, date,likes, user, _id} = comment;
+
+     //Extrayendo los likes del objeto likes
+     const [likesState, setlikesState] = useState(likes);
+
+     //Buscando tu ya le has dado like a la publicacion
+     const [likeMeState, setLikesMeState] = useState(likes.some(like => like === uid));
+
+    
+
+   
 
     const toggleHeart = (e)=>{
-        try {
+
             const classHeart = e.target.classList;
     
             if(classHeart.contains('far')){
-                console.log('hola');
+
                 //addLike
-                comments.forEach((comentario) => {
-                    if(comentario._id === comment._id){
-                        comentario.likeMe = true;
-                        comentario.likes = Number(likes)+1;
-                        setHeartcomments(Number(likes)+1) 
-                        fetchConToken(`places/${placeId}`, {comments : comments}, 'PUT')
-                                    .then(respuesta => {
-                                        const body = respuesta.json()
-                                              body
-                                              .then(place => {
-                                                  if(!place.ok){//si el like se actulizo con exito en la base lo mostramos en pantalla localmente
-                                                    setHeartcomments((likes <=0)? 0: Number(likes)-1)
-                                                    Swal.fire('Error al actualiza el comentario', 'intentalo nuevamente', 'error');
-                                                  }
-                                              })
-                                             
-                                    })
-                                    .catch(error=>{
-                                        Swal.fire('Error al actualizar el comentario', error, 'error');
-                                    });
-                        
-                        console.log(comments);
+                comments.forEach((comentario) => {//Recorriendo el arreglo de los comentarios
+                    if(comentario._id === _id){//Ubicando el comentario
+                        setlikesState([...likesState, uid]);
+                        setLikesMeState(true);
+        
                         
                     }
                 });
 
             }else if(classHeart.contains('fas')){
                 //RemoveLike
-                comments.forEach((comentario, i, array) => {
-                    if(comentario._id === comment._id){
-                        comentario.likeMe = false;
-                        comentario.likes = (likes <=0)? 0: Number(likes)-1;
-                        setHeartcomments((likes <=0)? 0: Number(likes)-1)
-                        fetchConToken(`places/${placeId}`, {comments : comments}, 'PUT')
-                        .then(respuesta => {
-                            const body = respuesta.json()
-                                  body
-                                  .then(place => {
-                                      if(!place.ok){//si el like no se actualizo en la base, le regresamos el like que tenia anteriormente
-                                        setHeartcomments(Number(likes)+1) 
-                                        Swal.fire('Error al actualiza el comentario', 'intentalo nuevamente', 'error');
-                                      }
-                                  })
-                        })
-                        .catch(error=>{
-                            Swal.fire('Error al actualiza el comentario', error, 'error');
-                        });
-                        console.log(comments);
+                comments.forEach((comentario) => {
+                    if(comentario._id === _id){
+                        setlikesState(likesState.filter(likes => likes != uid));
+                        setLikesMeState(false);
+                      
                     }
                 });
             }   
-            
-        } catch (error) {
-            
-        }
-       
     }
 
 
+    useEffect(() => {
+        comment.likes = likesState;
+        const addLikes = async() =>{
+            const respuesta = await (await fetchConToken(`places/${placeId}`,{comments : comments}, 'PUT')).json();
+            if(!respuesta.ok){
+                Swal.fire('Uppppsss..!', respuesta.msg, 'warning');
+            }
+        }
+        addLikes();
+    }, [likesState])
 
 
     return (
@@ -88,13 +74,13 @@ export const SearchIdComments = ({comment, placeId, comments}) => {
                     />
                     <div className="Comment-user">
                         <p><span>{user.userName} </span>{comentario}</p>
-                        {/* <p className="mt-2">{`${dateReset[0]} ${month} ${dateReset[2]}`}</p> */}
+                        <p className="mt-2 date">{moment(Number(date)).format('LLL')}</p>
                     </div>
                </div>
                    <div className="d-flex flex-column">
-                    <i  onClick={(e)=> toggleHeart(e)} className={`${(likeMe) ?  "fas fa-heart heart pointer" : "far fa-heart heart pointer" }`} ></i>
-                    <p className="text-center">{heartComments}</p>
+                    <i  onClick={(e)=> toggleHeart(e)} className={`${(likeMeState) ?  "fas fa-heart heart pointer" : "far fa-heart heart pointer" }`} ></i>
+                    <p className="text-center">{likesState.length}</p>
                    </div>
             </div>
     )
-}
+})

@@ -4,9 +4,9 @@ import {startLogin} from '../../helpers/auth'
 import Swal from 'sweetalert2';
 
 
-const LoginScreen = (props) => {
-
-    const {setUserLogin, userLogin, setInputSearch } = useContext(PlaceContext);
+const LoginScreen = () => {
+   
+    const {setUserLogin, setInputSearch } = useContext(PlaceContext);
     setInputSearch(false);
     const [form, setForm] = useState({
         email: '',
@@ -33,6 +33,7 @@ const LoginScreen = (props) => {
           userName: login.userName,
           profilePhoto: login.profilePhoto
           });
+          
           //Si existe un error
          }else if(login.msg){
             Swal.fire({

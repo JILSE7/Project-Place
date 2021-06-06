@@ -9,6 +9,6 @@ export const startRegister  = async(data) => await (await fetchSinToken('users/'
 export const startChecking = async() => await (await fetchConToken('auth/')).json()
 
 export const startLogout = () =>{
-    localStorage.removeItem('token');
-    localStorage.removeItem('token-init-date');
+    localStorage.clear();
+    localStorage.removeItem('lastPath');
 }

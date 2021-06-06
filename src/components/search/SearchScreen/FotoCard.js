@@ -5,6 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 const FotoCard = ({dataSource, history, id}) => {
 
 
+
   return (
     <div className="searchScreen_foto-card">
       <div className="d-flex flex-row align-items-center">
@@ -16,7 +17,7 @@ const FotoCard = ({dataSource, history, id}) => {
         <img src={`${dataSource.image}`} alt={dataSource.place} />
         <div className="searchScreen_middle">
             <div className="searchScreen_image-hover-text">
-              <span ><i className="fas fa-heart" aria-hidden="true"></i> {dataSource.likes} </span>
+              <span ><i className="fas fa-heart" aria-hidden="true"></i> {dataSource.likes.length} </span>
               <span ><i className="fas fa-comment" aria-hidden="true"></i> {dataSource.comments.length} </span>
             </div>
         </div>
@@ -45,7 +46,7 @@ FotoCard.propTypes = {
     imageUrl: PropTypes.string,
     location: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
-    likes: PropTypes.string,
+    likes: PropTypes.array,
     comments: PropTypes.arrayOf(PropTypes.shape({
       comment: PropTypes.string,
       likes: PropTypes.string,

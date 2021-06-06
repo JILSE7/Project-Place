@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 
-export const SearchidUser = ({user}) => {
+export const SearchidUser = memo(({user}) => {
     let follow = false;
     return (
         <div className="searchId_info-user">
@@ -24,7 +24,7 @@ export const SearchidUser = ({user}) => {
                        <button className="btn btn-success d-flex align-items-center"><i className="fas fa-user-plus"></i></button>}
         </div>
     )
-}
+})
 
 SearchidUser.propTypes = {
    user: PropTypes.object

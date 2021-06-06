@@ -7,6 +7,7 @@ const ProfileCover = ({user}) => {
     useEffect(() => {
       setUsuario(user[0]);
     }, [setUsuario, user])
+  
     
   return(
       <>  

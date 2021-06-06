@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-export const SearchidPeople = ({visitors}) => {
+export const SearchidPeople = memo(({visitors}) => {
 
     return (
         <div className="searchId_info-stay">
@@ -51,4 +51,4 @@ export const SearchidPeople = ({visitors}) => {
         </div>
 
     )
-}
+})

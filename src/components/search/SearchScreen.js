@@ -6,7 +6,8 @@ export const SearchScreen = memo(() => {
   //PlaceContext
  const {places, placesFiltered} = useContext(PlaceContext);
 
-  //console.log(places);
+
+
   return (
     <div className="mt-5">
       <Gallery places={placesFiltered ? placesFiltered : places} />

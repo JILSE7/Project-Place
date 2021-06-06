@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 //Components
 import { SearchidImage } from './SearchId/SearchidImage'
 import { SearchidInfo } from './SearchId/SearchidInfo'
@@ -13,7 +13,7 @@ import { PlaceContext } from '../../context/PlaceContext';
 import { SearchScreen } from './SearchScreen'
 
 
-export const SearchIdScreen = ({history}) => {
+export const SearchIdScreen = memo(({history}) => {
     const [size, setsize] = useState( window.outerWidth);
     const [comentarios, setcomentarios] = useState([]);
     window.addEventListener("resize", function(){setsize(this.outerWidth)});
@@ -35,10 +35,11 @@ export const SearchIdScreen = ({history}) => {
     // }
     
     // Context
-    const {places} = useContext(PlaceContext);
+    const {places, userLogin} = useContext(PlaceContext);
+  
 
     if(places.length >=1)search =  getPlaceById(placeId, places);
-    
+
 
     useEffect(() => {
         if(search) setcomentarios(search[0].comments)
@@ -57,12 +58,12 @@ export const SearchIdScreen = ({history}) => {
                     <main className="searchId_main">
                     <div className="searchId_imagen" >
                         <SearchidUser user= {search[0].user}/> 
-                        <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors} placeId={placeId} />
+                        <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors} placeId={placeId}  userLogin={userLogin}/>
                         <SearchidInfo comments = {comentarios} placeId={placeId}/>
                     </div>
                     <div className="searchId_information">
                        <SearchTitle title={search[0].place} />
-                        <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }}/>
+                        <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }} description={search[0].description} user = {{profilePhoto: search[0].user.profilePhoto, userName: search[0].user.userName}}/>
                         <SearchMap mapPosition={search[0].mapPosition}  marketPosition={search[0].marketPosition}/>
                         <SearchidPeople visitors = {search[0].visitors}/>
                     </div>
@@ -74,11 +75,11 @@ export const SearchIdScreen = ({history}) => {
                    ( <div className="searchId_container">
                              <SearchTitle title={search[0].place} />
                         <main className="searchId_main">
-                        <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }}/>
+                        <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }} description={search[0].description} user = {{profilePhoto: search[0].user.profilePhoto, userName: search[0].user.userName}}/>
                         <div className="searchId_imagen" >
                                
                                 <SearchidUser user= {search[0].user}/>
-                                <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors}  placeId={placeId} />
+                                <SearchidImage image = {search[0].image}  likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors} placeId={placeId}  userLogin={userLogin}/>
                                 <SearchidInfo comments = {search[0].comments} placeId={placeId}/>
                         </div>
                    <div className="searchId_information">
@@ -97,6 +98,6 @@ export const SearchIdScreen = ({history}) => {
 
         </div>
     )
-}
+})
 
 

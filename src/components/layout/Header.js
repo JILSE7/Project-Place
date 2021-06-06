@@ -10,11 +10,12 @@ import { startLogout } from '../../helpers/auth';
 
 const Header = (props) => {
 
-  const {userLogin, setUserLogin, inputSearch, setPlacesFiltered } = useContext(PlaceContext);
+  const {userLogin, setUserLogin, inputSearch, setPlacesFiltered, setPlaces } = useContext(PlaceContext);
 
   const logout = () => {
     startLogout();
     setUserLogin({checking: false});
+    setPlaces([]);
   }
 
   return (

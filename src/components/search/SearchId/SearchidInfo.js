@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { memo, useContext, useEffect, useState } from 'react'
 
 import { SearchIdComments } from './SearchIdComments';
 
@@ -8,11 +8,11 @@ import { fetchConToken } from '../../../helpers/fetch';
 import { PlaceContext } from '../../../context/PlaceContext';
 import Swal from 'sweetalert2';
 
-export const SearchidInfo = ({comments, placeId}) => {
+export const SearchidInfo = memo(({comments, placeId}) => {
     //Context
     const {userLogin : {uid, profilePhoto, userName}} = useContext(PlaceContext)
 
-    console.log(comments);
+
     //newComment
     const [comment, setComment] = useState();
 
@@ -50,18 +50,17 @@ export const SearchidInfo = ({comments, placeId}) => {
             profilePhoto,
             userName
         },
-        likes: 0,
-        likeMe: false,
+        likes: [],
         comment,
-        date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`
+        date: Date.now()
     }
 
     const newComment = {//Este es que va a la base de datos
         user: uid,
         comment,
-        likes: 0,
+        likes: [],
         likeMe: false,
-        date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}`
+        date: Date.now()
     }
 
     
@@ -81,17 +80,17 @@ export const SearchidInfo = ({comments, placeId}) => {
         </div>
             <div className="searchId_comments-add">
             <img
-                    src="https://100k-faces.glitch.me/random-image"
+                    src={profilePhoto}
                     className="searchId_info-user-img me-2"
                     alt="profilePhoto"
                     />
                 <textarea placeholder="¿Comentario?" value={comment} onChange={handleTextAreaChange}></textarea>
-                <i className="fas fa-plus pointer" onClick={()=> handleAddComment(placeId,commentsArr, newComment, setcommentsArr, setComment)} ></i>
+                <i className="fas fa-plus pointer" onClick={handleAddComment} ></i>
             </div>
         </>
         
     )
-}
+})
 
 
 SearchidInfo.propTypes = {

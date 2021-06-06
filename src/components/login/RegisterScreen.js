@@ -68,8 +68,7 @@ const RegisterScreen = (props) => {
         checking: false,
         uid: register.uid,
         userName: register.userName,
-        firstName: register.firstName,
-        lastName: register.lastName 
+        profilePhoto: register.profilePhoto
         });
 
        }else if(register.msg){

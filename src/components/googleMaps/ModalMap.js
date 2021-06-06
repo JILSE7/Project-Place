@@ -24,17 +24,15 @@ const customStyles = {
 
 
 export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
-    console.log(userLogin);
+
   const initialState = {
-    id: Date.now(),
     place: "",
     description:"",
     image:null,
     address: "",
     city: "",
     country: "",
-    likes:0,
-    likeMe:false,
+    likes:[],
     visitors:0,
     comments:[],
     tags:[],
@@ -48,7 +46,8 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
     marketPosition: {
       lat:19.419663619235017,
       lng: -99.18948798974584
-    }
+    },
+    date: Date.now()
   }
     
     
@@ -59,6 +58,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
     const {place,description} = newPlace;
     //Capturando los campos
     const handleInputChange = (e)=>{
+        console.log(userLogin[0].uid);
         setnewPlace({
             ...newPlace,
             [e.target.name] : e.target.value,

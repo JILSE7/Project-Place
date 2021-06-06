@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { GoogleMap, Marker  } from '@react-google-maps/api';
 
 const containerStyle = {
@@ -10,7 +10,7 @@ const containerStyle = {
 
 const center = {lat: 19.54071289966309, lng: -99.17936111990389};
 
-export const SearchMap = ({mapPosition,marketPosition}) => {
+export const SearchMap = memo(({mapPosition,marketPosition}) => {
   //Conversion de string a numeros
     mapPosition.lat = Number(mapPosition.lat)
     mapPosition.lng = Number(mapPosition.lng);
@@ -33,4 +33,4 @@ export const SearchMap = ({mapPosition,marketPosition}) => {
             </GoogleMap>
         </>
     )
-}
+})

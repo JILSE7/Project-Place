@@ -1,49 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import Swal from 'sweetalert2';
 import { fetchConToken } from '../../../helpers/fetch';
+import {PlaceContext} from '../../../context/PlaceContext'
 
-export const SearchidImage = ({image, likes, comments, visitors, likeMe, placeId}) => {
+export const SearchidImage = memo(({image, likes, comments, visitors, placeId, userLogin}) => {
+    //Extrayendo los likes del objeto likes
+    const [likesState, setlikesState] = useState(likes.map(like => like._id));
+    //Buscando tu ya le has dado like a la publicacion
+    const [likeMeState, setLikesMeState] = useState(likes.some(like => like._id === userLogin.uid));
+    //userNames 
+    const [userNames, setuserNames] = useState(likes.map(like => like.userName))
+    console.log(userNames);
 
-
-    const [likesState, setlikesState] = useState(Number(likes));
-    const [likeMeState, setLikesMeState] = useState(likeMe)
-    // const [visitorState, setvisitor] = useState(visitors);
-
-    
+    console.log(likes);
     const toggleLike = (e)=>{
         const classLike = e.target.classList;
-        console.log(classLike);
-        try {
             if(classLike.contains('far')){
-                console.log('pponiendo like');
-                setLikesMeState(true);
-                setlikesState(Number(likesState) + 1)
                 
-
+                console.log('pponiendo like');
+                setlikesState([...likesState, userLogin.uid]);
+                setuserNames([...userNames,userLogin.userName])
+                setLikesMeState(true);
             }else if(classLike.contains('fas')){
                 console.log('quitando like');
+                setlikesState(likesState.filter(id => id !== userLogin.uid));
+                setuserNames(userNames.filter(userName => userName != userLogin.userName));
                 setLikesMeState(false);
-                setlikesState(Number(likesState)-1)
-
+                
             }
-            
-        } catch (error) {
-            
-        }
-
- 
     }
 
     useEffect(() => {
-       const addLikes = async() =>{
-           const respuesta = await (await fetchConToken(`places/${placeId}`, {likes : likesState, likeMe: likeMeState}, 'PUT')).json();
 
-           console.log(respuesta);
+       const addLikes = async() =>{
+           const respuesta = await (await fetchConToken(`places/${placeId}`, {likes : likesState}, 'PUT')).json();
+           if(!respuesta.ok){
+               Swal.fire('Uppppsss..!', respuesta.msg, 'warning');
+           }
        }
        addLikes();
+       
+    }, [likesState]);
 
-    }, [likeMeState])
+   
 
     const toggleVisitors = () =>{
         console.log('toggle visitors');
@@ -54,25 +54,44 @@ export const SearchidImage = ({image, likes, comments, visitors, likeMe, placeId
         <div className="searchId_img-container d-flex">
         
             <img className="searchId_img" src= {image} alt="profilePhoto"/>
-            <div className="searchId_img-info">                                        
-                <div className="searchId_img-info-social">              
-                    <i onClick={toggleLike} className= {`${(likeMeState) ? "fas fa-surprise icon-social wonderl": "far fa-surprise icon-social wonder"}`}></i>
-                    <p>{likesState}</p>
-                </div>
+            <div className="d-flex  w-100 justify-content-between align-items-center">
+                <div className="searchId_img-info">                                        
+                    <div className="searchId_img-info-social">              
+                        <i onClick={toggleLike} className= {`${(likeMeState) ? "fas fa-heart icon-social wonderl": "far fa-heart icon-social wonder"}`}></i>
+                        <p>{likesState.length}</p>
+                    </div>
 
-                <div className="searchId_img-info-social">
-                    <i onClick={toggleVisitors} className="fas fa-angle-double-down icon-social"></i>
-                    <p>{visitors}</p>
+                    <div className="searchId_img-info-social">
+                        <i onClick={toggleVisitors} className="fas fa-angle-double-down icon-social"></i>
+                        <p>{visitors}</p>
+                    </div>
+                    <div className="searchId_img-info-social">
+                        <i className="far fa-comment-dots icon icon-social coment"></i>
+                        <p>{comments.length}</p>
+                    </div>
                 </div>
-                <div className="searchId_img-info-social">
-                    <i className="far fa-comment-dots icon icon-social coment"></i>
-                    <p>{comments.length}</p>
+                <div className="searchId_img-info-likes-social">
+                    {
+                        (userNames.length >= 4) ? 
+                        (<p>{`${userNames[0]}, ${userNames[1]}, ${userNames[2]} & ${userNames.length-3} personas mas les encanta esta publicacion`}</p>)
+                                            :
+                        (userNames.length >= 3)  ? 
+                        (<p>{`${userNames[0]}, ${userNames[1]} & ${userNames[2]}  les encanta esta publicacion`}</p>)
+                                            :
+                        ( userNames.length>1 && userNames.length<=2) ? 
+                        (<p>{`${userNames[0]}, ${userNames[1]} les encanta esta publicacion`}</p>)
+                                            :
+                        (userNames.length>=1)   ? 
+                        (<p>{`${userNames[0]} le encanta esta publicacion`}</p>)
+                                            :
+                        (<p>{`Esta publicacion aun no tiene reacciones`}</p>)            
+                    }
                 </div>
             </div>
             
         </div>
     )
-}
+})
 
 
 SearchidImage.propTypes = {
