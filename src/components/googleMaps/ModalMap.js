@@ -58,11 +58,11 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
     const {place,description} = newPlace;
     //Capturando los campos
     const handleInputChange = (e)=>{
-        console.log(userLogin[0].uid);
+        console.log(userLogin.uid);
         setnewPlace({
             ...newPlace,
             [e.target.name] : e.target.value,
-            user: userLogin[0].uid
+            user: userLogin.uid
         })
         console.log(newPlace);
     }
