@@ -2,16 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import moment from 'moment'
+import { GoClock } from "react-icons/go";
 const FotoCard = ({dataSource, history, id}) => {
 
   console.log(dataSource.date);
 
   return (
     <div className="searchScreen_foto-card">
-      <div className="d-flex flex-row align-items-center">
-        <img className="searchScreen_user-photo" src={dataSource.user.profilePhoto} alt={dataSource.place} loading="lazy" />
-        <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.user.userName}</p>
-        <p className="date">{moment(Number(dataSource.date)).format('LLL')}</p>
+      <div className="head d-flex justify-content-between align-items-center">
+        <div className="d-flex flex-row align-items-center">
+          <img className="searchScreen_user-photo" src={dataSource.user.profilePhoto} alt={dataSource.place} loading="lazy" />
+          <p className="font-weight-bold p-0 m-0 ml-2 ">{dataSource.user.userName}</p>
+        </div>
+        <div className="d-flex">
+        <GoClock style={{color: "orangered"}}/>
+        <p className="date">{moment(Number(dataSource.date)).format('LL')}</p>
+        </div>
       </div>
       <div className="searchScreen_image-container">
         <Link to={`/search/${dataSource.placeId}`}>
