@@ -1,8 +1,10 @@
 import React, { memo, useContext, useEffect, useState } from 'react';
+import {Link} from 'react-router-dom'
 import Swal from 'sweetalert2';
 import moment from 'moment'
 import { fetchConToken } from '../../../helpers/fetch';
 import { PlaceContext } from '../../../context/PlaceContext';
+
 
 
 export const SearchIdComments = memo(({comment, placeId, comments}) => {
@@ -12,6 +14,7 @@ export const SearchIdComments = memo(({comment, placeId, comments}) => {
 
     //Destructuring 
     const {comment: comentario, date,likes, user, _id} = comment;
+
 
      //Extrayendo los likes del objeto likes
      const [likesState, setlikesState] = useState(likes);
@@ -67,13 +70,15 @@ export const SearchIdComments = memo(({comment, placeId, comments}) => {
     return (
         <div className="searchId_comments-users">
                <div className="box-user">
+               <Link to={`/user/${user._id}`}>
                     <img
                     src={user.profilePhoto}
                     className="searchId_info-user-img me-2"
                     alt="ProfilePhoto"
                     />
+                </Link>
                     <div className="Comment-user">
-                        <p><span>{user.userName} </span>{comentario}</p>
+                        <p><Link to={`/user/${user._id}`}><span>{user.userName} </span></Link>{comentario}</p>
                         <p className="mt-2 date">{moment(Number(date)).format('LLL')}</p>
                     </div>
                </div>

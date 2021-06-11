@@ -44,12 +44,17 @@ const Header = (props) => {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <span className="navbar-text">
-                  **Bienvenido
+                  Bienvenido
                 </span>
               </li>
               <li className="nav-item dropdown">
                 <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {userLogin.userName}
+                  {`${userLogin.userName} `}
+                  {<img
+                        src={userLogin.profilePhoto}
+                        className="searchId_info-user-img"
+                        alt={userLogin.userName}
+                        />}
                 </div>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link className="dropdown-item" to={`/user/${userLogin.uid}`}>Perfil</Link>

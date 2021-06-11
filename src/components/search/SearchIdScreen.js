@@ -16,6 +16,7 @@ import { SearchScreen } from './SearchScreen'
 export const SearchIdScreen = memo(({history}) => {
     const [size, setsize] = useState( window.outerWidth);
     const [comentarios, setcomentarios] = useState([]);
+
     window.addEventListener("resize", function(){setsize(this.outerWidth)});
     
     window.scroll({
@@ -36,21 +37,23 @@ export const SearchIdScreen = memo(({history}) => {
     
     // Context
     const {places, userLogin} = useContext(PlaceContext);
-  
+
 
     if(places.length >=1)search =  getPlaceById(placeId, places);
 
 
     useEffect(() => {
-        if(search) setcomentarios(search[0].comments)
-    }, [placeId, search])
+        console.log('me pinto');
+        if(search){
+           setcomentarios(search[0].comments);
+        }
+    }, [placeId]);
 
     return (
         <div className="mt-5">
-            
                 {
                 
-                search!== undefined ?
+                search!== undefined  ?
                 
                 (size >=916) ?
              
@@ -58,14 +61,14 @@ export const SearchIdScreen = memo(({history}) => {
                     <main className="searchId_main">
                     <div className="searchId_imagen" >
                         <SearchidUser user= {search[0].user}/> 
-                        <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors = {search[0].visitors} placeId={placeId}  userLogin={userLogin}/>
+                        <SearchidImage image = {search[0].image} likes = {search[0].likes} comments = {search[0].comments} likeMe = {search[0].likeMe} visitors ={search[0].visitors} placeId={placeId}  userLogin={userLogin}/>
                         <SearchidInfo comments = {comentarios} placeId={placeId}/>
                     </div>
                     <div className="searchId_information">
                        <SearchTitle title={search[0].place} />
                         <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }} description={search[0].description} user = {{profilePhoto: search[0].user.profilePhoto, userName: search[0].user.userName}}/>
                         <SearchMap mapPosition={search[0].mapPosition}  marketPosition={search[0].marketPosition}/>
-                        <SearchidPeople visitors = {search[0].visitors}/>
+                        <SearchidPeople visitors={search[0].visitors}/>
                     </div>
                    </main>
                     <SearchScreen/>

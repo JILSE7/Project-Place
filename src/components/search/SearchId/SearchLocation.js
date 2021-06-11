@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 export const SearchLocation = memo(({location, description, user}) => {
+
    const {city, address, country} = location;
 
     return (

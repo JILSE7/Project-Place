@@ -37,6 +37,13 @@ html {
     line-height: 1.4;
 }
 
+header{
+    margin-bottom: 100px;
+}
+.navbar-nav .dropdown-menu {
+    width: 100px !important;
+}
+
 .prueba{
     background-color: black;
     border: 1px solid white

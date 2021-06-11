@@ -176,6 +176,13 @@
     }
     .Comment-user{
         margin-left: 8px;
+        a{
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+                color: orange;
+            }
+        }
 
         .date{
             font-style: italic;
@@ -334,9 +341,11 @@
     color: #0375e3;
 }
 .wonder:hover{
-    color: rgba(74, 74, 239, 0.777);
+    color: #ff0404;;
 }
-
+.vists:hover{
+    color: green;
+}
 .wonderl{
     color: #ff0404;
 }
@@ -344,8 +353,8 @@
  color: rgb(222, 91, 10);
  }
  
-.coment:hover{
-    color: rgb(150, 149, 149);
+.coment{
+    color: orange;
 }
 .heart{
     color: #ff0404;

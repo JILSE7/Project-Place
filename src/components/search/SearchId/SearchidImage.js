@@ -2,18 +2,26 @@ import React, { memo, useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import Swal from 'sweetalert2';
 import { fetchConToken } from '../../../helpers/fetch';
-import {PlaceContext} from '../../../context/PlaceContext'
+//Iconos
+import { BiBeenHere } from "react-icons/bi";
+import { RiMapPinUserLine, RiMapPin2Line } from "react-icons/ri";
 
-export const SearchidImage = memo(({image, likes, comments, visitors, placeId, userLogin}) => {
+export const SearchidImage = memo(({image, likes, comments, visitors: visitas,placeId, userLogin}) => {
+
+
+
     //Extrayendo los likes del objeto likes
     const [likesState, setlikesState] = useState(likes.map(like => like._id));
     //Buscando tu ya le has dado like a la publicacion
     const [likeMeState, setLikesMeState] = useState(likes.some(like => like._id === userLogin.uid));
     //userNames 
-    const [userNames, setuserNames] = useState(likes.map(like => like.userName))
-    console.log(userNames);
+    const [userNames, setuserNames] = useState(likes.map(like => like.userName));
+    //Visitors
+    const [visitors, setVisitors] = useState(visitas.map(id => id._id));
+    const [visitorMe, setvisitorMe] = useState(visitas.some(visit => visit._id == userLogin.uid));
+  
 
-    console.log(likes);
+    //Likes
     const toggleLike = (e)=>{
         const classLike = e.target.classList;
             if(classLike.contains('far')){
@@ -29,7 +37,8 @@ export const SearchidImage = memo(({image, likes, comments, visitors, placeId, u
                 setLikesMeState(false);
                 
             }
-    }
+    };
+
 
     useEffect(() => {
 
@@ -43,17 +52,39 @@ export const SearchidImage = memo(({image, likes, comments, visitors, placeId, u
        
     }, [likesState]);
 
-   
 
-    const toggleVisitors = () =>{
-        console.log('toggle visitors');
-    }
+    const toggleVisitors = (e) =>{
+        e.preventDefault()
+        console.log('hola');
+        if(visitors.find(user => user === userLogin.uid )){
+            console.log('quitando visita');
+            setVisitors(visitors.filter(id => id !== userLogin.uid));
+            setvisitorMe(false); 
+        }else{
+            console.log('agregando visita');
+            setVisitors([...visitors, userLogin.uid]);
+            setvisitorMe(true); 
+        }
 
+    };
 
+ 
+
+    useEffect(() => {
+        const addVisitors = async() =>{
+            const respuesta = await (await fetchConToken(`places/${placeId}`, {visitors : visitors}, 'PUT')).json();
+            if(!respuesta.ok){
+                Swal.fire('Uppppsss..!', respuesta.msg, 'warning');
+            }
+        }
+        addVisitors();
+     }, [visitors]);
+
+ 
     return (
         <div className="searchId_img-container d-flex">
         
-            <img className="searchId_img" src= {image} alt="profilePhoto"/>
+           <img className="searchId_img" src= {image} alt="profilePhoto"/>
             <div className="d-flex  w-100 justify-content-between align-items-center">
                 <div className="searchId_img-info">                                        
                     <div className="searchId_img-info-social">              
@@ -62,8 +93,13 @@ export const SearchidImage = memo(({image, likes, comments, visitors, placeId, u
                     </div>
 
                     <div className="searchId_img-info-social">
-                        <i onClick={toggleVisitors} className="fas fa-angle-double-down icon-social"></i>
-                        <p>{visitors}</p>
+                        { visitorMe ? 
+                            (<RiMapPinUserLine onClick={toggleVisitors} style={{color:"green"}} className=" icon-social"/>)
+                                    :
+                            (<RiMapPin2Line onClick={toggleVisitors}  className="icon-social vists" />)
+
+                        }
+                        <p>{visitors.length}</p>
                     </div>
                     <div className="searchId_img-info-social">
                         <i className="far fa-comment-dots icon icon-social coment"></i>
@@ -87,7 +123,7 @@ export const SearchidImage = memo(({image, likes, comments, visitors, placeId, u
                         (<p>{`Esta publicacion aun no tiene reacciones`}</p>)            
                     }
                 </div>
-            </div>
+            </div> 
             
         </div>
     )

@@ -1,53 +1,28 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 
 export const SearchidPeople = memo(({visitors}) => {
-
+    
+    console.log(visitors);
     return (
         <div className="searchId_info-stay">
             
-            <i className="fas fa-angle-double-down icon-social be"></i>
-
             <div className="searchId_info-stay-user ms-3">
-            <img
-            src="https://ozgrozer.github.io/100k-faces/0/4/004131.jpg"
-            className="searchId_info-user-img"
-            alt="profilePhoto1"
+                {
+                    visitors.map(user =>{
+                        return(
+                        <img
+                        src={user.profilePhoto}
+                        className="searchId_info-user-img"
+                        alt={user.userName}
+                        title = {user.userName}
+                        key={user._id}
+                        />
 
-            />
-            <img
-            src="https://ozgrozer.github.io/100k-faces/0/1/001542.jpg
-"
-            className="searchId_info-user-img"
-            alt="profilePhoto2"
-            />
-            <img
-            src="https://100k-faces.glitch.me/random-image"
-            className="searchId_info-user-img"
-            alt="profilePhoto3"
-            />
-            <img
-            src="https://ozgrozer.github.io/100k-faces/0/5/005036.jpg"
-
-            className="searchId_info-user-img"
-            alt="profilePhoto4"
-            />
-            <img
-            src="https://ozgrozer.github.io/100k-faces/0/1/001482.jpg"
-            className="searchId_info-user-img"
-            alt="profilePhoto5"
-            />
-            <img
-            src="https://ozgrozer.github.io/100k-faces/0/1/001482.jpg"
-            className="searchId_info-user-img"
-            alt="profilePhoto6"
-            />
-            <img
-            src="https://ozgrozer.github.io/100k-faces/0/5/005036.jpg"
-            className="searchId_info-user-img"
-            alt="profilePhoto7"
-            />
+                        )
+                    })
+                }
             </div>
-            <p>& {visitors} personas mas......</p>
+            <p>& {visitors.length} personas mas......</p>
         </div>
 
     )
