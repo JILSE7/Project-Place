@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProfilePost } from './ProfilePost';
+import ProfilePost from './ProfilePost';
 
 export const ProfilePostsList = ({user}) => {
     return (
