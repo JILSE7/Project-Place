@@ -5,6 +5,8 @@ import { Mapa } from './GoogleMap';
 import Swal from 'sweetalert2';
 import { fetchConToken } from '../../helpers/fetch';
 
+import { MdLibraryAdd, MdUpdate } from "react-icons/md";
+
 
 
 const customStyles = {
@@ -23,8 +25,9 @@ const customStyles = {
 
 
 
-export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post}) => {
-
+export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setuserPost}) => {
+    console.log(userLogin);
+    
   const initialState = {
     place: "",
     description:"",
@@ -58,17 +61,14 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post}) => {
     const {place,description} = newPlace;
     //Capturando los campos
     const handleInputChange = (e)=>{
-        console.log(userLogin.uid);
         setnewPlace({
             ...newPlace,
             [e.target.name] : e.target.value,
             user: userLogin.uid
         })
-        console.log(newPlace);
     }
 
     const handleCloseModal = ()=>{
-        console.log('cerrando modal');
         setmodalOpen(false)
     }
     const handleClick =(e)=>{
@@ -102,14 +102,42 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post}) => {
         e.preventDefault();
         try {
             //addNewPlace(newPlace)
-            fetchConToken('places/',newPlace,'POST');
-            Swal.fire("Excelente", place.place, 'success')
+             fetchConToken('places/',newPlace,'POST');
+            Swal.fire("Excelente, Nuevo Place Agregado", place.place, 'success')
             setnewPlace(initialState);
-            
+            handleCloseModal();
         } catch (error) {
             console.log(error);
             Swal.fire("Error", error, 'error')
         }
+
+    };
+
+    const handleUpdateSubmit = (e) => {
+        e.preventDefault();
+
+      try {
+        //addNewPlace(newPlace)
+         fetchConToken(`places/${post._id}`,newPlace,'PUT');
+        Swal.fire("Excelente, Place Actualizado", place.place, 'success')
+        setnewPlace(initialState);
+        handleCloseModal();
+
+        setTimeout(() => {
+            window.location.reload();   
+        }, 800);
+        
+    } catch (error) {
+        console.log(error);
+        Swal.fire("Error", error, 'error')
+    }
+
+    //modifcar
+
+    /* const withOutPost = userLogin.posts.filter(publicacion => publicacion._id != post._id);
+    setuserPost([...withOutPost, newPlace])
+ */
+
     }
   
     return (
@@ -124,7 +152,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post}) => {
       >
           <input className="google__placeName" placeholder="Nombre del nuevo lugar" name="place" value={place} onChange={handleInputChange}/>
 <hr />
-<form className="container" onSubmit={handleSubtmitPlace}>
+<form className="container" onSubmit={(!update) ? handleSubtmitPlace : handleUpdateSubmit}>
 
 
         { (newPlace.image !== null)? 
@@ -163,14 +191,28 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post}) => {
                 </div>
                 
                 <Mapa newPlace={newPlace} setnewPlace={setnewPlace} pin= {true}/>
+                {
+                    (!update) ? 
+                        (<button
+                            type="submit"
+                            className="btn btn-outline-success guardar"
+                        >
+                            <MdLibraryAdd/>
 
-                <button
-                    type="submit"
-                    className="btn btn-outline-success guardar"
-                >
-                    <i className="far fa-save"></i>
-                    <span> Guardar</span>
-                </button>
+                            <span> Agregar nuevo lugar</span>
+                        </button>)  
+                              :
+
+                        (<button
+                            type="submit"
+                            className="btn btn-outline-success guardar"
+                        >
+                            <MdUpdate/>
+
+                            <span> Actualizar</span>
+                        </button>)  
+                                
+                }
             </div>
             )
 

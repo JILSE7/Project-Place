@@ -19,7 +19,7 @@ const containerStyle = {
 
 
 export const Mapa = ({newPlace, setnewPlace, pin}) => {
-  console.log(newPlace);
+
 
   const onMarketDragEnd = async(e) =>{
 

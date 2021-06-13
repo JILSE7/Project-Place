@@ -27,11 +27,11 @@ export  const UserScreen = memo(() => {
         .then(({user}) => setuserPost(user))
         .catch(console.log())
         
-    }, [id,userLogin.uid])
-    
-    
+    }, [id,userLogin.uid]);
+
+
     //modal
-    const [modalOpen, setmodalOpen] = useState(false)
+    const [modalOpen, setmodalOpen] = useState(false);
 
     return (
         <React.Fragment>
@@ -42,7 +42,7 @@ export  const UserScreen = memo(() => {
                 </div>
             </section>
 
-            <ProfilePostsList user = {userPost} />
+            <ProfilePostsList userPost = {userPost} setuserPost={setuserPost} />
             <ModalMap userLogin={userPost}  modalOpen={modalOpen} setmodalOpen={setmodalOpen}/>
             {(userLogin.uid === id) && <AddNewFab  setmodalOpen={setmodalOpen}/>}
 

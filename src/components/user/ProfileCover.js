@@ -11,23 +11,28 @@ const ProfileCover = ({user}) => {
 
     const { id } = useParams();
 
-    const { userLogin: { uid } } = useContext(PlaceContext)
-    console.log(uid);
+    const { userLogin: { uid } } = useContext(PlaceContext);
 
-    const [profilePhoto, setProfilePhoto] = useState(user.profilePhoto)
-
+    const [profilePhoto, setProfilePhoto] = useState(user.profilePhoto);
+    const [coverPhoto, setCoverPhoto] = useState(user.coverPhoto);
 
     useEffect(() => {
       setUsuario(user);
       setProfilePhoto(user.profilePhoto);
+      setCoverPhoto(user.coverPhoto);
     }, [setUsuario, user])
 
-    const handleClick =(e)=>{
+    const handleClickProfilePhoto =(e)=> {
         e.preventDefault();
         document.querySelector('#uploadProfilePhoto').click();
     }
 
-    const handleFileChange = async(e)=>{
+    const handleClickCoverPhoto =(e)=> {
+      e.preventDefault();
+      document.querySelector('#uploadCoverPhoto').click();
+    }
+
+    const handleFileChangeProfilePhoto = async(e)=> {
       try 
       {
         const file = e.target.files[0];
@@ -47,7 +52,7 @@ const ProfileCover = ({user}) => {
 
         Swal.fire({
           imageUrl: profilePhoto,
-          imageHeight: 600,
+          imageWidth: 550,
           imageAlt: 'A tall image'
         })
 
@@ -64,17 +69,56 @@ const ProfileCover = ({user}) => {
         console.log(e);
       }
     }
-  
-    
+
+    const handleFileChangeCoverPhoto = async(e)=> {
+      try 
+      {
+        const file = e.target.files[0];
+
+        Swal.fire({
+            title: 'Uploading',
+            text: 'Please wait....',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            willOpen: ()=>{
+                Swal.showLoading();
+            }
+        })
+
+        const coverPhoto = await uploadPhoto(file);
+        Swal.close();
+
+        Swal.fire({
+          imageUrl: coverPhoto,
+          imageWidth: 800,
+          imageAlt: 'A tall image'
+        })
+
+        console.log(usuario);
+
+        const upload = await (await fetchConToken(`users/${usuario.uid}`, {coverPhoto}, 'PUT')).json();
+        
+        if (upload.ok)
+        {
+          setCoverPhoto(coverPhoto);
+        }
+
+
+      } catch(e) {
+        console.log(e);
+      }
+    }
+
+
   return(
       <>  
       {  (usuario) ? 
-      <div className="profile-cover" style={{backgroundImage: `url(${usuario.coverPhoto})`}}>
+      <div className="profile-cover" style={{backgroundImage: `url(${coverPhoto})`}}>
           <div className="shadow"></div>
           <div className="profile-avatar">
               <img src= {profilePhoto} alt="img" />
-              <input id="uploadProfilePhoto" name="file" onChange={handleFileChange} type="file" style={{display:"none"}}/>
-              <span className="change-photo" onClick={(uid === id) ? handleClick : null}>
+              <input id="uploadProfilePhoto" name="file" onChange={handleFileChangeProfilePhoto} type="file" style={{display:"none"}}/>
+              <span className="change-photo" style={(uid === id) ? null: {display:"none"}} onClick={handleClickProfilePhoto}>
                   <i className="fas fa-camera"></i> 
                   <span>Cambiar foto</span>
               </span>
@@ -94,9 +138,10 @@ const ProfileCover = ({user}) => {
               : null
           }
 
-          <div className="profile-options">
-              <button type="">Cambiar portada</button>
-              <button type=""><i className="fas fa-wrench"></i></button>
+          <div className="profile-options" style={(uid === id) ? null: {display:"none"}}>
+              <input id="uploadCoverPhoto" name="file" onChange={handleFileChangeCoverPhoto} type="file" style={{display:"none"}}/>
+              <span onClick={handleClickCoverPhoto}>Cambiar portada</span>
+              <span><i className="fas fa-wrench"></i></span>
           </div>
       </div>
       
@@ -108,8 +153,8 @@ const ProfileCover = ({user}) => {
   )
 };
 
-ProfileCover.propTypes = {
+/* ProfileCover.propTypes = {
     user: PropTypes.object.isRequired
-  };
+}; */
 
-  export default ProfileCover;
+export default ProfileCover;
