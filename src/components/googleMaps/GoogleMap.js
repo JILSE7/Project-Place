@@ -19,12 +19,13 @@ const containerStyle = {
 
 
 export const Mapa = ({newPlace, setnewPlace, pin}) => {
+  console.log(newPlace);
 
   const onMarketDragEnd = async(e) =>{
 
     try {
-      let newLat = e.latLng.lat();
-      let newLng = e.latLng.lng()
+      let newLat = Number(e.latLng.lat());
+      let newLng = Number(e.latLng.lng())
       //DESTRUCTURING
       const {results} = await Geocode.fromLatLng(newLat, newLng)
       const {address_components} = results[0]
@@ -38,18 +39,19 @@ export const Mapa = ({newPlace, setnewPlace, pin}) => {
           city: (typeof ciudad === "string")? ciudad : ciudad.long_name,
           country: pais.long_name,
           mapPosition:{
-            lat: newLat,
-            lng: newLng
+            lat: Number(newLat),
+            lng: Number(newLng)
           },
           marketPosition:{
-            lat: newLat,
-            lng: newLng
+            lat: Number(newLat),
+            lng: Number(newLng)
           }
         })
         console.log('me movi');
       }
 
     } catch (error) {
+      console.log(newPlace.lat);
       console.log(error);
     }
   }
@@ -62,13 +64,13 @@ export const Mapa = ({newPlace, setnewPlace, pin}) => {
         <div className="google_mapa">  
             <GoogleMap
               mapContainerStyle={containerStyle}
-              center={newPlace.mapPosition}
+              center={{lat: Number(newPlace.mapPosition.lat), lng: Number(newPlace.mapPosition.lng)}|| newPlace.marketPosition}
               zoom={17}
               
               
             >
               { /* Child components, such as markers, info windows, etc. */ }
-           <Marker position={newPlace.marketPosition}
+           <Marker position={{lat: Number(newPlace.mapPosition.lat), lng: Number(newPlace.mapPosition.lng)} || newPlace.marketPosition}
                     draggable={pin}
                     onDragEnd = {onMarketDragEnd}
            />

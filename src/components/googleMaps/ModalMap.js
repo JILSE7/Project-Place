@@ -23,7 +23,7 @@ const customStyles = {
 
 
 
-export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
+export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post}) => {
 
   const initialState = {
     place: "",
@@ -52,7 +52,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen}) => {
     
     
     //maps
-    const [newPlace, setnewPlace] = useState(initialState);
+    const [newPlace, setnewPlace] = useState((post)? post : initialState);
 
     //Inputs
     const {place,description} = newPlace;
