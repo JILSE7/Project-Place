@@ -127,9 +127,15 @@ const ProfileCover = ({user}) => {
           { 
             usuario.posts !== undefined ?
               (<div className="profile-data">
-                  <h4 className="profile-user">{usuario.firstName} {usuario.lastName}</h4>
-                  <p className="profile-biography">{ usuario.information }</p>
+                  <div className="profile-information">
+                    <h4 className="profile-user">{usuario.firstName} {usuario.lastName}</h4>
+                    <p className="profile-biography">{ usuario.information }</p>
+                  </div>
+                  {/* <h4 className="profile-user">{usuario.firstName} {usuario.lastName}</h4>
+                  <p className="profile-biography">{ usuario.information }</p> */}
                   <ul className="profile-list">
+                      {/* <li><h4 className="profile-user">{usuario.firstName} {usuario.lastName}</h4></li>
+                      <li><p className="profile-biography">{ usuario.information }</p></li> */}
                       <li>{usuario.followers} Seguidores</li>
                       <li>{usuario.followed} Seguidos</li>
                       <li>{usuario.posts.length} Publicaciones</li>

@@ -6,8 +6,7 @@ import Swal from 'sweetalert2';
 import { fetchConToken } from '../../helpers/fetch';
 
 import { MdLibraryAdd, MdUpdate } from "react-icons/md";
-
-
+import { TagsInput } from "react-tag-input-component";
 
 const customStyles = {
     content : {
@@ -22,8 +21,6 @@ const customStyles = {
   };
   
   Modal.setAppElement('#root');
-
-
 
 export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setuserPost}) => {
     console.log(userLogin);
@@ -56,6 +53,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
     
     //maps
     const [newPlace, setnewPlace] = useState((post)? post : initialState);
+    const [inputTags, setInputTags] = useState([]);
 
     //Inputs
     const {place,description} = newPlace;
@@ -151,8 +149,8 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
         overlayClassName="modal-fondo"
       >
           <input className="google__placeName" placeholder="Nombre del nuevo lugar" name="place" value={place} onChange={handleInputChange}/>
-<hr />
-<form className="container" onSubmit={(!update) ? handleSubtmitPlace : handleUpdateSubmit}>
+          <hr />
+          <form className="container" onSubmit={(!update) ? handleSubtmitPlace : handleUpdateSubmit}>
 
 
         { (newPlace.image !== null)? 
@@ -164,17 +162,29 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
                     <img src={newPlace.image} className="google__image" alt={"Nueva imagen"} />
                     </div>
                     <div className="form-group">
-                    <textarea 
-                        type="text" 
-                        className="form-control w-100"
-                        placeholder="Algun comentario sobre tu foto?"
-                        rows="2"
-                        name="description"
-                        value={description}
+                        <textarea 
+                            type="text" 
+                            className="form-control w-100"
+                            placeholder="¿Algún comentario sobre tu foto?"
+                            rows="2"
+                            name="description"
+                            value={description}
+                            onChange={handleInputChange}
+                        ></textarea>
+                    </div>
+
+                    <TagsInput
+                        value={inputTags}
+                        //onChange={setInputTags}
+                        name="inputTags"
+                        placeHolder="Agrega algún tag"
+                        className="form-control"
                         onChange={handleInputChange}
-                    ></textarea>
-                </div>
-                    <div>
+                        style={{marginTop:'10px'}}
+                    />
+                    <em style={{margin:'5px'}}>Presiona la tecla Enter para agregar un nuevo tag</em>
+
+                    <div style={{marginTop:'20px'}}>
                         <div className="form-group">
                             <label> <i className="fas fa-map-marker-alt search-icon"></i> Address: {newPlace.address}</label>
                         </div>
