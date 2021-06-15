@@ -31,7 +31,7 @@ export const DataProvider = ({ children }) => {
 
   //Obtener array de las ciudades registradas y array de ciudades sin repetirse
   const countries = places.map(places => places.country);
-  const uniqueCountries = [...new Set(countries)];
+  const uniqueCountries = [...new Set(countries.sort())];
   //Poner el input de busqueda en el header o no
   const [inputSearch, setInputSearch] = useState(true);
   //Filtrar las ciudad por el input
