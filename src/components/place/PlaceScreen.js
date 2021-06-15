@@ -14,9 +14,9 @@ import FotoCard from '../search/SearchScreen/FotoCard';
 const PlaceScreen = ( props ) => {
 
   const { places } = useContext(PlaceContext);
-  // const firstPlaces = places.slice(0,3);
-  // const secondPlaces = places.slice(3,6);
-  // const thirdPlaces = places.slice(6,9);
+  const firstPlaces = places.slice(0,3);
+  const secondPlaces = places.slice(3,6);
+  const thirdPlaces = places.slice(6,9);
 
   return (
     <div>
@@ -25,21 +25,21 @@ const PlaceScreen = ( props ) => {
         <section className='py-5'>
           <h2>Lugares más populares</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {/* { firstPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) } */}
+            { firstPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares agregados recientemente</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {/* { secondPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) } */}
+            { secondPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
         <section className='py-4'>
           <h2>Lugares que les gusta a la comunidad</h2>
           <div className="row row-cols-lg-4 row-cols-md-2 row-cols-1 justify-content-center">
-            {/* { thirdPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) } */}
+            { thirdPlaces.map(place =>  <FotoCard dataSource={place} key={place.id} />) }
           </div>
         </section>
 
