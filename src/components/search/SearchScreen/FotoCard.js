@@ -30,8 +30,19 @@ const FotoCard = ({dataSource, history, id}) => {
         </div>
         </Link>
       </div>
-      <h5 className="card-title">{dataSource.place}</h5>
-      <p className="card-text">{dataSource.city}</p>
+      <h5 className="card-title px-2 align-middle">
+        <i 
+          className="fas fa-globe-americas fa-xs mr-2"
+          style={{color: "orange"}}>
+        </i>
+        {dataSource.place}
+      </h5>
+      <p className="card-text px-2 align-middle">
+        <i 
+          className="fas fa-map-marker-alt fa-xs mr-2"
+          style={{color: "orange"}}>
+        </i>
+        {dataSource.city}</p>
       <div className="searchScreen_tags-container">
         <div className="tags-slider">
             {dataSource.tags.map((tag, i) => {
