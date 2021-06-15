@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { uploadPhoto } from '../../helpers/maps';
 import { Mapa } from './GoogleMap';
@@ -18,62 +18,70 @@ const customStyles = {
       transform             : 'translate(-50%, -50%)',
       overflowY            : "scroll"
     }
-  };
-  
-  Modal.setAppElement('#root');
+};
+
+Modal.setAppElement('#root');
 
 export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setuserPost}) => {
-    console.log(userLogin);
     
-  const initialState = {
-    place: "",
-    description:"",
-    image:null,
-    address: "",
-    city: "",
-    country: "",
-    likes:[],
-    visitors:[],
-    comments:[],
-    tags:[],
+    const [inputTags, setInputTags] = useState((post)? [...post.tags] : []);
+    
+    
+    
+    const initialState = {
+        place: "",
+        description:"",
+        image:null,
+        address: "",
+        city: "",
+        country: "",
+        likes:[],
+        visitors:[],
+        comments:[],
+        tags: [],
     zoom: 15,
     height: 400,
     mapPosition: {
-      lat: 19.419663619235017,
-      lng: -99.18948798974584
-      
+        lat: 19.419663619235017,
+        lng: -99.18948798974584
+        
     },
     marketPosition: {
-      lat:19.419663619235017,
-      lng: -99.18948798974584
+        lat:19.419663619235017,
+        lng: -99.18948798974584
     },
     date: Date.now()
-  }
-    
-    
+}
+
+
     //maps
     const [newPlace, setnewPlace] = useState((post)? post : initialState);
-    const [inputTags, setInputTags] = useState([]);
+    
+    //Este efecto se va a disparar siempre que el inputTag cambie
+       useEffect(() =>  newPlace.tags = [...inputTags], [inputTags]); 
+    
+   //Inputs
+   const {place,description,tags} = newPlace;
 
-    //Inputs
-    const {place,description} = newPlace;
     //Capturando los campos
     const handleInputChange = (e)=>{
         setnewPlace({
             ...newPlace,
             [e.target.name] : e.target.value,
-            user: userLogin.uid
+            user: userLogin.uid,
         })
-    }
+        newPlace.tags = [...inputTags]
+    };
 
-    const handleCloseModal = ()=>{
-        setmodalOpen(false)
-    }
+
+    const handleCloseModal = ()=>setmodalOpen(false);
+
     const handleClick =(e)=>{
         e.preventDefault();
         document.querySelector('#uploadPhoto').click();
     }
 
+    //Manejador de subida de fotos
     const handleFileChange = async(e)=>{
         const file = e.target.files[0];
         Swal.fire({
@@ -94,10 +102,12 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
             ...newPlace,
             image: imageURL
         })
-    }
+    };
 
+    //Manejador de actualizacion
     const handleSubtmitPlace = (e)=>{
         e.preventDefault();
+        
         try {
             //addNewPlace(newPlace)
              fetchConToken('places/',newPlace,'POST');
@@ -111,9 +121,10 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
 
     };
 
+    //Manejador de actualizacion del place
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
-
+        console.log(newPlace);
       try {
         //addNewPlace(newPlace)
          fetchConToken(`places/${post._id}`,newPlace,'PUT');
@@ -141,7 +152,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
     return (
         <Modal
         isOpen={modalOpen}
-        // onAfterOpen={afterOpenModal}
+        //onAfterOpen={afterOpenModal}
         onRequestClose={handleCloseModal}
         style={customStyles}
         closeTimeoutMS={200}
@@ -172,14 +183,14 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
                             onChange={handleInputChange}
                         ></textarea>
                     </div>
-
+                    {/* <input className="form-control" style={{marginTop:'10px'}}  placeholder="Agrega algún tag" name="inputTags" value={inputTags} onChange={handleTags}/>  */}
                     <TagsInput
-                        value={inputTags}
-                        //onChange={setInputTags}
+                        type="text"
                         name="inputTags"
+                        value={inputTags}
+                        onChange={setInputTags}
                         placeHolder="Agrega algún tag"
                         className="form-control"
-                        onChange={handleInputChange}
                         style={{marginTop:'10px'}}
                     />
                     <em style={{margin:'5px'}}>Presiona la tecla Enter para agregar un nuevo tag</em>
@@ -232,17 +243,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
                 <div className=" d-flex justify-content-center "><button className="btn btn-success" onClick={handleClick}> CargarFoto</button></div>
             </>)
         }
-       
-
-
-    
-
-   
-
 </form>
-
-   
-       
         </Modal>
     )
 }
