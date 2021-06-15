@@ -5,6 +5,7 @@
     background-repeat: no-repeat;
     position: relative;
     height: 20rem;
+    width: 100%;
     margin-bottom: .5rem;
     border-radius: 0 0 20px 20px;
 
@@ -20,7 +21,7 @@
     }
 
     .profile-avatar {
-        display: block;
+        display: inline-block;
         width: 230px;
         height: 230px;
         background-color: #D9DCF1;
@@ -78,6 +79,10 @@
         padding-bottom: 1rem;
         padding-right: 1rem;
 
+        .profile-information {
+            width: 100%;
+        }
+
         .profile-user {
             font-size: 2.3rem;
             white-space: nowrap;
@@ -103,7 +108,7 @@
     }
 
     .profile-options {
-        display: block;
+        display: flex;
         position: absolute;
         right: 2rem;
         top: 1rem;

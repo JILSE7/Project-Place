@@ -1,6 +1,5 @@
 import React, { memo, useContext, useEffect, useState } from "react";
 import ProfileCover from './ProfileCover';
-import { ProfileMenu } from './ProfileMenu';
 import { ProfilePostsList } from './ProfilePostsList';
 import { PlaceContext } from '../../context/PlaceContext';
 import { useParams } from 'react-router'
@@ -38,7 +37,6 @@ export  const UserScreen = memo(() => {
             <section className="user-profile-section">
                 <div className="user-profile-container">
                     <ProfileCover user = {userPost} />
-                    <ProfileMenu />
                 </div>
             </section>
 
