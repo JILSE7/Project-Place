@@ -16,7 +16,7 @@ const Gallery = ({places}) => {
 
   mezclarArreglo(places)
   return (
-    <div className="container-fluid p-3 row justify-content-center">
+    <div className="container-fluid m-0 row justify-content-center">
       {places.map((place,i) => {
         return <FotoCard dataSource={place} key={place.placeId} ></FotoCard>;
       })}

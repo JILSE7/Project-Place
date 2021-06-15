@@ -12,7 +12,8 @@ const Footer = () => {
             <p>Copyright © 2021 PLCS Place.</p>
             <p>All rights reserved</p>
           </div>
-          <div className="col">
+          <div class="dropdown-divider d-sm-block d-md-none mb-sm-4"></div>
+          <div className="col text-center">
             <h5 className="pb-3">Compañia</h5>
             <Link to="/notfound" className="text-white" ><p>About us</p></Link>
             <Link to="/notfound" className="text-white" ><p>Blog</p></Link>
@@ -20,6 +21,7 @@ const Footer = () => {
             <Link to="/notfound" className="text-white" ><p>Pricing</p></Link>
             <Link to="/notfound" className="text-white" ><p>Testimonials</p></Link>
           </div>
+          <div class="dropdown-divider d-sm-block d-md-none mb-sm-4"></div>
           <div className="col">
             <h5 className="pb-3">Ayuda</h5>
             <Link to="/notfound" className="text-white" ><p>Help center</p></Link>
@@ -28,6 +30,7 @@ const Footer = () => {
             <Link to="/notfound" className="text-white" ><p>Privacy policy</p></Link>
             <Link to="/notfound" className="text-white" ><p>Status</p></Link>
           </div>
+          <div class="dropdown-divider d-sm-block d-md-none mb-sm-4"></div>
           <div className="col">
             <h5 className="pb-3">Explora</h5>
             <Link to="/login" className="text-white" ><button type="button" className="btn btn-secondary">Login</button></Link>
