@@ -84,3 +84,54 @@
     background-color: orange;
   }
 }
+
+// .edit-photo {
+//     h1 {
+//         color: red;
+//     }
+// }
+
+.edit-photo-container
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 200px);
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+
+    .edit-photo {
+        display: none;
+
+        i {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            display: inline;
+            font-size: 2.5rem;
+            margin-left: 1.1rem;
+        }
+    }
+
+    .place-image {
+        object-fit: cover;
+        height: 100%;
+    }
+}
+
+.edit-photo-container:hover .edit-photo,
+.edit-photo-container:focus .edit-photo {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border: 1px solid #ccc;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}

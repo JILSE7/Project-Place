@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import { uploadPhoto } from '../../helpers/maps';
 import { fetchConToken } from '../../helpers/fetch';
 import Swal from 'sweetalert2';

@@ -7,8 +7,8 @@
 @import './components/Search/_SearchId';
 @import './_notFound-styles.scss';
 @import './components/searchScreen-styles';
-@import './components/maps/googlemaps';
-@import './components//maps/modal';
+@import 'components/maps/_googlemaps';
+@import 'components/maps/_modal';
 
 * {
     margin: 0;

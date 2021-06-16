@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from 'prop-types'
 import { ModalMap } from "../googleMaps/ModalMap";
+import { useParams } from "react-router";
+import { PlaceContext } from "../../context/PlaceContext";
 
 export const ProfilePost = ({post, userLogin, setuserPost}) => {
+
+    const { id } = useParams();
+    const { userLogin: { uid } } = useContext(PlaceContext);
 
     const [update, setUpdate] = useState(false) 
     //modal
@@ -18,45 +23,6 @@ export const ProfilePost = ({post, userLogin, setuserPost}) => {
         document.querySelector('#uploadPostPhoto').click();
     }
 
-    /* const handleFileChangePostPhoto = async(e)=> {
-        try 
-        {
-          const file = e.target.files[0];
-  
-          Swal.fire({
-              title: 'Uploading',
-              text: 'Please wait....',
-              allowOutsideClick: false,
-              showConfirmButton: false,
-              willOpen: ()=>{
-                  Swal.showLoading();
-              }
-          })
-  
-          const postPhoto = await uploadPhoto(file);
-          Swal.close();
-  
-          Swal.fire({
-            imageUrl: postPhoto,
-            imageWidth: 800,
-            imageAlt: 'A tall image'
-          })
-
-          const upload = await (await fetchConToken(`places/${uid}`, {}, 'GET')).json();
-          
-          console.log(upload);
-
-          if (upload.ok)
-          {
-            setPostPhoto(postPhoto);
-          }
-  
-  
-        } catch(e) {
-          console.log(e);
-        }
-      } */
-
 
     return(
         <>
@@ -70,7 +36,8 @@ export const ProfilePost = ({post, userLogin, setuserPost}) => {
                     </ul>
                     <ul>
                         <input id="uploadPostPhoto" name="file"  type="file" style={{display:"none"}}/>
-                        <li className="edit-post" onClick={handleEditPost}><i class="fas fa-edit"></i></li>
+                        <li className="edit-post" style={(uid === id) ? null: {display:"none"}} onClick={handleEditPost}><i class="fas fa-edit"></i></li>
+                        <li className="delete-post" style={(uid === id) ? null: {display:"none"}}><i class="fas fa-trash-alt"></i></li>
                     </ul>
                 </div>
                 <h4> {post.description} </h4>

@@ -169,8 +169,13 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
             (
             <div>
                 <div>
-                    <div className="d-flex justify-content-center google_newImage">
-                    <img src={newPlace.image} className="google__image" alt={"Nueva imagen"} />
+                    <div className="d-flex justify-content-center google_newImage edit-photo-container">
+                        <img src={newPlace.image} className="google__image place-image" alt={"Nueva imagen"} />
+                        <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" style={{display:"none"}}/>
+                        <div className="edit-photo" onClick={handleClick}>
+                            <i class="fas fa-images"></i>
+                            <h3>Cambiar foto</h3>
+                        </div>
                     </div>
                     <div className="form-group">
                         <textarea 
