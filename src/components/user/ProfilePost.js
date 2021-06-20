@@ -17,12 +17,16 @@ export const ProfilePost = ({post, userLogin, setuserPost}) => {
         setUpdate(true);
         setmodalOpen(true);
     }
-
+    
     const handleClickPostPhoto =(e)=> {
         e.preventDefault();
         document.querySelector('#uploadPostPhoto').click();
     }
-
+    
+    const handleDrop = () => {
+        console.log(post._id);
+        
+    }
 
     return(
         <>
@@ -37,7 +41,7 @@ export const ProfilePost = ({post, userLogin, setuserPost}) => {
                     <ul>
                         <input id="uploadPostPhoto" name="file"  type="file" style={{display:"none"}}/>
                         <li className="edit-post" style={(uid === id) ? null: {display:"none"}} onClick={handleEditPost}><i class="fas fa-edit"></i></li>
-                        <li className="delete-post" style={(uid === id) ? null: {display:"none"}}><i class="fas fa-trash-alt"></i></li>
+                        <li id="drop" onClick={handleDrop} className="delete-post" style={(uid === id) ? null: {display:"none"}}><i class="fas fa-trash-alt"></i></li>
                     </ul>
                 </div>
                 <h4> {post.description} </h4>
