@@ -17,7 +17,8 @@ export const SearchIdScreen = memo(({history}) => {
     const [size, setsize] = useState( window.outerWidth);
     const [comentarios, setcomentarios] = useState([]);
 
-    window.addEventListener("resize", function(){setsize(this.outerWidth)});
+    window.addEventListener("resize", function(){
+        setsize(this.outerWidth)});
     
     window.scroll({
         top: 0,
@@ -55,7 +56,7 @@ export const SearchIdScreen = memo(({history}) => {
                 
                 search!== undefined  ?
                 
-                (size >=916) ?
+                (size >=1210) ?
              
                     (<div className=" searchId_container">
                     <main className="searchId_main">
@@ -77,8 +78,8 @@ export const SearchIdScreen = memo(({history}) => {
                 
                    ( <div className="searchId_container">
                              <SearchTitle title={search[0].place} />
+                            <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }} description={search[0].description} user = {{profilePhoto: search[0].user.profilePhoto, userName: search[0].user.userName}}/>
                         <main className="searchId_main">
-                        <SearchLocation location ={{city: search[0].city, country: search[0].country, address: search[0].address }} description={search[0].description} user = {{profilePhoto: search[0].user.profilePhoto, userName: search[0].user.userName}}/>
                         <div className="searchId_imagen" >
                                
                                 <SearchidUser user= {search[0].user}/>
@@ -91,7 +92,7 @@ export const SearchIdScreen = memo(({history}) => {
                            <p>Ubicacion</p>
                    </div>
                         </main>
-                        <SearchScreen/>
+                        <SearchScreen history={history}/>
                          </div>)
 
                    :

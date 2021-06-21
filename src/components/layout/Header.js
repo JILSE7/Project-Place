@@ -7,6 +7,7 @@ import InputSearch from './layoutComponents/InputSearch';
 
 import logo from '../../assets/plcs-black.png';
 import { startLogout } from '../../helpers/auth';
+import InputSearchUser from './layoutComponents/InputSearchUser';
 
 const Header = (props) => {
 
@@ -17,6 +18,7 @@ const Header = (props) => {
     setUserLogin({checking: false});
     setPlaces([]);
   }
+  console.log(window.location.pathname);
 
   return (
     <header>
@@ -35,18 +37,21 @@ const Header = (props) => {
             </li>
           </ul>
 
-          <ul className="navbar-nav d-none d-md-block">
-            {inputSearch ? <InputSearch history={props.history}/> : ''}
-          </ul>
+            { (window.location.pathname === "/login" || window.location.pathname === "/signup") ?
+                   
+              null 
+              :
+              (
+                <ul className="navbar-nav ml-auto inputSearchUsers justify-content-center">
+                <InputSearchUser history={props.history}/>
+                </ul>
+              ) 
+            } 
 
           {
             userLogin.uid ?
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <span className="navbar-text">
-                  Bienvenido
-                </span>
-              </li>
+          
               <li className="nav-item dropdown">
                 <div className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {`${userLogin.userName} `}

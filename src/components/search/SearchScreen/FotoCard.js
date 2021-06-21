@@ -5,8 +5,6 @@ import moment from 'moment'
 import { GoClock } from "react-icons/go";
 const FotoCard = ({dataSource, history, id}) => {
 
-  console.log(dataSource.date);
-
   return (
     <div className="searchScreen_foto-card">
       <div className="head d-flex justify-content-between align-items-center">

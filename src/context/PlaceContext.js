@@ -12,7 +12,7 @@ export const DataProvider = ({ children }) => {
     checking: false //proceso de autenticacion   
   });
   const [places, setPlaces] = useState([]);
-  const [path, setPath] = useState(window.location.pathname);
+  const [lastSearch, setlastSearch] = useState('');
   
   
 
@@ -37,7 +37,7 @@ export const DataProvider = ({ children }) => {
   //Filtrar las ciudad por el input
   const [placesFiltered, setPlacesFiltered] = useState();
   return (
-    <PlaceContext.Provider value ={{places, setPlaces,userLogin, setUserLogin, inputSearch, setInputSearch, placesFiltered, setPlacesFiltered, uniqueCountries, path, setPath }}>
+    <PlaceContext.Provider value ={{places, setPlaces,userLogin, setUserLogin, inputSearch, setInputSearch, placesFiltered, setPlacesFiltered, uniqueCountries, lastSearch, setlastSearch }}>
       { children }
     </PlaceContext.Provider>
   )
