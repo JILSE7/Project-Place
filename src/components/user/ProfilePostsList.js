@@ -3,7 +3,7 @@ import ProfilePost from './ProfilePost';
 
 export const ProfilePostsList = ({userPost, setuserPost}) => {
     //Nuevo estado con los post
-    const [post, setPost] = useState([]);
+    const [posts, setPosts] = useState([]);
 
     //1.- id
     //2.- filter !==
@@ -12,17 +12,17 @@ export const ProfilePostsList = ({userPost, setuserPost}) => {
 
 
     useEffect(() => {
-        setPost(userPost.posts)
+        setPosts(userPost.posts)
     }, [userPost])
 
-    console.log(post);
+    console.log(posts);
     return (
         <div className="container-posts">
             <div className="posts-list">
                 {
-                    post !== undefined ?
-                        (post.map(post => {
-                            return <ProfilePost key={post._id} post = {post} userLogin = {userPost} setuserPost = {setuserPost}/>
+                    posts !== undefined ?
+                        (posts.map(post => {
+                            return <ProfilePost key={post._id} post = {post} posts = {posts} setPosts = {setPosts} userLogin = {userPost} setuserPost = {setuserPost}/>
                         }))
                         : null
                 }

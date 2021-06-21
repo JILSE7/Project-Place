@@ -105,15 +105,18 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
     };
 
     //Manejador de actualizacion
-    const handleSubtmitPlace = (e)=>{
+    const handleSubtmitPlace = async(e)=>{
         e.preventDefault();
         
         try {
             //addNewPlace(newPlace)
-             fetchConToken('places/',newPlace,'POST');
-            Swal.fire("Excelente, Nuevo Place Agregado", place.place, 'success')
-            setnewPlace(initialState);
+            await fetchConToken('places/',newPlace,'POST');
             handleCloseModal();
+            Swal.fire("Excelente, Nuevo Place Agregado", place.place, 'success')
+            .then(async(result) => {
+                setnewPlace(initialState);
+                window.location.reload(); 
+            });
         } catch (error) {
             console.log(error);
             Swal.fire("Error", error, 'error')
@@ -122,20 +125,18 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
     };
 
     //Manejador de actualizacion del place
-    const handleUpdateSubmit = (e) => {
+    const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         console.log(newPlace);
       try {
         //addNewPlace(newPlace)
-         fetchConToken(`places/${post._id}`,newPlace,'PUT');
-        Swal.fire("Excelente, Place Actualizado", place.place, 'success')
-        setnewPlace(initialState);
+        await fetchConToken(`places/${post._id}`,newPlace,'PUT');
         handleCloseModal();
-
-        setTimeout(() => {
-            window.location.reload();   
-        }, 800);
-        
+        Swal.fire("Excelente, Place Actualizado", place.place, 'success')
+        .then(async(result) => {
+            setnewPlace(initialState);
+            window.location.reload(); 
+        });
     } catch (error) {
         console.log(error);
         Swal.fire("Error", error, 'error')
@@ -171,7 +172,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
                 <div>
                     <div className="d-flex justify-content-center google_newImage edit-photo-container">
                         <img src={newPlace.image} className="google__image place-image" alt={"Nueva imagen"} />
-                        <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" style={{display:"none"}}/>
+                        <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" accept="image/*" style={{display:"none"}}/>
                         <div className="edit-photo" onClick={handleClick}>
                             <i class="fas fa-images"></i>
                             <h3>Cambiar foto</h3>
@@ -244,7 +245,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
 
             :
             (<>
-                <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" style={{display:"none"}}/>
+                <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" accept="image/*" style={{display:"none"}}/>
                 <div className=" d-flex justify-content-center "><button className="btn btn-success" onClick={handleClick}> CargarFoto</button></div>
             </>)
         }

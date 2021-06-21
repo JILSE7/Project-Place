@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { ModalMap } from "../googleMaps/ModalMap";
 import { useParams } from "react-router";
 import { PlaceContext } from "../../context/PlaceContext";
+import { fetchConToken } from '../../helpers/fetch';
+import Swal from 'sweetalert2';
 
-export const ProfilePost = ({post, userLogin, setuserPost}) => {
+export const ProfilePost = ({post, posts, setPosts, userLogin, setuserPost}) => {
 
     const { id } = useParams();
     const { userLogin: { uid } } = useContext(PlaceContext);
@@ -18,19 +20,61 @@ export const ProfilePost = ({post, userLogin, setuserPost}) => {
         setmodalOpen(true);
     }
     
-    const handleClickPostPhoto =(e)=> {
-        e.preventDefault();
-        document.querySelector('#uploadPostPhoto').click();
-    }
-    
-    const handleDrop = () => {
+
+    const handleDrop = async()=> {
         console.log(post._id);
-        
+        const newPosts = posts.filter(newPost => newPost._id !== post._id)
+
+        try 
+        {
+
+            Swal.fire({
+                title: '¿Estás seguro de eliminar esta publicación?',
+                text: "¡Tu no podrás revertir esta publicación!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '¡Sí, elimínala!',
+                cancelButtonText: 'Cancelar'
+              }).then(async(result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    '¡Publicación eliminada!',
+                    'Tu publicación ha sido eliminada exitosamente.',
+                    'success'
+                  )
+
+                  const userUpdate = await (await fetchConToken(`users/${userLogin.uid}`, {posts: newPosts}, 'PUT')).json();
+                  const placeDelete = await( await fetchConToken(`places/${post._id}`, {}, 'DELETE')).json();
+                    
+
+                  if (placeDelete.ok && userUpdate.ok)
+                  {
+                    setPosts(newPosts)
+                  }
+                }
+              })
+
+              
+        } catch(e) {
+          console.log(e);
+        }
+    }
+
+    const handleRoute = async(e)=> {
+      if (e.detail >= 2)
+      {
+        // CHECAR ESTO!! IMPORTANTE!!
+        let fullPath = location.href;
+        let rootPath = fullPath.split('/')[0]+"/"+fullPath.split('/')[1]+"/"+fullPath.split('/')[2];
+        window.location.href = `${rootPath}/search/${post._id}`; 
+      }
     }
 
     return(
         <>
-        <div className="post-item">
+        <div className="post-item" onClick={handleRoute}>
             <img className="post-image" src={post.image} alt={post.place} />
             <div className="post-item-info">
                 <div className="icons">
@@ -39,7 +83,7 @@ export const ProfilePost = ({post, userLogin, setuserPost}) => {
                         <li className="post-item-comments"><i className="fas fa-comment" aria-hidden="true"></i> {post.comments.length}</li>
                     </ul>
                     <ul>
-                        <input id="uploadPostPhoto" name="file"  type="file" style={{display:"none"}}/>
+                        <input id="uploadPostPhoto" name="file"  type="file" accept="image/*" style={{display:"none"}}/>
                         <li className="edit-post" style={(uid === id) ? null: {display:"none"}} onClick={handleEditPost}><i class="fas fa-edit"></i></li>
                         <li id="drop" onClick={handleDrop} className="delete-post" style={(uid === id) ? null: {display:"none"}}><i class="fas fa-trash-alt"></i></li>
                     </ul>
