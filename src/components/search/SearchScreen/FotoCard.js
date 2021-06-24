@@ -32,7 +32,7 @@ const FotoCard = ({dataSource}) => {
         </div>
         </Link>
       </div>
-      <div className="d-flex  text-center flex-column justify-content-center" >
+      <div className="hola  d-flex  text-center flex-column justify-content-between align-items-center" >
              <div>
                     <h5 className="card-title align-middle">
                      <RiMapPinUserFill style={{marginRight: '5px', color: 'orange', fontSize: '20px'}}/>
@@ -52,19 +52,19 @@ const FotoCard = ({dataSource}) => {
 
              </div>
                </div>
-      </div>
-      {
-        dataSource.tags.length !== 0 && 
-        <div className="searchScreen_tags-container">
-        <div className="tags-slider">
-            {dataSource.tags.map((tag, i) => {
-                return <span 
-                className="badge rounded-pill py-1 px-2 mx-1" key={i}>{tag}</span>
-            })}
-        </div>
-      </div>
-      }
-     
+
+                  {
+                    dataSource.tags.length !== 0 && 
+                    <div className="searchScreen_tags-container">
+                    <div className="tags-slider">
+                        {dataSource.tags.map((tag, i) => {
+                            return <span 
+                            className="badge rounded-pill py-1 px-2 mx-1" key={i}>{tag}</span>
+                        })}
+                    </div>
+                  </div>
+                  }
+           </div>
     </div>
   );
 };

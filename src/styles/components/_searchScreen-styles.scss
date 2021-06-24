@@ -3,7 +3,7 @@ $tag-bg-color: rgb(225, 225, 225);
 
 
 .searchScreen_foto-card {
-  width: 280px ;
+  width: 300px ;
   margin: 10px ;
 
   
@@ -67,6 +67,8 @@ $tag-bg-color: rgb(225, 225, 225);
 }
 
 .searchScreen_tags-container {
+  display: flex;
+  justify-content: center;
   width: 100% !important;
   // padding: 0 10px;
   overflow-x:scroll !important;
@@ -116,3 +118,4 @@ $tag-bg-color: rgb(225, 225, 225);
   flex-direction: column;
   width: 100%;
 }
+
