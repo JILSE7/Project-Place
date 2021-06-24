@@ -12,31 +12,25 @@ const InputSearch = ( { history }) => {
   const [filterPlaces, setFilterPlaces] = useState();
 
   
-  const handleSubmit= (event) => {
-    event.preventDefault();
-    setPlacesFiltered(filterPlaces);
+  const handleSubmit= () => {
+    
     //history.push('/search');
-    // setPlacesFiltered();
   }
   console.log(uniqueCountries);
   
   const handleChange =(event) =>{
     //console.log(`Seleccionaste ${event.target.value}`);
-    setlastSearch(event.target.innerText);
-
-    console.log(lastSearch);
-    if(!lastSearch){
-      setFilterPlaces(places);
-      history.push('/search');
-    }else{
-      const filter = places.filter(place => place.country === event.target.innerText)
-      //console.log(filter)
-      setFilterPlaces(filter);
+    //setlastSearch(event.target.innerText);
+    
+    const filter = places.filter(place => place.country === event.target.innerText)
+    console.log(filter)
+      setPlacesFiltered(filter);
+      setFilterPlaces();
+      handleSubmit();
       
     }
 
-    handleSubmit(event);
-  }
+  
 
   //autocomplete
     const defaultProps = {

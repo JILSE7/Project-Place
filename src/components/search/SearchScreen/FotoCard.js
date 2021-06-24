@@ -8,7 +8,6 @@ import { RiMapPinUserFill } from "react-icons/ri";
 
 
 const FotoCard = ({dataSource}) => {
-  console.log(dataSource.tags);
   return (
     <div className="searchScreen_foto-card">
       <div className="head d-flex justify-content-between align-items-center">
