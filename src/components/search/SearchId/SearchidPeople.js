@@ -5,7 +5,7 @@ export const SearchidPeople = memo(({visitors}) => {
     console.log(visitors);
     return (
         <div className="searchId_info-stay">
-            
+            <h4>Han estado aqui</h4>
             <div className="searchId_info-stay-user ms-3">
                 {
                     visitors.map(user =>{
@@ -17,12 +17,13 @@ export const SearchidPeople = memo(({visitors}) => {
                         title = {user.userName}
                         key={user._id}
                         />
+                        
 
                         )
                     })
                 }
             </div>
-            <p>& {visitors.length} personas mas......</p>
+            <p>{visitors.length} {visitors.length==1 ? 'Persona' : 'Personas'} </p>
         </div>
 
     )

@@ -12,7 +12,25 @@
     flex-wrap: wrap;
 }
 .inputSearchUsers{
-    width: 50%;
+    width: 80%;
+    
+}
+#rc_select_1{
+    height: 40px;
+    &:hover{
+        border:1px solid orange;
+    }
+
+    &:focus{
+        border: 1px solid orange;
+    }
+    
+}
+.ant-input-search{
+    border: orange !important;
+}
+.ant-input:hover{
+    color: orange !important;
 }
 
 //Contenedor main

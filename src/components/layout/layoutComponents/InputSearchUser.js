@@ -14,7 +14,7 @@ const renderTitle = (title) => (
       
       rel="noopener noreferrer"
     >
-      hola
+      
     </a>
   </span>
 );
