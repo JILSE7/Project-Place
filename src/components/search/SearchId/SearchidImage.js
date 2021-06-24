@@ -1,9 +1,8 @@
-import React, { memo, useContext, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import Swal from 'sweetalert2';
 import { fetchConToken } from '../../../helpers/fetch';
 //Iconos
-import { BiBeenHere } from "react-icons/bi";
 import { RiMapPinUserLine, RiMapPin2Line } from "react-icons/ri";
 
 export const SearchidImage = memo(({image, likes, comments, visitors: visitas,placeId, userLogin}) => {
@@ -65,7 +64,7 @@ export const SearchidImage = memo(({image, likes, comments, visitors: visitas,pl
             setVisitors([...visitors, userLogin.uid]);
             setvisitorMe(true); 
         }
-
+        window.location.reload();
     };
 
  

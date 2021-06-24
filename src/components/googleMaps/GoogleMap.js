@@ -15,6 +15,7 @@ const containerStyle = {
     margin: "0 auto",
   width: '250px',
   height: '250px',
+  
 };
 
 
@@ -55,6 +56,7 @@ export const Mapa = ({newPlace, setnewPlace, pin}) => {
       console.log(error);
     }
   }
+  
 
   useEffect(() => {
        localStorage.setItem('newPlace', JSON.stringify(newPlace))
@@ -63,10 +65,12 @@ export const Mapa = ({newPlace, setnewPlace, pin}) => {
     return (
         <div className="google_mapa">  
             <GoogleMap
+            
               mapContainerStyle={containerStyle}
               center={{lat: Number(newPlace.mapPosition.lat), lng: Number(newPlace.mapPosition.lng)}|| newPlace.marketPosition}
               zoom={17}
-              
+              mapTypeId="ja1415"
+              id="cucaracha17"
               
             >
               { /* Child components, such as markers, info windows, etc. */ }

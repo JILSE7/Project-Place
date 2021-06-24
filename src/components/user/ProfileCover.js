@@ -127,7 +127,7 @@ const ProfileCover = ({user}) => {
       try {
         Swal.fire({
           title: 'Editar datos de perfil',
-          html: `<input type="text" id="firstName" class="swal2-input" placeholder="Nombre(s)" style="width: 20rem;" value="${firstName}">
+          html: `<input type="text" id="firstName" classN="swal2-input" placeholder="Nombre(s)" style="width: 20rem;" value="${firstName}">
           <input type="text" id="lastName" class="swal2-input" placeholder="Apellido(s)" style="width: 20rem;" value="${lastName}">
           <textarea id="information" class="swal2-input" style="width:20rem; height:10rem; padding:1rem;" placeholder="Escribe una descripción...">${information}</textarea>`,
           confirmButtonText: 'Guardar',

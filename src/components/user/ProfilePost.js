@@ -66,7 +66,7 @@ export const ProfilePost = ({post, posts, setPosts, userLogin, setuserPost}) => 
       if (e.detail >= 2)
       {
         // CHECAR ESTO!! IMPORTANTE!!
-        let fullPath = location.href;
+        let fullPath = window.location.href;
         let rootPath = fullPath.split('/')[0]+"/"+fullPath.split('/')[1]+"/"+fullPath.split('/')[2];
         window.location.href = `${rootPath}/search/${post._id}`; 
       }
@@ -84,8 +84,8 @@ export const ProfilePost = ({post, posts, setPosts, userLogin, setuserPost}) => 
                     </ul>
                     <ul>
                         <input id="uploadPostPhoto" name="file"  type="file" accept="image/*" style={{display:"none"}}/>
-                        <li className="edit-post" style={(uid === id) ? null: {display:"none"}} onClick={handleEditPost}><i class="fas fa-edit"></i></li>
-                        <li id="drop" onClick={handleDrop} className="delete-post" style={(uid === id) ? null: {display:"none"}}><i class="fas fa-trash-alt"></i></li>
+                        <li className="edit-post" style={(uid === id) ? null: {display:"none"}} onClick={handleEditPost}><i className="fas fa-edit"></i></li>
+                        <li id="drop" onClick={handleDrop} className="delete-post" style={(uid === id) ? null: {display:"none"}}><i className="fas fa-trash-alt"></i></li>
                     </ul>
                 </div>
                 <h4> {post.description} </h4>

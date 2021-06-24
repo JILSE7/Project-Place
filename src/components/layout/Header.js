@@ -1,17 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-
 import { PlaceContext } from '../../context/PlaceContext';
-import InputSearch from './layoutComponents/InputSearch';
-
 import logo from '../../assets/plcs-black.png';
 import { startLogout } from '../../helpers/auth';
-import InputSearchUser from './layoutComponents/InputSearchUser';
+import {Complete} from './layoutComponents/InputSearchUser';
 
 const Header = (props) => {
 
-  const {userLogin, setUserLogin, inputSearch, setPlacesFiltered, setPlaces } = useContext(PlaceContext);
+  const {userLogin, setUserLogin, setPlacesFiltered, setPlaces } = useContext(PlaceContext);
 
   const logout = () => {
     startLogout();
@@ -43,7 +40,7 @@ const Header = (props) => {
               :
               (
                 <ul className="navbar-nav ml-auto inputSearchUsers justify-content-center">
-                <InputSearchUser history={props.history}/>
+                <Complete history={props.history}/>
                 </ul>
               ) 
             } 

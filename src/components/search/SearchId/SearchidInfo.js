@@ -41,9 +41,6 @@ export const SearchidInfo = memo(({comments, placeId}) => {
 
     }
 
-
-    //fecha
-    const fecha = new Date();
     const newCommentLocal = {//Este es el que se muestra temporalmente
         user: {
             _id: uid,

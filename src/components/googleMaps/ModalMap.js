@@ -58,10 +58,10 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
     const [newPlace, setnewPlace] = useState((post)? post : initialState);
     
     //Este efecto se va a disparar siempre que el inputTag cambie
-       useEffect(() =>  newPlace.tags = [...inputTags], [inputTags]); 
+       useEffect(() =>  newPlace.tags = [...inputTags], [inputTags, newPlace]); 
     
    //Inputs
-   const {place,description,tags} = newPlace;
+   const {place,description} = newPlace;
 
     //Capturando los campos
     const handleInputChange = (e)=>{
@@ -174,7 +174,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
                         <img src={newPlace.image} className="google__image place-image" alt={"Nueva imagen"} />
                         <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" accept="image/*" style={{display:"none"}}/>
                         <div className="edit-photo" onClick={handleClick}>
-                            <i class="fas fa-images"></i>
+                            <i className="fas fa-images"></i>
                             <h3>Cambiar foto</h3>
                         </div>
                     </div>

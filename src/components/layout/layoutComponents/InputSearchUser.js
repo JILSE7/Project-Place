@@ -1,59 +1,101 @@
-import React, { useContext, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { PlaceContext } from '../../../context/PlaceContext';
+import { Input, AutoComplete } from 'antd';
+//import { UserOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
+import { useEffect, useState } from 'react';
 import { fetchConToken } from '../../../helpers/fetch';
-const InputSearchUser = ({history}) => {
 
-        const [usuarios, setUsuarios] = useState([]);
-        
+const renderTitle = (title) => (
+  <span>
+    {title}
+    <a
+      style={{
+        float: 'right',
+      }}
+      
+      rel="noopener noreferrer"
+    >
+      hola
+    </a>
+  </span>
+);
 
-        useEffect(async() => {
-            
-        const {users} = await (await fetchConToken("/users")).json();
-        setUsuarios(users)
-        }, []);
+const renderItem = (title, count, id) => ({
+  value: title,
+  label: (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
+      {title}
+      <span>
+      <img className="searchScreen_user-photo" src={count} alt={id} data-id={id} loading="lazy" />
+      </span>
+    </div>
+  ),
+});
 
-        const handleChange = (e) =>{
-            
-            console.log(e.target.innerText);
-            const [user] = usuarios.filter(user => user.userName == e.target.innerText)
-            if(user){
 
-              history.push(`/user/${user.uid}`)
-            }
+export const Complete = ({history}) => {
+    
+    const [usuarios, setUsuarios] = useState([]);
+    const [usuario, setusuario] = useState("")
+    
+    
+    useEffect(() => {
+        async function getUsers (){
+          const {users} = await (await fetchConToken("/users")).json();
+          setUsuarios(users)
+          
         }
+        getUsers()
+    }, []);
+    
+    const handleChange = (e) =>{
+            console.log(e);
+            const [user]= usuarios.filter(user => user.userName.includes(e) )
+            if(user){
+                setusuario(user)
+            }
 
-
-
-
+        } 
         
+        const options =  usuario ?
+          [
+          {
+            label: renderTitle('Usuarios'),
+            options: [renderItem(usuario.userName, usuario.profilePhoto, usuario.uid)],
+          }
+        ] : [
+            {
+                label: renderTitle('Busca un usuario'),
+                
+              } 
+        ];
 
+        const handleClick = (e) => {
+          console.log('click', e.target.parentElement.localName == 'div' );
+          if( e.target.parentElement.localName == 'div'){
+            history.push(`/user/${e.target.children[0].children[0].dataset.id}`);
+          }
+        }
+        
     return (
-        <div className="w-50">
-              <Autocomplete
-        freeSolo
-        id="free-solo-2-demo"
-        disableClearable
-        options={usuarios.map((option) => option.userName)}
-        onChange={handleChange}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Usuarios"
-            margin="normal"
-            variant="outlined"
-            InputProps={{ ...params.InputProps, type: 'search' }}
-          />
-        )}
-      />
-        </div>
-    )
+    
+
+    <AutoComplete
+        dropdownClassName="certain-category-search-dropdown"
+        dropdownMatchSelectWidth={300}
+        onChange = {handleChange}
+        onClick={handleClick}
+        
+        style={{
+        width: 250,
+        }}
+        options={options}
+    >
+        <Input.Search size="large" placeholder="Usuarios" />
+    </AutoComplete>
+        ) 
 }
-
-InputSearchUser.propTypes = {
-
-}
-
-export default InputSearchUser

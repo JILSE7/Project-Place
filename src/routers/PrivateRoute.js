@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Route, Redirect} from 'react-router-dom';
-import { PlaceContext } from '../context/PlaceContext';
 
 export const PrivateRoute = ({
     IsAunthenticated,

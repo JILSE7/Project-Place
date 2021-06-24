@@ -48,7 +48,7 @@ export const SearchIdScreen = memo(({history}) => {
         if(search){
            setcomentarios(search[0].comments);
         }
-    }, [placeId]);
+    }, [placeId, search]);
 
     return (
         <div className="mt-5">

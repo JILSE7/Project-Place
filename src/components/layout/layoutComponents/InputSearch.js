@@ -10,7 +10,8 @@ const InputSearch = ( { history }) => {
   const { places, setPlacesFiltered, uniqueCountries, lastSearch ,setlastSearch } = useContext(PlaceContext);
   
   const [filterPlaces, setFilterPlaces] = useState();
-  const [country, setcountry] = useState("")
+
+  
   const handleSubmit= (event) => {
     event.preventDefault();
     setPlacesFiltered(filterPlaces);

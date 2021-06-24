@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo } from 'react'
 
 export const SearchidPeople = memo(({visitors}) => {
     
