@@ -12,6 +12,9 @@ import { getPlaceById } from '../../helpers/Gets'
 import { PlaceContext } from '../../context/PlaceContext';
 import { SearchScreen } from './SearchScreen'
 
+//Icons
+import { RiRoadMapFill } from "react-icons/ri";
+
 
 export const SearchIdScreen = memo(({history}) => {
     const [size, setsize] = useState( window.outerWidth);
@@ -72,6 +75,7 @@ export const SearchIdScreen = memo(({history}) => {
                         <SearchidPeople visitors={search[0].visitors}/>
                     </div>
                    </main>
+                   <h2 className="mt-5">Mas publicaciones de usuarios</h2>
                     <SearchScreen/>
                    </div>) 
                                :   
@@ -89,9 +93,11 @@ export const SearchIdScreen = memo(({history}) => {
                    <div className="searchId_information">
                            <SearchidPeople visitors = {search[0].visitors}/>
                            <SearchMap mapPosition={search[0].mapPosition}  marketPosition={search[0].marketPosition}/>
-                           <p>Ubicacion</p>
+                            <RiRoadMapFill style={{fontSize: "20px", color: "orangered", marginBottom: "10px"}}/>
+                           <h4 className="mt-5">Ubicacion en Mapa</h4>
                    </div>
                         </main>
+                        <h2 className="mt-3">Mas publicaciones de usuarios</h2>
                         <SearchScreen history={history}/>
                          </div>)
 

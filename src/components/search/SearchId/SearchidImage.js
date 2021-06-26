@@ -79,6 +79,9 @@ export const SearchidImage = memo(({image, likes, comments, visitors: visitas,pl
         addVisitors();
      }, [visitors]);
 
+     const mostarLIst = () => document.querySelector('.searchImage__divList').style.display = 'block';
+     const cerrarList = () => document.querySelector('.searchImage__divList').style.display = 'none';
+     
  
     return (
         <div className="searchId_img-container d-flex">
@@ -108,13 +111,13 @@ export const SearchidImage = memo(({image, likes, comments, visitors: visitas,pl
                 <div className="searchId_img-info-likes-social">
                     {
                         (userNames.length >= 4) ? 
-                        (<p>{`${userNames[0]}, ${userNames[1]}, ${userNames[2]} & ${userNames.length-3} personas mas les encanta esta publicacion`}</p>)
+                        (<p className="userlist" onMouseEnter={mostarLIst} onMouseOut={cerrarList}>{`${userNames[0]}, ${userNames[1]}, ${userNames[2]} & ${userNames.length-3} personas mas les encanta esta publicacion`}</p>)
                                             :
                         (userNames.length >= 3)  ? 
                         (<p>{`${userNames[0]}, ${userNames[1]} & ${userNames[2]}  les encanta esta publicacion`}</p>)
                                             :
                         ( userNames.length>1 && userNames.length<=2) ? 
-                        (<p>{`${userNames[0]}, ${userNames[1]} les encanta esta publicacion`}</p>)
+                        (<p className="userList">{`${userNames[0]}, ${userNames[1]} les encanta esta publicacion`}</p>)
                                             :
                         (userNames.length>=1)   ? 
                         (<p>{`${userNames[0]} le encanta esta publicacion`}</p>)
@@ -123,6 +126,14 @@ export const SearchidImage = memo(({image, likes, comments, visitors: visitas,pl
                     }
                 </div>
             </div> 
+            {   (userNames.length >= 4)  && 
+                <div className="searchImage__divList">
+                        {userNames.map(user => (
+                            <p>{user}</p>
+                        ))}
+                </div>
+
+            }
             
         </div>
     )
