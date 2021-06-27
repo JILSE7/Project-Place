@@ -175,7 +175,7 @@ export const ModalMap = ({userLogin, modalOpen, setmodalOpen, post, update, setu
                         <input id="uploadPhoto" name="file" onChange={handleFileChange} type="file" accept="image/*" style={{display:"none"}}/>
                         <div className="edit-photo" onClick={handleClick}>
                             <i className="fas fa-images"></i>
-                            <h3>Cambiar foto</h3>
+                            <h3 className="text-light">Cambiar foto</h3>
                         </div>
                     </div>
                     <div className="form-group">

@@ -69,9 +69,6 @@ export const Mapa = ({newPlace, setnewPlace, pin}) => {
               mapContainerStyle={containerStyle}
               center={{lat: Number(newPlace.mapPosition.lat), lng: Number(newPlace.mapPosition.lng)}|| newPlace.marketPosition}
               zoom={17}
-              mapTypeId="ja1415"
-              id="cucaracha17"
-              
             >
               { /* Child components, such as markers, info windows, etc. */ }
            <Marker position={{lat: Number(newPlace.mapPosition.lat), lng: Number(newPlace.mapPosition.lng)} || newPlace.marketPosition}
