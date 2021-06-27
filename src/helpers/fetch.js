@@ -1,5 +1,5 @@
 //Peticiones con token y sin token
-const baseURL = 'http://localhost:4001/PLACE'
+const baseURL = 'https://placesbackendbedu.herokuapp.com/PLACE'
 
 const fetchSinToken = (endpoint, data, method = 'GET') =>{
 
