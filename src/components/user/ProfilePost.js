@@ -51,7 +51,8 @@ export const ProfilePost = ({post, posts, setPosts, userLogin, setuserPost}) => 
 
                   if (placeDelete.ok && userUpdate.ok)
                   {
-                    setPosts(newPosts)
+                    setPosts(newPosts);
+                    window.location.reload(true);
                   }
                 }
               })

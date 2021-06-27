@@ -14,7 +14,7 @@ const Footer = () => {
           </div>
           <div className="dropdown-divider d-sm-block d-md-none mb-sm-4"></div>
           <div className="col text-center">
-            <h5 className="pb-3">Compañia</h5>
+            <h5 className="pb-3 text-light">Compañia</h5>
             <Link to="/notfound" className="text-white" ><p>About us</p></Link>
             <Link to="/notfound" className="text-white" ><p>Blog</p></Link>
             <Link to="/notfound" className="text-white" ><p>Contact us</p></Link>
@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
           <div className="dropdown-divider d-sm-block d-md-none mb-sm-4"></div>
           <div className="col">
-            <h5 className="pb-3">Ayuda</h5>
+            <h5 className="pb-3 text-light">Ayuda</h5>
             <Link to="/notfound" className="text-white" ><p>Help center</p></Link>
             <Link to="/notfound" className="text-white" ><p>Terms of service</p></Link>
             <Link to="/notfound" className="text-white" ><p>Legal</p></Link>
@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
           <div className="dropdown-divider d-sm-block d-md-none mb-sm-4"></div>
           <div className="col">
-            <h5 className="pb-3">Explora</h5>
+            <h5 className="pb-3 text-light">Explora</h5>
             <Link to="/login" className="text-white" ><button type="button" className="btn btn-secondary">Login</button></Link>
             <Link to="/signup" className="text-white" ><button type="button" className="btn btn-primary ml-2">Sign up</button></Link>
           </div>
