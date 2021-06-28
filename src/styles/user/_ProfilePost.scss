@@ -64,6 +64,31 @@
     }
 }
 
+@media (max-width : 464px) {
+    .container-posts{
+        width: 100%;
+        padding:  1em;
+    }
+    .posts-list{
+        width: 100%;
+        padding: 1.8rem 5px;
+    }
+    .posts-item{
+        width: 100%;
+    }
+    .posts-list .post-item .post-image {
+        width: 80%;
+    }
+    .post-item:hover .post-item-info, .post-item:focus .post-item-info{
+        width: 80% !important;
+        flex-wrap: nowrap !important;
+    }
+    .fabs{
+        right: 70px !important; 
+    }
+}
+    
+
 .post-item:hover .post-item-info,
 .post-item:focus .post-item-info {
     padding: 1.2rem;
