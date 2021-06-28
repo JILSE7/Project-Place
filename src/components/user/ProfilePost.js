@@ -5,9 +5,11 @@ import { useParams } from "react-router";
 import { PlaceContext } from "../../context/PlaceContext";
 import { fetchConToken } from '../../helpers/fetch';
 import Swal from 'sweetalert2';
+import { useHistory } from "react-router-dom";
 
 export const ProfilePost = ({post, posts, setPosts, userLogin, setuserPost}) => {
-
+  const history = useHistory();
+  
     const { id } = useParams();
     const { userLogin: { uid } } = useContext(PlaceContext);
 
@@ -67,9 +69,10 @@ export const ProfilePost = ({post, posts, setPosts, userLogin, setuserPost}) => 
       if (e.detail >= 2)
       {
         // CHECAR ESTO!! IMPORTANTE!!
-        let fullPath = window.location.href;
-        let rootPath = fullPath.split('/')[0]+"/"+fullPath.split('/')[1]+"/"+fullPath.split('/')[2];
-        window.location.href = `${rootPath}/search/${post._id}`; 
+        //let fullPath = window.location.href;
+        //let rootPath = fullPath.split('/')[0]+"/"+fullPath.split('/')[1]+"/"+fullPath.split('/')[2];
+        //window.location.href = `${rootPath}/search/${post._id}`; 
+        history.push(`/search/${post._id}`)
       }
     }
 
