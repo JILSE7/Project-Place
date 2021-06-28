@@ -15,7 +15,7 @@ const Header = (props) => {
     setUserLogin({checking: false});
     setPlaces([]);
   }
-  console.log(window.location.pathname);
+  
 
   return (
     <header>
